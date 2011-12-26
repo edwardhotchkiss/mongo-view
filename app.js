@@ -6,27 +6,8 @@
 
 */
 
-var url = require('url'),
-    express = require('express'),
-    mongodb_viewer = require('./lib/mongodb-viewer'),
-    app = express.createServer(),
-    port = process.env.PORT || 8000;
+var mongodb_viewer = require('./lib/mongodb-viewer');
 
-/*!
-  Setup ExpressJS
- */
-
-app.configure(function() {
-  app.use(express.static(__dirname+'/public'));
-  app.use(express.bodyParser());
-});
-
-/*!
-  API Calls to Generate Short URLs
- */
-
-app.listen(port, function() {
-  mongodb_viewer.run(port);
-});
+mongodb_viewer.run(8000);
 
 /* EOF */
