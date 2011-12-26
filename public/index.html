@@ -17,10 +17,10 @@
   </div>
   <div id="container" data-role="field-contain">
     <h1>MongoDB Viewer</h1>
-    <form id="connection-form" action="" method="post" onsubmit="return false;">
+    <form id="connection-form" action="/" method="post">
       <fieldset>
-        <input type="text" name="connection-string" id="connection-string" placeholder="MongoDB Connection String..." />
-        <input type="button" id="connect" name="connect" value="Connect &raquo;" />
+        <input type="text" name="connection-string" id="connection-string" placeholder="MongoDB Connection String..." value="mongodb://localhost/test" />
+        <input type="submit" id="connect-button" name="connect-button" value="Connect &raquo;" />
       </fieldset>
     </form>
   </div>
