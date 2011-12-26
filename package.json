@@ -1,0 +1,33 @@
+{
+  "name":"mongodb-viewer",
+  "author":"Edward Hotchkiss <e@ingk.com>",
+  "contributors":[
+    { "name": "Edward Hotchkiss", "email": "e@ingk.com" }
+  ],
+  "description":"NodeJS MongoDB Web-based Admin/Viewer tool",
+  "version":"0.0.0",
+  "repository":{
+    "type":"git",
+    "url":"git://github.com/edwardhotchkiss/mongodb-viewer.git"
+  },
+  "keywords":["mongodb","mongo","viewer","web","based","admin"],
+  "main":"./lib/mongodb-viewer",
+  "bin": { "mongodbviewer":"./bin/mongodb-viewer.js" },
+  "preferGlobal":"true",
+  "engines":{
+    "node":">= 0.4.11 < 0.8.0"
+  },
+  "dependencies":{
+    "mongoose":"2.4.8"
+  },
+  "devDependencies":{
+    "vows":"0.6.0"
+  },
+  "licenses":[{
+    "type":"MIT",
+    "url":"http://github.com/edwardhotchkiss/mongodb-viewer/LICENSE"
+  }],
+  "scripts":{
+    "test":"vows test/*.test.js --spec"
+  }
+}
