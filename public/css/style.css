@@ -61,6 +61,7 @@ a:hover {
 
 #creative-commons {
   background: #fefefe;
+  border-top: 1px solid #dadada;
   padding: 10px 0 10px 0;
   width: 100%;
   position: absolute;
