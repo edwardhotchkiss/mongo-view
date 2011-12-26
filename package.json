@@ -4,7 +4,7 @@
   "contributors":[
     { "name": "Edward Hotchkiss", "email": "e@ingk.com" }
   ],
-  "description":"NodeJS MongoDB Web-based Admin/Viewer tool",
+  "description":"NodeJS MongoDB web-based admin/viewer tool",
   "version":"0.0.0",
   "repository":{
     "type":"git",
@@ -18,7 +18,8 @@
     "node":">= 0.4.11 < 0.8.0"
   },
   "dependencies":{
-    "mongoose":"2.4.8"
+    "mongoose":"2.4.8",
+    "express":"2.5.2"
   },
   "devDependencies":{
     "vows":"0.6.0"
