@@ -7,6 +7,7 @@
 body { 
   margin-top: 100px;
   background: url(../images/bg.png) repeat;
+  color: #4c3a2c;
 }
 
 h1 {
@@ -24,12 +25,13 @@ p {
 }
 
 a, a:active, a:visited, a:hover {
-  color: none;
+  color: #4c3a2c;
+  border-bottom: 1px solid #4c3a2c;
   text-decoration: none;
 }
 
 a:hover {
-  color: none;
+  border-bottom: 2px solid #4c3a2c;
 }
 
 #github {
@@ -37,6 +39,10 @@ a:hover {
   top: 0;
   right: 0; 
   border: 0; 
+}
+
+#github a {
+  border: none;
 }
 
 #container {
