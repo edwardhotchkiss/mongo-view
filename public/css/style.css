@@ -73,7 +73,7 @@ a:hover {
   text-align: center;
 }
 
-input[type=button] {
+#connect-button {
   position: relative;
   float: right;
   width: 100px;
@@ -106,7 +106,7 @@ input:hover {
   background: #ddd; 
 }
 
-input[type=button] {
+input[type=button], input[type=submit] {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #74be65), color-stop(50%, #6ca860));
   background: -moz-linear-gradient(center top, #74be65 50%, #6ca860 50%);
   border: none;
