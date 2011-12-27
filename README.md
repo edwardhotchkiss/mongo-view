@@ -3,19 +3,19 @@
 
 > NodeJS MongoDB web-based admin/viewer tool
 
-### Installation
+## Installation
 
 ```bash
 $ [sudo] npm install mongodb-viewer
 ```
 
-### From the CLI (http://localhost:8000/)
+## From the CLI (http://localhost:8000/)
 
 ```bash
 $ mongodbviewer
 ```
 
-### Hosted
+## Hosted
 
 ```bash
 $ npm install
@@ -23,7 +23,7 @@ $ node app.js
 $ open 'http://localhost:8000'
 ```
 
-### Pull Requests
+## Pull Requests
 
   * fork
   * clone
@@ -31,13 +31,13 @@ $ open 'http://localhost:8000'
   * pull request
   * **instant karma!**
 
-### Run Tests
+## Run Tests
 
 ``` bash
 $ npm test
 ```
 
-### License (MIT)
+## License (MIT)
 
 Copyright (c) 2011, Edward Hotchkiss.
 
