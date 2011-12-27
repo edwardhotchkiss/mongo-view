@@ -1,4 +1,15 @@
 
+0.0.2 / 2011-12-27 
+==================
+
+  * version bump
+  * __dirname, /views
+  * resize screenshot
+  * better sized image
+  * screenshot on readme
+  * add screenshot to /public/images/screens for readme
+  * changelog for 0.0.1
+
 0.0.1 / 2011-12-27 
 ==================
 
