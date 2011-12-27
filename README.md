@@ -3,6 +3,10 @@
 
 > NodeJS MongoDB web-based admin/viewer tool
 
+## Screenshots
+
+![Screen 1](https://github.com/edwardhotchkiss/mongodb-viewer/raw/master/images/screens/1.png)
+
 ## Installation
 
 ```bash
