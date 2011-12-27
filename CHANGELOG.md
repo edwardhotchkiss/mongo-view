@@ -1,4 +1,17 @@
 
+0.0.1 / 2011-12-27 
+==================
+
+  * fix changelog, version bump to a basic release for a viewer
+  * display object ids within a collection
+  * checkConnected() express middleware
+  * readme formating
+  * stylized links to collections
+  * format collections object
+  * use ejs, views. list collections. sessions.
+  * list collections
+  * changelog
+
 0.0.0 / 2011-12-26 
 ==================
 
