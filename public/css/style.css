@@ -7,7 +7,8 @@
 body { 
   margin-top: 100px;
   background: url(../images/bg.png) repeat;
-  color: #4c3a2c;
+  font-size: 11px;
+  font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif;
 }
 
 h1 {
@@ -16,18 +17,15 @@ h1 {
   letter-spacing: -1px;
   text-shadow: 0 1px 1px #fff;
   margin-bottom: 15px;
+  color: #4c3a2c;
 }
 
 p {
-  font-size: 11px;
-  font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif;
   line-height: 16px;
 }
 
-a, a:active, a:visited, a:hover {
-  color: #4c3a2c;
-  border-bottom: 1px solid #4c3a2c;
-  text-decoration: none;
+ul {
+  list-style: none;
 }
 
 a:hover {
@@ -55,8 +53,8 @@ a:hover {
   width: 537px;
   background: #fff;
   padding: 20px 20px 20px 20px;
-    -webkit-box-shadow: 0 0 5px 5px #ddd;
-    -moz-box-shadow: 0 0 5px 5px #ddd;
+  -webkit-box-shadow: 0 0 5px 5px #ddd;
+  -moz-box-shadow: 0 0 5px 5px #ddd;
 }
 
 #creative-commons {
@@ -73,10 +71,34 @@ a:hover {
   text-align: center;
 }
 
+#creative-commons p a, #creative-commons p a:active, #creative-commons p a:visited, #creative-commons p a:hover {
+  color: #4c3a2c;
+  border-bottom: 1px solid #4c3a2c;
+  text-decoration: none;
+}
+
 #connect-button {
   position: relative;
   float: right;
   width: 100px;
+}
+
+#collections {
+  width: 570px;
+  padding: 15px;
+  background: #eee;
+  border: 2px solid #ccc;
+}
+
+#collections ul li {
+  padding: 5px 0 5px 0;
+}
+
+#collections ul li a {
+  color: #000;
+  text-shadow: 0 1px 1px #efefef;
+  text-decoration: none;
+  border-bottom: 1px solid #000;
 }
 
 fieldset { 
