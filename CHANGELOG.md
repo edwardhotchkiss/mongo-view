@@ -1,5 +1,5 @@
 
-n.n.n / 2011-12-26 
+0.0.0 / 2011-12-26 
 ==================
 
   * util.inspect mongoose object
