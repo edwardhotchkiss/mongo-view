@@ -1,5 +1,7 @@
-<h1>Collection</h1>
+<h1>Collections</h1>
 
-<% if (collections) { collections.forEach(function(collection) { %>
-  <li><%= collection.name.split('.').pop() %></li>
-<% }) } %>
+<div id="collections">
+	<% if (collections) { collections.forEach(function(collection) { %>
+ 		<li><%= collection.name %></li>
+	<% }) } %>
+</div>
