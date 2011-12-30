@@ -2,7 +2,7 @@
   "name":"mongodb-viewer",
   "author":"Edward Hotchkiss <edward@edwardhotchkiss.com>",
   "contributors":[
-    { "name": "Edward Hotchkiss", 	"email": "edward@edwardhotchkiss.com" },
+    { "name": "Edward Hotchkiss", 	"email": "edward@edwardhotchkiss.com" }
   ],
   "description":"NodeJS MongoDB web-based admin/viewer tool",
   "version":"0.0.3",
