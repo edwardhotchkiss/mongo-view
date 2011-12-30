@@ -1,4 +1,15 @@
 
+0.1.0 / 2011-12-30 
+==================
+
+  * version bump
+  * removed comma from package
+  * Merge pull request #1 from MaxPresman/master
+  * quick test
+  * forgot to remove a testing function
+  * made the ribbon less noticible
+  * a bit more stylish URL convention
+
 0.0.3 / 2011-12-27 
 ==================
 
