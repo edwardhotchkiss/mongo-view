@@ -5,7 +5,7 @@
     { "name": "Edward Hotchkiss", 	"email": "edward@edwardhotchkiss.com" }
   ],
   "description":"NodeJS MongoDB web-based admin/viewer tool",
-  "version":"0.1.0",
+  "version":"0.1.1",
   "repository":{
     "type":"git",
     "url":"git://github.com/edwardhotchkiss/mongodb-viewer.git"
