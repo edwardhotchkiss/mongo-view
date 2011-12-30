@@ -4,7 +4,7 @@
   <% if (collections) { %>
     <ul>
       <% collections.forEach(function(collection) { %>
-        <li><a href="/collections/<%= collection.name %>/"><%= collection.name %></></li>
+        <li><a href="/database/<%= db_name %>/collections/<%= collection.name %>/"><%= collection.name %></></li>
       <% }); %>
     </ul>
   <% } %>
