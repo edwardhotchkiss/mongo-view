@@ -37,6 +37,7 @@ a:hover {
   top: 0;
   right: 0; 
   border: 0; 
+  opacity: 0.2;
 }
 
 #github a {
