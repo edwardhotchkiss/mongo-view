@@ -1,0 +1,6 @@
+.travis.yml
+.gitignore
+CHANGELOG.md
+LICENSE
+README.md
+test/

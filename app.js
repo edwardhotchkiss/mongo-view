@@ -1,8 +1,8 @@
 
 /*!
 
-  http://github/edwardhotchkiss/mongodb-viewer/
-  NodeJS MongoDB web-based admin/viewer tool
+http://github/edwardhotchkiss/mongodb-viewer/
+NodeJS MongoDB web-based admin/viewer tool
 
 */
 
