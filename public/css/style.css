@@ -5,10 +5,10 @@
 }
 
 body { 
-  margin-top: 100px;
   background: url(../images/bg.png) repeat;
   font-size: 11px;
   font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif;
+  overflow-y: scroll;
 }
 
 h1 {
@@ -48,6 +48,7 @@ a:hover {
   width: 600px;
   position: relative;
   margin: 0 auto 0 auto;
+  margin-top: 100px;
 }
 
 #connection-form {
@@ -63,7 +64,7 @@ a:hover {
   border-top: 1px solid #dadada;
   padding: 10px 0 10px 0;
   width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   left: 0;
 }
@@ -89,6 +90,7 @@ a:hover {
   padding: 15px;
   background: #eee;
   border: 2px solid #ccc;
+  margin-bottom: 100px;
 }
 
 #collections ul li {
