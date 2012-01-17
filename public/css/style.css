@@ -94,7 +94,7 @@ a:hover {
 }
 
 #collections ul li {
-  padding: 5px 0 5px 0;
+  margin: 12px 0 12px 0;
 }
 
 #collections ul li a {
@@ -102,6 +102,13 @@ a:hover {
   text-shadow: 0 1px 1px #efefef;
   text-decoration: none;
   border-bottom: 1px solid #000;
+}
+
+#collections ul li span.count {
+  background: #fefbf3;
+  color: #4c3a2c;
+  border-radius: 4px;
+  padding: 4px 4px 4px 4px;
 }
 
 fieldset { 
