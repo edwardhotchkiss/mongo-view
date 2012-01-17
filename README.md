@@ -38,6 +38,7 @@ $ open 'http://localhost:8000'
 ## Run Tests
 
 ``` bash
+$ git clone git@github.com:edwardhotchkiss/mongodb-viewer.git
 $ npm test
 ```
 
