@@ -5,7 +5,7 @@
     { "name" : "Edward Hotchkiss", "email" : "edward@edwardhotchkiss.com" },
     { "name": "Max Presman", "email" : "max@presman.ca" }
   ],
-  "description":"NodeJS MongoDB web-based admin/viewer tool",
+  "description":"Node.JS MongoDB web-based admin/viewer tool",
   "version":"0.1.2",
   "repository":{
     "type":"git",

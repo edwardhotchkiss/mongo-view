@@ -1,7 +1,7 @@
 
 # MongoDB-Viewer [![Build Status](https://secure.travis-ci.org/edwardhotchkiss/mongodb-viewer.png)](http://travis-ci.org/edwardhotchkiss/mongodb-viewer)
 
-> NodeJS MongoDB web-based admin/viewer tool
+> Node.JS MongoDB web-based admin/viewer tool
 
 ## Screenshots
 
