@@ -91,6 +91,7 @@ a:hover {
   background: #eee;
   border: 2px solid #ccc;
   margin-bottom: 100px;
+  border-radius: 3px;
 }
 
 #collections ul li {
