@@ -23,7 +23,8 @@
     "ejs":"0.6.1"
   },
   "devDependencies":{
-    "vows":"0.6.0"
+    "vows":"0.6.0",
+    "request":"2.9.3"
   },
   "licenses":[{
     "type":"MIT",
