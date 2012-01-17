@@ -1,4 +1,22 @@
 
+0.1.2 / 2012-01-16 
+==================
+
+  * [design] stylize count
+  * [core] display document item .count()
+  * dont log the collection
+  * [design] vertical-scroll forced
+  * [README] formating
+  * [tests] check http server with request
+  * expose httpServer
+  * [package] add max presman to contributors
+  * [tests] add `request` for devDependencies
+  * use process.env.MONGO_DB vs. assuming localhost
+  * added license to README
+  * remove extranneous js
+  * format locals for readability
+  * session.secret is process.env.SECRET OR _ `change_me!`
+
 0.1.1 / 2011-12-30 
 ==================
 
