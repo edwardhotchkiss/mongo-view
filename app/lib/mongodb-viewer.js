@@ -3,7 +3,7 @@
   @class mongodb-viewer
  */
 
-require('./colors');
+require('../helpers/colors');
 
 /*!
   setup
@@ -60,7 +60,7 @@ exports.parse = function parse(argv){
         usage();
     };
   } else {
-    run();
+    app.listen(8000);
   }
 };
 

@@ -7,8 +7,8 @@ Node.JS MongoDB web-based admin/viewer tool
 
 */
 
-var mongodb_viewer = require('./app/lib/mongodb-viewer');
+var mongodb_viewer = require(__dirname + '/../app/lib/mongodb-viewer');
 
-mongodb_viewer.app.parse(process.argv);
+mongodb_viewer.parse(process.argv);
 
 /* EOF */
