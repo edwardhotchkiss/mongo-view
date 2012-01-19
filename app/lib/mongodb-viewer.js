@@ -34,7 +34,9 @@ app.configure(function() {
   require controllers/routes
  */
 
+require(__dirname + '/../controllers/rest')(app, mongoose);
 require(__dirname + '/../controllers/index')(app, mongoose);
+require(__dirname + '/../controllers/collections')(app, mongoose);
 
 /*!
   @method parse
