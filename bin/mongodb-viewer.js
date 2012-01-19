@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
 /*!
-  @class mongodb_viewer
 
- */
+http://github/edwardhotchkiss/mongodb-viewer/
+Node.JS MongoDB web-based admin/viewer tool
 
-var argv = process.argv,
-    mongodb_viewer = require('../lib/mongodb-viewer');
+*/
 
-mongodb_viewer.parse(argv);
+var mongodb_viewer = require('./app/lib/mongodb-viewer');
+
+mongodb_viewer.app.parse(process.argv);
 
 /* EOF */
