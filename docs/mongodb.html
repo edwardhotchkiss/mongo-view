@@ -1,0 +1,118 @@
+<!DOCTYPE html>  <html> <head>   <title>mongodb.js</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="rocco.css" /> </head> <body> <div id="navbar">     <h3>MongoDB-Viewer - Node.JS MongoDB web-based Admin/Viewer Tool<em></em></h3>   </div>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">           <a class="source" href="index.html">Index</a>                                           <a class="source" href="checkConnected.html">                 checkConnected.js               </a>                                           <a class="source" href="mongodb-viewer.html">                 mongodb-viewer.js               </a>                                           <a class="source" href="mongodb.html">                 mongodb.js               </a>                                           <a class="source" href="colors.html">                 colors.js               </a>                                           <a class="source" href="rest.html">                 rest.js               </a>                                           <a class="source" href="collections.html">                 collections.js               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               mongodb.js             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>                            </td>             <td class="code">               <div class="highlight"><pre><span class="cm">/*!</span>
+<span class="cm">  @class utils</span>
+<span class="cm">  MongoDB Utility Methods</span>
+<span class="cm">*/</span>
+
+<span class="kd">var</span> <span class="nx">complete</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="p">,</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongoose&#39;</span><span class="p">)</span>
+
+<span class="cm">/*!</span>
+<span class="cm">  @method find</span>
+<span class="cm">  @public</span>
+<span class="cm">  .find within a collection</span>
+<span class="cm"> */</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">find</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">mongoose</span><span class="p">,</span> <span class="nx">collection</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;_id&#39;</span> <span class="k">in</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">params</span><span class="p">[</span><span class="s1">&#39;_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">mongo</span><span class="p">.</span><span class="nx">BSONPure</span><span class="p">.</span><span class="nx">ObjectID</span><span class="p">.</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">params</span><span class="p">[</span><span class="s1">&#39;_id&#39;</span><span class="p">]);</span>
+  <span class="p">};</span>
+  <span class="nx">mongoose</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">collection</span><span class="p">(</span><span class="nx">collection</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">collection</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">collection</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">params</span><span class="p">).</span><span class="nx">toArray</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="cm">/*!</span>
+<span class="cm">  @method getCollectionsWithCount</span>
+<span class="cm">  @public</span>
+<span class="cm">  @param {Function} callback</span>
+<span class="cm"> */</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">getCollectionsWithCount</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">mongoose</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">mongoose</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">collectionNames</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">collections</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">callback</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">collections</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">i</span><span class="p">){</span>
+        <span class="nx">item</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">).</span><span class="nx">pop</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span> <span class="o">===</span> <span class="s1">&#39;indexes&#39;</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">delete</span> <span class="nx">collections</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="nx">mongoose</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">collection</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">collection</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">callback</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">collection</span><span class="p">.</span><span class="nx">find</span><span class="p">({}).</span><span class="nx">count</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">cnt</span><span class="p">)</span> <span class="p">{</span>
+              <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">callback</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+              <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">item</span><span class="p">.</span><span class="nx">count</span> <span class="o">=</span> <span class="nx">cnt</span><span class="p">;</span>
+                <span class="nx">complete</span><span class="o">++</span><span class="p">;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">complete</span> <span class="o">===</span> <span class="nx">collections</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+                  <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">collections</span><span class="p">);</span>
+                <span class="p">};</span>
+              <span class="p">}</span>
+            <span class="p">});</span>
+          <span class="p">}</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="cm">/*!</span>
+<span class="cm">  @method create</span>
+<span class="cm">  @public</span>
+<span class="cm">  @param {Function} callback</span>
+<span class="cm"> */</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">create</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">mongoose</span><span class="p">,</span> <span class="nx">collectionName</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">mongoose</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">collection</span><span class="p">(</span><span class="nx">collectionName</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">collection</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">callback</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">collection</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="cm">/*!</span>
+<span class="cm">  @method update</span>
+<span class="cm">  @public</span>
+<span class="cm">  @param {Function} callback</span>
+<span class="cm"> */</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">update</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">mongoose</span><span class="p">,</span> <span class="nx">collectionName</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;_id&#39;</span> <span class="k">in</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">params</span><span class="p">[</span><span class="s1">&#39;_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">mongo</span><span class="p">.</span><span class="nx">BSONPure</span><span class="p">.</span><span class="nx">ObjectID</span><span class="p">.</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">params</span><span class="p">[</span><span class="s1">&#39;_id&#39;</span><span class="p">]);</span>
+  <span class="p">};</span>
+  <span class="nx">mongoose</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">collection</span><span class="p">(</span><span class="nx">collectionName</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">collection</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">callback</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">collection</span><span class="p">.</span><span class="nx">findAndUpdate</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="cm">/*!</span>
+<span class="cm">  @method remove</span>
+<span class="cm">  @public</span>
+<span class="cm">  @param {Function} callback</span>
+<span class="cm"> */</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">remove</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">mongoose</span><span class="p">,</span> <span class="nx">collectionName</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;_id&#39;</span> <span class="k">in</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">params</span><span class="p">[</span><span class="s1">&#39;_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">mongo</span><span class="p">.</span><span class="nx">BSONPure</span><span class="p">.</span><span class="nx">ObjectID</span><span class="p">.</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">params</span><span class="p">[</span><span class="s1">&#39;_id&#39;</span><span class="p">]);</span>
+  <span class="p">};</span>
+  <span class="nx">mongoose</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">collection</span><span class="p">(</span><span class="nx">collectionName</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">collection</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">callback</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">collection</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="cm">/* EOF */</span>
+
+</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 

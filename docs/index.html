@@ -1,0 +1,72 @@
+<!DOCTYPE html> <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">      <title>MongoDB-Viewer</title>   <style>     body {       font-size: 16px;       line-height: 24px;       background: #fff url("bg.png");       color: #252519;       font-family: "Palatino Linotype", "Book Antiqua", Palatino, FreeSerif, serif;       padding: 0 0 50px 50px;     }     div.container {       width: 720px;       margin: 50px 0 50px 50px;     }     p {       width: 550px;     }       #documentation p {         margin-bottom: 4px;       }     a, a:visited {       padding: 0 2px;       text-decoration: none;       background: #dbe6f3;       color: #3f6fa5;     }     a:active, a:hover {       color: #dbe6f3;       background: #3f6fa5;     }     h1, h2, h3, h4, h5, h6 {       margin-top: 40px;       width: 550px;       line-height: 1.25em;     }     b.header {       font-size: 18px;     }     span.alias {       font-size: 14px;       font-style: italic;       margin-left: 20px;     }     table, tr, td {       margin: 0; padding: 0;     }       td {         padding: 2px 12px 2px 0;       }     ul {       list-style-type: circle;       padding: 0 0 0 20px;     }       li {         width: 500px;         margin-bottom: 10px;       }     code, pre, tt {       font-family: Monaco, Consolas, "Lucida Console", monospace;       font-size: 12px;       line-height: 18px;       color: #555529;     }       pre {         font-size: 12px;         padding: 2px 0 2px 12px;         border-left: 6px solid #aaaa99;         margin: 0px 0 30px;       }            #ribbon {      line-height: 0;     }          #ribbon:hover {      background: none;     }          #ribbon img {      position: fixed;      top: 0;      right: 0;      border: 0;      z-index: 2;     }   </style> </head> <body>      <a id="ribbon" href="https://github.com/edwardhotchkiss/mongodb-viewer">    <img src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67"      alt="Fork me on GitHub"></a>      <h1>MongoDB-Viewer</h1>        <em>Node.JS MongoDB web-based Admin/Viewer Tool</em>         <h3>Source files:</h3>   <ol>            <li><a href="checkConnected.html">checkConnected.js</a></li>            <li><a href="mongodb-viewer.html">mongodb-viewer.js</a></li>            <li><a href="mongodb.html">mongodb.js</a></li>            <li><a href="colors.html">colors.js</a></li>            <li><a href="rest.html">rest.js</a></li>            <li><a href="collections.html">collections.js</a></li>        </ol>      <h1>MongoDB-Viewer <a href="http://travis-ci.org/edwardhotchkiss/mongodb-viewer"><img src="https://secure.travis-ci.org/edwardhotchkiss/mongodb-viewer.png" alt="Build Status" title="" /></a></h1>
+
+<blockquote>
+  <p>Node.JS MongoDB web-based Admin/Viewer Tool</p>
+</blockquote>
+
+<h2>Screenshots</h2>
+
+<p><img src="https://github.com/edwardhotchkiss/mongodb-viewer/raw/master/public/images/screens/1.png" alt="Screen 1" title="" /></p>
+
+<h2>Installation</h2>
+
+<pre>
+$ [sudo] npm install mongodb-viewer -g
+</pre>
+
+<h2>From the CLI (http://localhost:8000/)</h2>
+
+<pre>
+$ mongodbviewer run --port 8001
+</pre>
+
+<h2>Hosted</h2>
+
+<pre>
+$ npm install
+$ node app.js
+$ open 'http://localhost:8000'
+</pre>
+
+<h2>Pull Requests</h2>
+
+<ul>
+<li>Fork!</li>
+<li>Clone!</li>
+<li>Improve!</li>
+<li>Pull Request!</li>
+<li><strong>Instant Karma!!!</strong></li>
+</ul>
+
+<h2>Run Tests</h2>
+
+<pre>
+ bash
+$ git clone git@github.com:edwardhotchkiss/mongodb-viewer.git
+$ npm test
+</pre>
+
+<h2>License (MIT)</h2>
+
+<pre><code>Copyright (c) 2011, Edward Hotchkiss.
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:   
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</code></pre>
+
+<h2>Author: <a href="http://edwardhotchkiss.com/">Edward Hotchkiss</a></h2> </body> </html>

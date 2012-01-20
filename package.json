@@ -26,7 +26,8 @@
   },
   "devDependencies":{
     "vows":"0.6.0",
-    "request":"2.9.3"
+    "request":"2.9.3",
+    "paige":"0.1.7"
   },
   "licenses":[{
     "type":"MIT",

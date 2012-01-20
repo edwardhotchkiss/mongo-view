@@ -1,0 +1,40 @@
+<!DOCTYPE html>  <html> <head>   <title>mongodb-viewer.js</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="rocco.css" /> </head> <body> <div id="navbar">     <h3>MongoDB-Viewer - Node.JS MongoDB web-based Admin/Viewer Tool<em></em></h3>   </div>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">           <a class="source" href="index.html">Index</a>                                           <a class="source" href="checkConnected.html">                 checkConnected.js               </a>                                           <a class="source" href="mongodb-viewer.html">                 mongodb-viewer.js               </a>                                           <a class="source" href="mongodb.html">                 mongodb.js               </a>                                           <a class="source" href="colors.html">                 colors.js               </a>                                           <a class="source" href="rest.html">                 rest.js               </a>                                           <a class="source" href="collections.html">                 collections.js               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               mongodb-viewer.js             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>                            </td>             <td class="code">               <div class="highlight"><pre><span class="cm">/*!</span>
+<span class="cm">  @class mongodb-viewer</span>
+<span class="cm"> */</span>
+
+<span class="cm">/*!</span>
+<span class="cm">  Module Dependencies</span>
+<span class="cm"> */</span>
+
+<span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongoose&#39;</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">exports</span><span class="p">.</span><span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">createServer</span><span class="p">()</span>
+  <span class="p">,</span> <span class="nx">SECRET</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SECRET</span> <span class="o">||</span> <span class="s1">&#39;DONT/TAZE/ME/BRO!&#39;</span><span class="p">;</span>
+
+<span class="cm">/*!</span>
+<span class="cm">  configure express</span>
+<span class="cm"> */</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">normalize</span><span class="p">(</span><span class="nx">__dirname</span><span class="o">+</span><span class="s1">&#39;/../../public&#39;</span><span class="p">)));</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="nx">path</span><span class="p">.</span><span class="nx">normalize</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/../views&#39;</span><span class="p">));</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">bodyParser</span><span class="p">());</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">cookieParser</span><span class="p">());</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">session</span><span class="p">({</span>
+    <span class="nx">secret</span><span class="o">:</span><span class="nx">SECRET</span>
+  <span class="p">}));</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;view engine&#39;</span><span class="p">,</span> <span class="s1">&#39;ejs&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="cm">/*!</span>
+<span class="cm">  require controllers/routes</span>
+<span class="cm"> */</span>
+
+<span class="nx">require</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/../controllers/rest&#39;</span><span class="p">)(</span><span class="nx">app</span><span class="p">,</span> <span class="nx">mongoose</span><span class="p">);</span>
+<span class="nx">require</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/../controllers/index&#39;</span><span class="p">)(</span><span class="nx">app</span><span class="p">,</span> <span class="nx">mongoose</span><span class="p">);</span>
+<span class="nx">require</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/../controllers/collections&#39;</span><span class="p">)(</span><span class="nx">app</span><span class="p">,</span> <span class="nx">mongoose</span><span class="p">);</span>
+
+<span class="cm">/* EOF */</span>
+
+</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
