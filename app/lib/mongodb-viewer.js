@@ -25,7 +25,7 @@ app.configure(function() {
   app.use(express.session({
     secret:SECRET
   }));
-  app.set('view engine', 'ejs');
+  app.set('view engine', 'jade');
 });
 
 /*!

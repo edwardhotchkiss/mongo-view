@@ -24,10 +24,8 @@ module.exports = function(app, mongoose) {
   app.get('/database/:database', checkConnected, function(request, response) {
     mongodb.getCollectionsWithCount(mongoose, function(error, collections) {
       response.render('collections', {
-        locals : { 
-          collections : collections,
-          db_name     : request.params.database
-        }
+        collections : collections,
+        db_name     : request.params.database
       });
     });
   });
@@ -39,10 +37,8 @@ module.exports = function(app, mongoose) {
         throw new Error(error);
       } else {
         response.render('collection', {
-          locals : {
-            collectionName : request.params.collection,
-            collection     : collection
-          }
+          collectionName : request.params.collection,
+          collection     : collection
         });
       }
     });

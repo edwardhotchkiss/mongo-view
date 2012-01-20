@@ -1,0 +1,10 @@
+
+h1 MongoDB Viewer: #{collectionName}
+
+div#collections
+	- if (collection && collection.length > 0)
+    	ul
+     		- collection.forEach(function(item) {
+        		li
+        			a(href="#")
+        				$#{item._id}

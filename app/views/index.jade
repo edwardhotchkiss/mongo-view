@@ -1,0 +1,7 @@
+
+h1 MongoDB Viewer
+
+form#connection-form(action="/", method="post")
+  fieldset
+      input(type="text", name="connection-string", id="connection-string", placeholder="MongoDB Connection String...", value="#{MONGO_DB}")
+      input(type="submit", id="connect-button", name="connect-button", value="Connect")
