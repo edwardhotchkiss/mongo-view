@@ -13,12 +13,12 @@ var complete = 0
   .find within a collection
  */
 
-exports.find = function(mongoose, collection, query, callback) {
+exports.find = function(mongoose, collection, params, callback) {
   if ('_id' in params) {
     params['_id'] = mongoose.mongo.BSONPure.ObjectID.fromString(params['_id']);
   };
   mongoose.connection.db.collection(collection, function(error, collection) {
-    collection.find(query).toArray(callback);
+    collection.find(params).toArray(callback);
   });
 };
 
