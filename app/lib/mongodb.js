@@ -10,7 +10,7 @@ var complete = 0
 /*!
   @method find
   @public
-  .find within a collection
+  collection.find
  */
 
 exports.find = function(mongoose, collection, params, callback) {
