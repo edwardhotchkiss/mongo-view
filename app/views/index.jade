@@ -1,0 +1,12 @@
+
+div#connect(class="center")
+  div#header(class="center")
+    a(href="/")
+      h1 MongoDB Viewer
+  div(class="span16 center")
+    div(class="column-outer")
+      div(class="column-inner")
+        form#connection-form(method="post", action="/")
+          fieldset
+            input(type="text", class="long", name="connection-string", id="connection-string", placeholder="MongoDB Connection String...", value="#{MONGO_DB}")
+            input(type="submit", id="connect-button", class="btn primary huge", name="connect-button", value="Connect")
