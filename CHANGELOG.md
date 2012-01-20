@@ -1,4 +1,15 @@
 
+0.1.3 / 2012-01-20 
+==================
+
+  * [design] use less-boilerplate
+  * [docs] `paige`
+  * [REST] DELETE /database/:database/collections/:collection/delete
+  * [REST] POST /database/:database/collections/:collection/update
+  * [REST] PUT /database/:database/collections/:collection/create
+  * [REST] GET /database/:database/collections/:collection/find/:params
+  * [REST] GET /database/:database/collections/:collection/all
+
 0.1.2 / 2012-01-16 
 ==================
 
