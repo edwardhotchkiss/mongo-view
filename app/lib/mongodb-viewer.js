@@ -3,10 +3,8 @@
   @class mongodb-viewer
  */
 
-require('../helpers/colors');
-
 /*!
-  setup
+  Module Dependencies
  */
 
 var path = require('path')
@@ -37,48 +35,5 @@ app.configure(function() {
 require(__dirname + '/../controllers/rest')(app, mongoose);
 require(__dirname + '/../controllers/index')(app, mongoose);
 require(__dirname + '/../controllers/collections')(app, mongoose);
-
-/*!
-  @method parse
-  @param {Object} argv CLI argv
- */
-
-exports.parse = function parse(argv){
-  if (argv[2]){
-    switch(argv[2]){
-      case 'help':
-      case '-h':
-      case '--help':
-        usage();
-        break;
-      case 'version':
-      case '-v':
-      case '--version':
-        console.log('v0.1.2'.green);
-        break; 
-      default:
-        usage();
-    };
-  } else {
-    app.listen(8000);
-  }
-};
-
-/*!
-  @method usage
-  Display usage information
- */
-
-function usage(){
-  console.log([
-    '',
-    'Usage: mongodbviewer',
-    '',
-    'Options:',
-    '  -v, --version    current `mongodb-viewer` version',
-    '  -h, --help       display usage information',
-    ''
-  ].join('\n'));
-};
 
 /* EOF */
