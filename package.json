@@ -21,9 +21,14 @@
   "dependencies":{
     "mongoose":"2.4.8",
     "express":"2.5.2",
+<<<<<<< HEAD
     "ejs":"0.6.1",
     "commander":"0.5.2",
     "mongoose-paginate":"0.1.0"
+=======
+    "jade":"0.20.0",
+    "commander":"0.5.2"
+>>>>>>> develop
   },
   "devDependencies":{
     "vows":"0.6.0",

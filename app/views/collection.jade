@@ -1,0 +1,10 @@
+
+div#information(class="span12 center")
+  h2 MongoDB-Viewer: #{collectionName}
+  div(class="column-outer")
+    div#data(class="column-inner left")
+      - if (collection)
+        ul
+          - each entry in collection
+            li
+              a(href="#") $#{entry._id}
