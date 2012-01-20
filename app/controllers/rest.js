@@ -45,7 +45,6 @@ module.exports = function(app, mongoose) {
       if (error) {
         response.send(error, 500);
       } else {
-        console.log(collection);
         response.send(collection);
       };
     });

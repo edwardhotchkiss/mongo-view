@@ -4,6 +4,68 @@
   padding: 0; 
 }
 
+body {
+  background: url(../images/bg.png) 0 0 repeat;  
+}
+
+h1 {
+  font-size: 44px;
+  font-weight: 500;
+  margin-bottom: 44px;
+}
+
+h2 {
+  font-weight: 500;
+  margin-bottom: 36px;
+}
+
+.span12 {
+  width: 560px;
+}
+
+.span16 {
+  width: 760px;
+}
+
+.left {
+  text-align: left;
+}
+
+input[type=text] {
+  margin-right: 18px;
+  width: 200px;  
+}
+
+input.long {
+  width: 500px;
+}
+
+input[type=submit] {
+  width: 150px;
+}
+
+/* information tables */
+
+#information {
+  margin-top: 120px;
+}
+
+#data {
+  padding: 20px;
+}
+
+ul li {
+  margin: 8px 0 8px 0;
+}
+
+ul li .count {
+  background: #efefef;
+  padding: 3px 5px 3px 5px;
+  color: #222;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
 /* github */
 
 #github {
@@ -11,19 +73,15 @@
   top: 0;
   right: 0; 
   border: 0; 
-  opacity: 0.2;
+  opacity: 0.3;
 }
 
 #github a {
   border: none;
 }
 
-#container {
-  width: 600px;
-  position: relative;
-  margin: 0 auto 0 auto;
-  margin-top: 100px;
+#connect {
+  margin-top: 120px;
 }
-
 
 /* EOF */
