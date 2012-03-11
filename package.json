@@ -21,7 +21,6 @@
   "dependencies":{
     "mongoose":"2.4.8",
     "express":"2.5.2",
-    "commander":"0.5.2",
     "jade":"0.20.0"
   },
   "devDependencies":{
