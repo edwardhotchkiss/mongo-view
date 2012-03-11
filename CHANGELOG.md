@@ -1,4 +1,18 @@
 
+0.1.4 / 2012-03-11 
+==================
+
+  * [bin] commander fix!
+  * need to rework mongoose-paginate, engine 0.4.x isnt supported
+  * add jade, fix travis
+  * [dist] bump to 0.1.3
+  * rebuild `Paige`
+  * remove ejs
+  * fix conflict
+  * [design] finish stylizing for `less-boilerplate`
+  * [design] use jade
+  * [design] use gray github banner
+
 0.1.3 / 2012-01-20 
 ==================
 
