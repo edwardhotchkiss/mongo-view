@@ -1,0 +1,370 @@
+info it worked if it ends with ok
+verbose cli [ 'node', '/usr/local/bin/npm', 'publish' ]
+info using npm@1.0.106
+info using node@v0.6.6
+verbose config file /Users/edward/.npmrc
+verbose config file /usr/local/etc/npmrc
+verbose config file /usr/local/lib/node_modules/npm/npmrc
+verbose publish [ '.' ]
+silly testEngine { name: 'mongodb-viewer',
+silly testEngine   author: { name: 'Edward Hotchkiss' },
+silly testEngine   contributors: 
+silly testEngine    [ { name: 'Edward Hotchkiss' },
+silly testEngine      { name: 'Max Presman', email: 'max@presman.ca' } ],
+silly testEngine   description: 'Node.JS MongoDB web-based admin/viewer tool',
+silly testEngine   version: '0.1.4',
+silly testEngine   repository: 
+silly testEngine    { type: 'git',
+silly testEngine      url: 'git://github.com/edwardhotchkiss/mongodb-viewer.git' },
+silly testEngine   keywords: [ 'mongodb', 'mongo', 'viewer', 'web', 'based', 'admin' ],
+silly testEngine   main: './lib/mongodb-viewer',
+silly testEngine   bin: { mongodbviewer: './bin/mongodb-viewer.js' },
+silly testEngine   preferGlobal: 'true',
+silly testEngine   engines: { node: '>= 0.6.13 < 0.8.0' },
+silly testEngine   dependencies: { mongoose: '2.5.12', express: '2.5.8', jade: '0.21.0' },
+silly testEngine   devDependencies: { vows: '0.6.0', request: '2.9.153', paige: '0.1.7' },
+silly testEngine   homepage: 'http://edwardhotchkiss.github.com/mongodb-viewer',
+silly testEngine   bugs: { url: 'https://github.com/edwardhotchkiss/mongodb-viewer/issues' },
+silly testEngine   licenses: 
+silly testEngine    [ { type: 'MIT',
+silly testEngine        url: 'http://github.com/edwardhotchkiss/mongodb-viewer/LICENSE' } ],
+silly testEngine   scripts: { test: 'vows test/*.test.js --spec' },
+silly testEngine   _npmUser: { name: 'edwardhotchkiss', email: 'edward@edwardhotchkiss.com' },
+silly testEngine   _id: 'mongodb-viewer@0.1.4',
+silly testEngine   _engineSupported: false,
+silly testEngine   _npmVersion: '1.0.106',
+silly testEngine   _nodeVersion: 'v0.6.6',
+silly testEngine   _defaultsLoaded: true }
+verbose caching /Users/edward/Sites/mongodb-viewer/package.json
+verbose loadDefaults mongodb-viewer@0.1.4
+info prepublish mongodb-viewer@0.1.4
+verbose cache add [ '.', null ]
+silly cache add: name, spec, args [ undefined, '.', [ '.', null ] ]
+verbose parsed url { pathname: '.', path: '.', href: '.' }
+silly testEngine { name: 'mongodb-viewer',
+silly testEngine   author: { name: 'Edward Hotchkiss' },
+silly testEngine   contributors: 
+silly testEngine    [ { name: 'Edward Hotchkiss' },
+silly testEngine      { name: 'Max Presman', email: 'max@presman.ca' } ],
+silly testEngine   description: 'Node.JS MongoDB web-based admin/viewer tool',
+silly testEngine   version: '0.1.4',
+silly testEngine   repository: 
+silly testEngine    { type: 'git',
+silly testEngine      url: 'git://github.com/edwardhotchkiss/mongodb-viewer.git' },
+silly testEngine   keywords: [ 'mongodb', 'mongo', 'viewer', 'web', 'based', 'admin' ],
+silly testEngine   main: './lib/mongodb-viewer',
+silly testEngine   bin: { mongodbviewer: './bin/mongodb-viewer.js' },
+silly testEngine   preferGlobal: 'true',
+silly testEngine   engines: { node: '>= 0.6.13 < 0.8.0' },
+silly testEngine   dependencies: { mongoose: '2.5.12', express: '2.5.8', jade: '0.21.0' },
+silly testEngine   devDependencies: { vows: '0.6.0', request: '2.9.153', paige: '0.1.7' },
+silly testEngine   homepage: 'http://edwardhotchkiss.github.com/mongodb-viewer',
+silly testEngine   bugs: { url: 'https://github.com/edwardhotchkiss/mongodb-viewer/issues' },
+silly testEngine   licenses: 
+silly testEngine    [ { type: 'MIT',
+silly testEngine        url: 'http://github.com/edwardhotchkiss/mongodb-viewer/LICENSE' } ],
+silly testEngine   scripts: { test: 'vows test/*.test.js --spec' },
+silly testEngine   _npmUser: { name: 'edwardhotchkiss', email: 'edward@edwardhotchkiss.com' },
+silly testEngine   _id: 'mongodb-viewer@0.1.4',
+silly testEngine   _engineSupported: false,
+silly testEngine   _npmVersion: '1.0.106',
+silly testEngine   _nodeVersion: 'v0.6.6',
+silly testEngine   _defaultsLoaded: true,
+silly testEngine   path: '/Users/edward/Sites/mongodb-viewer',
+silly testEngine   bundleDependencies: [] }
+verbose caching package.json
+verbose loadDefaults mongodb-viewer@0.1.4
+verbose pack /Users/edward/Sites/mongodb-viewer /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/tmp.tgz
+silly makeList /Users/edward/Sites/mongodb-viewer
+verbose mkdir (expected) error ENOENT, no such file or directory '/var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013'
+verbose mkdir (expected) error ENOENT, no such file or directory '/var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023'
+verbose mkdir done: /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023 755
+verbose mkdir'ed /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023
+verbose tar about to write tar and gzip it.
+silly tar args [ '-czvf', '-', '-T', '-' ]
+silly spawning [ 'tar', [ '-czvf', '-', '-T', '-' ], '/Users/edward/Sites' ]
+verbose mkdir (expected) error ENOENT, no such file or directory '/var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents'
+verbose mkdir (expected) error ENOENT, no such file or directory '/var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm'
+verbose mkdir done: /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm 755
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/package
+silly gunzTarPerm modes [ '755', '644' ]
+silly spawning [ 'tar',
+silly spawning   [ '-zmvxpf',
+silly spawning     '/var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/tmp.tgz' ],
+silly spawning   '/var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm' ]
+silly tar err x mongodb-viewer/.npmignore
+silly tar err x mongodb-viewer/app.js
+silly tar err x mongodb-viewer/package.json
+silly tar err x mongodb-viewer/bin/mongodb-viewer.js
+silly tar err x mongodb-viewer/app/controllers/collections.js
+silly tar err x mongodb-viewer/app/controllers/index.js
+silly tar err x mongodb-viewer/app/controllers/rest.js
+silly tar err x mongodb-viewer/app/helpers/colors.js
+silly tar err x mongodb-viewer/app/lib/mongodb-viewer.js
+silly tar err x mongodb-viewer/app/lib/mongodb.js
+silly tar err x mongodb-viewer/app/middleware/checkConnected.js
+silly tar err x mongodb-viewer/app/views/collection.jade
+silly tar err x mongodb-viewer/app/views/collections.jade
+silly tar err x mongodb-viewer/app/views/index.jade
+silly tar err x mongodb-viewer/app/views/layout.jade
+silly tar err x mongodb-viewer/public/css/boilerplate.min.css
+silly tar err x mongodb-viewer/public/css/style.css
+silly tar err x mongodb-viewer/public/js/app.js
+silly tar err x mongodb-viewer/public/images/ajax-loader.gif
+silly tar err x mongodb-viewer/public/images/bg.png
+silly tar err x mongodb-viewer/public/images/screens/1.png
+silly tar exit 0
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/.npmignore
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app.js
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/package.json
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/bin
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/bin/mongodb-viewer.js
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/controllers
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/controllers/collections.js
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/controllers/index.js
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/controllers/rest.js
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/helpers
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/helpers/colors.js
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/lib
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/lib/mongodb-viewer.js
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/lib/mongodb.js
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/middleware
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/middleware/checkConnected.js
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/views
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/views/collection.jade
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/views/collections.jade
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/views/index.jade
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/app/views/layout.jade
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/public
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/public/css
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/public/css/boilerplate.min.css
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/public/css/style.css
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/public/js
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/public/js/app.js
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/public/images
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/public/images/ajax-loader.gif
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/public/images/bg.png
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/public/images/screens
+silly asyncMap in gTP /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer/public/images/screens/1.png
+verbose gunzed /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer
+verbose rm'ed /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/package
+verbose renamed [ '/var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/___package.npm/mongodb-viewer',
+verbose renamed   '/var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/package' ]
+silly testEngine { name: 'mongodb-viewer',
+silly testEngine   author: { name: 'Edward Hotchkiss' },
+silly testEngine   contributors: 
+silly testEngine    [ { name: 'Edward Hotchkiss' },
+silly testEngine      { name: 'Max Presman', email: 'max@presman.ca' } ],
+silly testEngine   description: 'Node.JS MongoDB web-based admin/viewer tool',
+silly testEngine   version: '0.1.4',
+silly testEngine   repository: 
+silly testEngine    { type: 'git',
+silly testEngine      url: 'git://github.com/edwardhotchkiss/mongodb-viewer.git' },
+silly testEngine   keywords: [ 'mongodb', 'mongo', 'viewer', 'web', 'based', 'admin' ],
+silly testEngine   main: './lib/mongodb-viewer',
+silly testEngine   bin: { mongodbviewer: './bin/mongodb-viewer.js' },
+silly testEngine   preferGlobal: 'true',
+silly testEngine   engines: { node: '>= 0.6.13 < 0.8.0' },
+silly testEngine   dependencies: { mongoose: '2.5.12', express: '2.5.8', jade: '0.21.0' },
+silly testEngine   devDependencies: { vows: '0.6.0', request: '2.9.153', paige: '0.1.7' },
+silly testEngine   homepage: 'http://edwardhotchkiss.github.com/mongodb-viewer',
+silly testEngine   bugs: { url: 'https://github.com/edwardhotchkiss/mongodb-viewer/issues' },
+silly testEngine   licenses: 
+silly testEngine    [ { type: 'MIT',
+silly testEngine        url: 'http://github.com/edwardhotchkiss/mongodb-viewer/LICENSE' } ],
+silly testEngine   scripts: { test: 'vows test/*.test.js --spec' },
+silly testEngine   _npmUser: { name: 'edwardhotchkiss', email: 'edward@edwardhotchkiss.com' },
+silly testEngine   _id: 'mongodb-viewer@0.1.4',
+silly testEngine   _engineSupported: false,
+silly testEngine   _npmVersion: '1.0.106',
+silly testEngine   _nodeVersion: 'v0.6.6',
+silly testEngine   _defaultsLoaded: true,
+silly testEngine   path: '/var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/package' }
+verbose caching /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/package/package.json
+verbose loadDefaults mongodb-viewer@0.1.4
+verbose tarball contents [ 'package' ]
+verbose from cache /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/package/package.json
+verbose pack /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/package /Users/edward/.npm/mongodb-viewer/0.1.4/package.tgz
+silly makeList /var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents/package
+verbose mkdir'ed /Users/edward/.npm/mongodb-viewer/0.1.4
+verbose tar about to write tar and gzip it.
+silly tar args [ '-czvf', '-', '-T', '-' ]
+silly spawning [ 'tar',
+silly spawning   [ '-czvf', '-', '-T', '-' ],
+silly spawning   '/var/folders/jm/8crvw4mx1vz6ldjh9r935zg80000gn/T/npm-1332394488013/1332394488013-0.7868210314773023/contents' ]
+verbose mkdir (expected) error ENOENT, no such file or directory '/Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm'
+verbose mkdir done: /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm 755
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /Users/edward/.npm/mongodb-viewer/0.1.4/package
+silly gunzTarPerm modes [ '755', '644' ]
+silly spawning [ 'tar',
+silly spawning   [ '-zmvxpf',
+silly spawning     '/Users/edward/.npm/mongodb-viewer/0.1.4/package.tgz' ],
+silly spawning   '/Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm' ]
+silly tar err x package/.npmignore
+silly tar err x package/app.js
+silly tar err x package/package.json
+silly tar err x package/bin/mongodb-viewer.js
+silly tar err x package/app/controllers/collections.js
+silly tar err x package/app/controllers/index.js
+silly tar err x package/app/controllers/rest.js
+silly tar err x package/app/helpers/colors.js
+silly tar err x package/app/lib/mongodb-viewer.js
+silly tar err x package/app/lib/mongodb.js
+silly tar err x package/app/middleware/checkConnected.js
+silly tar err x package/app/views/collection.jade
+silly tar err x package/app/views/collections.jade
+silly tar err x package/app/views/index.jade
+silly tar err x package/app/views/layout.jade
+silly tar err x package/public/css/boilerplate.min.css
+silly tar err x package/public/css/style.css
+silly tar err x package/public/js/app.js
+silly tar err x package/public/images/ajax-loader.gif
+silly tar err x package/public/images/bg.png
+silly tar err x package/public/images/screens/1.png
+silly tar exit 0
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/.npmignore
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app.js
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/package.json
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/bin
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/bin/mongodb-viewer.js
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/helpers
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/helpers/colors.js
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/controllers
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/controllers/collections.js
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/controllers/index.js
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/controllers/rest.js
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/lib
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/lib/mongodb-viewer.js
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/lib/mongodb.js
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/middleware
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/middleware/checkConnected.js
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/views
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/views/collection.jade
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/views/collections.jade
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/views/index.jade
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/app/views/layout.jade
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/public
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/public/css
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/public/css/boilerplate.min.css
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/public/css/style.css
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/public/js
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/public/js/app.js
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/public/images
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/public/images/ajax-loader.gif
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/public/images/bg.png
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/public/images/screens
+silly asyncMap in gTP /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package/public/images/screens/1.png
+verbose gunzed /Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package
+verbose rm'ed /Users/edward/.npm/mongodb-viewer/0.1.4/package
+verbose renamed [ '/Users/edward/.npm/mongodb-viewer/0.1.4/___package.npm/package',
+verbose renamed   '/Users/edward/.npm/mongodb-viewer/0.1.4/package' ]
+silly testEngine { name: 'mongodb-viewer',
+silly testEngine   author: { name: 'Edward Hotchkiss' },
+silly testEngine   contributors: 
+silly testEngine    [ { name: 'Edward Hotchkiss' },
+silly testEngine      { name: 'Max Presman', email: 'max@presman.ca' } ],
+silly testEngine   description: 'Node.JS MongoDB web-based admin/viewer tool',
+silly testEngine   version: '0.1.4',
+silly testEngine   repository: 
+silly testEngine    { type: 'git',
+silly testEngine      url: 'git://github.com/edwardhotchkiss/mongodb-viewer.git' },
+silly testEngine   keywords: [ 'mongodb', 'mongo', 'viewer', 'web', 'based', 'admin' ],
+silly testEngine   main: './lib/mongodb-viewer',
+silly testEngine   bin: { mongodbviewer: './bin/mongodb-viewer.js' },
+silly testEngine   preferGlobal: 'true',
+silly testEngine   engines: { node: '>= 0.6.13 < 0.8.0' },
+silly testEngine   dependencies: { mongoose: '2.5.12', express: '2.5.8', jade: '0.21.0' },
+silly testEngine   devDependencies: { vows: '0.6.0', request: '2.9.153', paige: '0.1.7' },
+silly testEngine   homepage: 'http://edwardhotchkiss.github.com/mongodb-viewer',
+silly testEngine   bugs: { url: 'https://github.com/edwardhotchkiss/mongodb-viewer/issues' },
+silly testEngine   licenses: 
+silly testEngine    [ { type: 'MIT',
+silly testEngine        url: 'http://github.com/edwardhotchkiss/mongodb-viewer/LICENSE' } ],
+silly testEngine   scripts: { test: 'vows test/*.test.js --spec' },
+silly testEngine   _npmUser: { name: 'edwardhotchkiss', email: 'edward@edwardhotchkiss.com' },
+silly testEngine   _id: 'mongodb-viewer@0.1.4',
+silly testEngine   _engineSupported: false,
+silly testEngine   _npmVersion: '1.0.106',
+silly testEngine   _nodeVersion: 'v0.6.6',
+silly testEngine   _defaultsLoaded: true,
+silly testEngine   dist: 
+silly testEngine    { shasum: 'ab35f84cb7ef03ef1d21c97eacd244b639a93870',
+silly testEngine      tarball: 'http://registry.npmjs.org/mongodb-viewer/-/mongodb-viewer-0.1.4.tgz' } }
+verbose caching /Users/edward/.npm/mongodb-viewer/0.1.4/package/package.json
+verbose loadDefaults mongodb-viewer@0.1.4
+silly updated sha bytes 40960
+silly updated sha bytes 40960
+silly updated sha bytes 40960
+silly updated sha bytes 40960
+silly updated sha bytes 40960
+silly updated sha bytes 40960
+silly updated sha bytes 40960
+silly updated sha bytes 40960
+silly updated sha bytes 10240
+info shasum ab35f84cb7ef03ef1d21c97eacd244b639a93870
+info shasum /Users/edward/.npm/mongodb-viewer/0.1.4/package.tgz
+verbose from cache /Users/edward/.npm/mongodb-viewer/0.1.4/package/package.json
+verbose chmod /Users/edward/.npm/mongodb-viewer/0.1.4/package.tgz 644
+verbose chown [ '/Users/edward/.npm/mongodb-viewer/0.1.4/package.tgz',
+verbose chown   501,
+verbose chown   20 ]
+silly publish { name: 'mongodb-viewer',
+silly publish   author: { name: 'Edward Hotchkiss' },
+silly publish   contributors: 
+silly publish    [ { name: 'Edward Hotchkiss' },
+silly publish      { name: 'Max Presman', email: 'max@presman.ca' } ],
+silly publish   description: 'Node.JS MongoDB web-based admin/viewer tool',
+silly publish   version: '0.1.4',
+silly publish   repository: 
+silly publish    { type: 'git',
+silly publish      url: 'git://github.com/edwardhotchkiss/mongodb-viewer.git' },
+silly publish   keywords: [ 'mongodb', 'mongo', 'viewer', 'web', 'based', 'admin' ],
+silly publish   main: './lib/mongodb-viewer',
+silly publish   bin: { mongodbviewer: './bin/mongodb-viewer.js' },
+silly publish   preferGlobal: 'true',
+silly publish   engines: { node: '>= 0.6.13 < 0.8.0' },
+silly publish   dependencies: { mongoose: '2.5.12', express: '2.5.8', jade: '0.21.0' },
+silly publish   devDependencies: { vows: '0.6.0', request: '2.9.153', paige: '0.1.7' },
+silly publish   homepage: 'http://edwardhotchkiss.github.com/mongodb-viewer',
+silly publish   bugs: { url: 'https://github.com/edwardhotchkiss/mongodb-viewer/issues' },
+silly publish   licenses: 
+silly publish    [ { type: 'MIT',
+silly publish        url: 'http://github.com/edwardhotchkiss/mongodb-viewer/LICENSE' } ],
+silly publish   scripts: { test: 'vows test/*.test.js --spec' },
+silly publish   _npmUser: { name: 'edwardhotchkiss', email: 'edward@edwardhotchkiss.com' },
+silly publish   _id: 'mongodb-viewer@0.1.4',
+silly publish   _engineSupported: false,
+silly publish   _npmVersion: '1.0.106',
+silly publish   _nodeVersion: 'v0.6.6',
+silly publish   _defaultsLoaded: true,
+silly publish   dist: 
+silly publish    { shasum: 'ab35f84cb7ef03ef1d21c97eacd244b639a93870',
+silly publish      tarball: 'http://registry.npmjs.org/mongodb-viewer/-/mongodb-viewer-0.1.4.tgz' } }
+verbose PUT mongodb-viewer
+verbose raw, before any munging mongodb-viewer
+verbose url resolving [ 'https://registry.npmjs.org/', './mongodb-viewer' ]
+verbose url resolved https://registry.npmjs.org/mongodb-viewer
+verbose GET mongodb-viewer
+verbose raw, before any munging mongodb-viewer
+verbose url resolving [ 'https://registry.npmjs.org/', './mongodb-viewer' ]
+verbose url resolved https://registry.npmjs.org/mongodb-viewer
+info Already published mongodb-viewer@0.1.4
+verbose uploading bin dists []
+ERR! publish fail Cannot publish over existing version.
+ERR! publish fail Bump the 'version' field, set the --force flag, or
+ERR! publish fail     npm unpublish 'mongodb-viewer@0.1.4'
+ERR! publish fail and try again
+ERR! 
+ERR! System Darwin 11.3.0
+ERR! command "node" "/usr/local/bin/npm" "publish"
+ERR! cwd /Users/edward/Sites/mongodb-viewer
+ERR! node -v v0.6.6
+ERR! npm -v 1.0.106
+ERR! code EPUBLISHCONFLICT
+verbose exit [ 1, true ]
