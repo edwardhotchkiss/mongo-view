@@ -28,6 +28,10 @@
     "request":"2.9.153",
     "paige":"0.1.7"
   },
+  "homepage": "http://edwardhotchkiss.github.com/mongodb-viewer",
+  "bugs": {
+    "url": "https://github.com/edwardhotchkiss/mongodb-viewer/issues"
+  },
   "licenses":[{
     "type":"MIT",
     "url":"http://github.com/edwardhotchkiss/mongodb-viewer/LICENSE"
