@@ -1,4 +1,14 @@
 
+0.1.5 / 2012-03-22 
+==================
+
+  * [engine] req 0.6.13
+  * [package] added homepage and bugs
+  * [deps] bump request to 2.9.153
+  * [deps] bump jade to 021.0
+  * [deps] bump express to 2.5.8
+  * [deps] bump mongoose to 2.5.12
+
 0.1.4 / 2012-03-11 
 ==================
 
