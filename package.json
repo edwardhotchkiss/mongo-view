@@ -16,7 +16,7 @@
   "bin": { "mongodbviewer":"./bin/mongodb-viewer.js" },
   "preferGlobal":"true",
   "engines":{
-    "node":">= 0.4.0 < 0.8.0"
+    "node":">= 0.6.19 < 0.7.0"
   },
   "dependencies":{
     "mongoose":"2.5.12",
