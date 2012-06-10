@@ -11,12 +11,6 @@ var path = require('path')
   , ObjectId = Schema.ObjectId;
 
 /**
- * @description middleware
- */
-
-var checkConnected = require(__dirname + '/../middleware/checkConnected');
-
-/**
  * @description export controllers
  * Preserve `mongoose` & `mongoose.connection` context
  **/
@@ -24,7 +18,7 @@ var checkConnected = require(__dirname + '/../middleware/checkConnected');
 module.exports = function(app, mongoose) {
 
   // PUT
-  app.put('/database/:database/collections/:collection/create', checkConnected, function(request, response) {
+  app.put('/database/:database/collections/:collection/create', function(request, response) {
     mongodb.create(mongoose, request.params['collection'], request.body, function(error, doc) {
       if (error) {
         response.send(error, 500);
@@ -35,7 +29,7 @@ module.exports = function(app, mongoose) {
   });
 
   // GET
-  app.get('/database/:database/collections/:collection/all', checkConnected, function(request, response) {
+  app.get('/database/:database/collections/:collection/all', function(request, response) {
     mongodb.find(mongoose, request.params.collection, {}, function(error, collection) {
       if (error) {
         response.send(error, 500);
@@ -45,7 +39,7 @@ module.exports = function(app, mongoose) {
     });
   });
 
-  app.get('/database/:database/collections/:collection/find/:params', checkConnected, function(request, response) {
+  app.get('/database/:database/collections/:collection/find/:params', function(request, response) {
     var params = querystring.parse(request.params['params']);
     mongodb.find(mongoose, request.params.collection, params, function(error, collection) {
       if (error) {
@@ -57,7 +51,7 @@ module.exports = function(app, mongoose) {
   });
 
   // POST
-  app.post('/database/:database/collections/:collection/update', checkConnected, function(request, response) {
+  app.post('/database/:database/collections/:collection/update', function(request, response) {
     var params = querystring.parse(request.params['params']);
     if ('_id' in params) {
       params['_id'] = mongoose.mongo.BSONPure.ObjectID.fromString(params['_id']);
@@ -72,7 +66,7 @@ module.exports = function(app, mongoose) {
   });
 
   // DELETE
-  app['delete']('/database/:database/collections/:collection/delete', checkConnected, function(request, response) {
+  app['delete']('/database/:database/collections/:collection/delete', function(request, response) {
     var params = querystring.parse(request.params['params']);
     if ('_id' in params) {
       params['_id'] = mongoose.mongo.BSONPure.ObjectID.fromString(params['_id']);

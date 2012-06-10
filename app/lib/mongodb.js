@@ -4,8 +4,8 @@
  * MongoDB Utility Methods
  **/
 
-var complete = 0
-  , mongoose = require('mongoose')
+var mongoose = require('mongoose')
+  , complete = 0;
 
 /**
  * @method find
