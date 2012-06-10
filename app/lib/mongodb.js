@@ -14,10 +14,21 @@ var mongoose = require('mongoose')
  */
 
 exports.find = function(mongoose, collection, params, callback) {
-  if ('_id' in params) {
-    params['_id'] = mongoose.mongo.BSONPure.ObjectID.fromString(params['_id']);
-  };
   mongoose.connection.db.collection(collection, function(error, collection) {
+    collection.find(params).toArray(callback);
+  });
+};
+
+/**
+ * @method findItem
+ * @public
+ */
+
+exports.findItem = function(mongoose, collection, id, params, callback) {
+  id = mongoose.mongo.BSONPure.ObjectID.fromString(id);
+  mongoose.connection.db.collection(collection, function(error, collection) {
+    console.log(collection);
+    return;
     collection.find(params).toArray(callback);
   });
 };

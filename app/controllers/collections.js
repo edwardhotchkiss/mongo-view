@@ -37,7 +37,7 @@ module.exports = function(app, mongoose) {
   });
 
   // display collection item
-  app.get('/database/:database/collections/:collection', checkConnected, function(request, response) {
+  app.get('/database/:database/collection/:collection', checkConnected, function(request, response) {
     mongodb.find(mongoose, request.params.collection, {}, function(error, collection) {
       if (error) {
         response.send(error, 500);
@@ -46,6 +46,22 @@ module.exports = function(app, mongoose) {
           locals : {
             collectionName : request.params.collection,
             collection     : collection
+          }
+        });
+      }
+    });
+  });
+
+  // display individual collection item
+  app.get('/database/:database/collections/:collection/:id', checkConnected, function(request, response) {
+    mongodb.findItem(mongoose, request.params.collection, request.params.id, {}, function(error, item) {
+      if (error) {
+        response.send(error, 500);
+      } else {
+        response.render('collection', {
+          locals : {
+            collectionName : request.params.collection,
+            item           : item
           }
         });
       }

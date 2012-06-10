@@ -3,7 +3,7 @@
  * @list dependencies
  **/
 
-var MONGO_DB = process.env.MONGO_DB || 'mongodb://localhost/test';
+var MONGO_DB = process.env.MONGO_DB || 'mongodb://localhost/dash';
 
 /**
  * @description export controllers
