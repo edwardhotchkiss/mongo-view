@@ -8,14 +8,20 @@ var path = require('path')
   , MONGO_DB = process.env.MONGO_DB || 'mongodb://localhost/test';
 
 /**
+ * @middleware checkConnected
+ **/
+
+var checkConnected = require(__dirname + '/../middleware/checkConnected');
+
+/**
  * @description export controllers
  * Preserve `mongoose` & `mongoose.connection` context
  */
 
 module.exports = function(app, mongoose) {
-  
+
   // get database collections with collection counts
-  app.get('/database/:database', function(request, response) {
+  app.get('/database/:database', checkConnected, function(request, response) {
     mongodb.getCollectionsWithCount(mongoose, function(error, collections) {
       if (error) {
         response.send(error, 500);
@@ -31,7 +37,7 @@ module.exports = function(app, mongoose) {
   });
 
   // display collection item
-  app.get('/database/:database/collections/:collection', function(request, response) {
+  app.get('/database/:database/collections/:collection', checkConnected, function(request, response) {
     mongodb.find(mongoose, request.params.collection, {}, function(error, collection) {
       if (error) {
         response.send(error, 500);
