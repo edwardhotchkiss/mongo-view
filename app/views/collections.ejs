@@ -3,10 +3,10 @@
   <h2>MongoDB-Viewer: Collections</h2>
   <div class="column-outer">
     <div id="data" class="column-inner left">
-      <% if (collections) { %>
+      <% if (collections.length && collections.length > 0) { %>
         <ul>
           <% collections.map(function(collection) { %>
-            <% if (collection) {
+            <% if (collection) { %>
               <li>
                 <a href="/database/<%= db_name %>/collections/<%= collection.name %>/">
                   <%= collection.name %>
@@ -16,7 +16,7 @@
                 </a>
               </li>
             <% } %>
-          <% } %>
+          <% }) %>
         </ul>
       <% } %>
     </div>

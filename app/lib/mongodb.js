@@ -33,11 +33,14 @@ exports.getCollectionsWithCount = function(mongoose, callback) {
     if (error) {
       callback(error, null);
     } else {
+      if (collections.length === 0) {
+        return callback(null, []);
+      };
       collections.map(function(item, i){
         item.name = item.name.split('.').pop();
         if (item.name === 'indexes') {
           delete collections[i];
-        }
+        };
         mongoose.connection.db.collection(item.name, function(error, collection) {
           if (error) {
             callback(error, null);
