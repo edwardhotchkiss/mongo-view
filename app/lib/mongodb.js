@@ -1,16 +1,16 @@
 
-/*!
-  @class utils
-  MongoDB Utility Methods
-*/
+/**
+ * @class utils
+ * MongoDB Utility Methods
+ **/
 
 var complete = 0
   , mongoose = require('mongoose')
 
-/*!
-  @method find
-  @public
-  collection.find
+/**
+ * @method find
+ * @public
+ * collection.find
  */
 
 exports.find = function(mongoose, collection, params, callback) {
@@ -22,11 +22,11 @@ exports.find = function(mongoose, collection, params, callback) {
   });
 };
 
-/*!
-  @method getCollectionsWithCount
-  @public
-  @param {Function} callback
- */
+/**
+ * @method getCollectionsWithCount
+ * @public
+ * @param {Function} callback
+ **/
 
 exports.getCollectionsWithCount = function(mongoose, callback) {
   mongoose.connection.db.collectionNames(function(error, collections) {
@@ -60,10 +60,10 @@ exports.getCollectionsWithCount = function(mongoose, callback) {
   });
 };
 
-/*!
-  @method create
-  @public
-  @param {Function} callback
+/**
+ * @method create
+ * @public
+ * @param {Function} callback
  */
 
 exports.create = function(mongoose, collectionName, params, callback) {
@@ -76,11 +76,11 @@ exports.create = function(mongoose, collectionName, params, callback) {
   });
 };
 
-/*!
-  @method update
-  @public
-  @param {Function} callback
- */
+/**
+ * @method update
+ * @public
+ * @param {Function} callback
+ **/
 
 exports.update = function(mongoose, collectionName, params, callback) {
   if ('_id' in params) {
@@ -95,10 +95,10 @@ exports.update = function(mongoose, collectionName, params, callback) {
   });
 };
 
-/*!
-  @method remove
-  @public
-  @param {Function} callback
+/**
+ * @method remove
+ * @public
+ * @param {Function} callback
  */
 
 exports.remove = function(mongoose, collectionName, params, callback) {

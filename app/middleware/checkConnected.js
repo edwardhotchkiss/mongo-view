@@ -1,12 +1,7 @@
 
-/*!
-  Express Middleware
- */
-
-/*!
-  checkConnected
-  Check for an Active Mongoose connection!
- */
+/**
+ * @middleware Express Middleware
+ **/
 
 module.exports = function checkConnected(request, response, next) {
   if (request.session.connected === undefined) {

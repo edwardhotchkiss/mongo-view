@@ -1,21 +1,21 @@
 
-/*!
-  module dependencies
+/**
+ * @list deps
  */
 
 var path = require('path')
   , mongodb = require(path.normalize(__dirname + '/../lib/mongodb'))
   , MONGO_DB = process.env.MONGO_DB || 'mongodb://localhost/test';
 
-/*!
-  middleware
- */
+/**
+ * @description middleware
+ **/
 
 var checkConnected = require(__dirname + '/../middleware/checkConnected');
 
-/*!
-  export controllers
-  Preserve `mongoose` & `mongoose.connection` context
+/**
+ * @description export controllers
+ * Preserve `mongoose` & `mongoose.connection` context
  */
 
 module.exports = function(app, mongoose) {
@@ -23,10 +23,14 @@ module.exports = function(app, mongoose) {
   // get database collections with collection counts
   app.get('/database/:database', checkConnected, function(request, response) {
     mongodb.getCollectionsWithCount(mongoose, function(error, collections) {
-      response.render('collections', {
-        collections : collections,
-        db_name     : request.params.database
-      });
+      if (error) {
+        response.send(error, 500);
+      } else {
+        response.render('collections', {
+          collections : collections,
+          db_name     : request.params.database
+        });
+      };
     });
   });
 
@@ -34,7 +38,7 @@ module.exports = function(app, mongoose) {
   app.get('/database/:database/collections/:collection', checkConnected, function(request, response) {
     mongodb.find(mongoose, request.params.collection, {}, function(error, collection) {
       if (error) {
-        throw new Error(error);
+        response.send(error, 500);
       } else {
         response.render('collection', {
           collectionName : request.params.collection,

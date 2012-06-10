@@ -1,30 +1,25 @@
 
-/*!
-  controller::rest
-  REST Methods
- */
-
-/*!
-  module dependencies
- */
+/**
+ * @list module dependencies
+ **/
 
 var path = require('path')
   , Schema = require('mongoose').Schema
-  , mongodb = require(path.normalize(__dirname + '/../lib/mongodb'))
   , querystring = require('querystring')
-  , ObjectId = Schema.ObjectId
-  , MONGO_DB = process.env.MONGO_DB || 'mongodb://localhost/test';
+  , mongodb = require(path.normalize(__dirname + '/../lib/mongodb'))
+  , MONGO_DB = process.env.MONGO_DB || 'mongodb://localhost/test'
+  , ObjectId = Schema.ObjectId;
 
-/*!
-  middleware
+/**
+ * @description middleware
  */
 
 var checkConnected = require(__dirname + '/../middleware/checkConnected');
 
-/*!
-  export controllers
-  Preserve `mongoose` & `mongoose.connection` context
- */
+/**
+ * @description export controllers
+ * Preserve `mongoose` & `mongoose.connection` context
+ **/
 
 module.exports = function(app, mongoose) {
 

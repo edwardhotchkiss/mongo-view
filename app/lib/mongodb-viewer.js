@@ -1,11 +1,7 @@
 
-/*!
-  @class mongodb-viewer
- */
-
-/*!
-  Module Dependencies
- */
+/**
+ * @list module dependencies
+ **/
 
 var path = require('path')
   , express = require('express')
@@ -13,9 +9,9 @@ var path = require('path')
   , app = exports.app = express.createServer()
   , SECRET = process.env.SECRET || 'DONT/TAZE/ME/BRO!';
 
-/*!
-  configure express
- */
+/**
+ * configure express
+ **/
 
 app.configure(function() {
   app.use(express.static(path.normalize(__dirname+'/../../public')));
@@ -28,9 +24,9 @@ app.configure(function() {
   app.set('view engine', 'jade');
 });
 
-/*!
-  require controllers/routes
- */
+/**
+ * require controllers/routes
+ **/
 
 require(__dirname + '/../controllers/rest')(app, mongoose);
 require(__dirname + '/../controllers/index')(app, mongoose);

@@ -1,8 +1,8 @@
 
-/*!
-  __defineGetter__(<ANSI supported color>, fn
-  http://en.wikipedia.org/wiki/ANSI_escape_code#CSI_codes
- */
+/**
+ * __defineGetter__(<ANSI supported color>, fn
+ * http://en.wikipedia.org/wiki/ANSI_escape_code#CSI_codes
+ **/
 
 ['magenta','yellow','green','blue','cyan','red'].forEach(function(color) {
   var colorized = '\u001b[#m';

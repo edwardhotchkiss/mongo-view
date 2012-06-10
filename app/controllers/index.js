@@ -1,24 +1,20 @@
 
-/*!
-  controller::index
- */
-
-/*!
-  module dependencies
- */
+/**
+ * @list dependencies
+ **/
 
 var MONGO_DB = process.env.MONGO_DB || 'mongodb://localhost/test';
 
-/*!
-  middleware
- */
+/**
+ * @description middleware
+ **/
 
 var checkConnected = require(__dirname + '/../middleware/checkConnected');
 
-/*!
-  export controllers
-  Preserve `mongoose` & `mongoose.connection` context
- */
+/**
+ * @description export controllers
+ * Preserve `mongoose` & `mongoose.connection` context
+ **/
 
 module.exports = function(app, mongoose) {
   
