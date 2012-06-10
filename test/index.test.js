@@ -1,17 +1,17 @@
 
-/*!
-  Core Modules
- */
+/**
+ * @list module dependencies
+ **/
 
 var vows = require('vows')
-    , assert = require('assert')
-    , request = require('request')
-    , mongodb_viewer = require('../app/lib/mongodb-viewer')
-    , httpServer = mongodb_viewer.httpServer;
+  , assert = require('assert')
+  , request = require('request')
+  , mongodb_viewer = require('../app/lib/mongodb-viewer')
+  , httpServer = mongodb_viewer.httpServer;
 
-/*!
-  vows / `npm test`
- */
+/**
+ * @vows
+ **/
 
 vows.describe('general module tests').addBatch({
   'when instantiating mongodb_viewer':{
