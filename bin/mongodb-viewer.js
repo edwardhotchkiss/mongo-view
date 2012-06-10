@@ -8,19 +8,20 @@ require('../app/helpers/colors');
 
 var mongodb_viewer = require('../app/lib/mongodb-viewer')
   , args = process.argv
-  , port = port || 8000;
-
-console.log(args);
+  , port = 8000;
 
 switch(args[2]) {
   case 'run':
   case '-r':
   case '--run':
-    console.log(['\n','> running mongodb-viewer on port ',port,'\n'].join('').cyan);
+    if (args[3] && args[3] === '--port' && args[4]) {
+      var port = args[4];
+    };
+    console.log('> running mongodb-viewer on port %s'.cyan, port);
     mongodb_viewer.app.listen(port);
     break;
   default:
-    logger('No command specified!'.yellow);
+    console.log('Invalid Command! Try: mongodbviewer run --port <port>'.yellow);
     process.exit(0);
     break;
 };
