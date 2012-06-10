@@ -1,4 +1,23 @@
 
+0.2.0 / 2012-06-10 
+==================
+
+  * [dist] version bump
+  * [major] working
+  * [minor=] cleanup
+  * [views] use ejs
+  * [github] use github fork me image
+  * [syntax] on tests
+  * [error, syntax] better error tracking, syntax
+  * [docs] keep on gh-pages
+  * [bin] nicer args
+  * [main] removed
+  * [package] update all module deps to latest stable
+  * [package] remove main
+  * [license] update
+  * [node] bump engine dep to 0.6.19
+  * [travis] only test 0.6.x+
+
 0.1.5 / 2012-03-22 
 ==================
 
