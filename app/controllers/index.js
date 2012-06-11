@@ -25,14 +25,17 @@ module.exports = function(app, mongoose) {
   app.post('/', function(_request, _response) {
     var MONGO_DB = _request.body['connection-string'];
     mongoose.connect(MONGO_DB);
-    mongoose.connection.on('open', function(){
-      _request.session.connected = true;
+    // wait for connection to open
+    mongoose.connection.on('open', function() {
+      // set session MONGO_DB (we're connected)
+      _request.session.MONGO_DB = MONGO_DB;
       var db_name = _request.body['connection-string'].split('/');
       db_name = db_name[db_name.length - 1];
-      var db_route = '/database/' + db_name;
-      _response.redirect(db_route);
+      _request.session.db_name = db_name;
+      _response.redirect('/database/' + db_name);
     });
-    mongoose.connection.on('error', function(error){
+    // send error on emit
+    mongoose.connection.on('error', function(error) {
       _response.send(error, 500);
     });
   });

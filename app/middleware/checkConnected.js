@@ -5,10 +5,10 @@
  **/
 
 module.exports = function checkConnected(request, response, next) {
-  if (request.session.connected === undefined) {
-    response.redirect('/');
+  if (request.session && request.session.MONGO_DB) {
+  	next();
   } else {
-    next();
+    response.redirect('/');
   };
 };
 
