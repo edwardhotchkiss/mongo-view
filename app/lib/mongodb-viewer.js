@@ -30,6 +30,7 @@ app.configure(function() {
 
 require(__dirname + '/../controllers/rest')(app, mongoose);
 require(__dirname + '/../controllers/index')(app, mongoose);
+require(__dirname + '/../controllers/assets')(app, mongoose);
 require(__dirname + '/../controllers/collections')(app, mongoose);
 
 /* EOF */
