@@ -53,15 +53,16 @@ module.exports = function(app, mongoose) {
   });
 
   // display individual collection item
-  app.get('/database/:database/collections/:collection/:id', checkConnected, function(request, response) {
+  app.get('/database/:database/collection/:collection/:id', checkConnected, function(request, response) {
     mongodb.findItem(mongoose, request.params.collection, request.params.id, {}, function(error, item) {
       if (error) {
         response.send(error, 500);
       } else {
-        response.render('collection', {
+        response.render('item', {
           locals : {
-            collectionName : request.params.collection,
-            item           : item
+            item           : item,
+            id             : request.params.id,
+            collectionName : request.params.collection
           }
         });
       }

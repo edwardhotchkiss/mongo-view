@@ -27,9 +27,7 @@ exports.find = function(mongoose, collection, params, callback) {
 exports.findItem = function(mongoose, collection, id, params, callback) {
   id = mongoose.mongo.BSONPure.ObjectID.fromString(id);
   mongoose.connection.db.collection(collection, function(error, collection) {
-    console.log(collection);
-    return;
-    collection.find(params).toArray(callback);
+    collection.find({ _id : id }).toArray(callback);
   });
 };
 
