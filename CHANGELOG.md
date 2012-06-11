@@ -1,4 +1,13 @@
 
+0.2.1 / 2012-06-10 
+==================
+
+  * [lets enhance that] middleware
+  * [mongodb] display individual item
+  * [mongodb] add count
+  * [collection] individual working
+  * [middleware] checkConnected
+
 0.2.0 / 2012-06-10 
 ==================
 
