@@ -9,6 +9,7 @@ var App = Spine.Controller.sub({
   collection: null,
   item: null,
 
+  // initialize app
   init: function(params) {
     var self = this;
     // setup routes
@@ -37,12 +38,17 @@ var App = Spine.Controller.sub({
     });
   },
 
+  // clear content
+  clear: function() {
+    $('#content').html('');
+  },
+
   // render connect form partial
   setupConnect: function() {
     var self = this;
+    self.clear();
     var json = { MONGO_DB : 'mongodb://localhost/dash' };
     $.get('/partials/connect.html', function(template) {
-      $('#content').html('');
       var html = $.mustache(template, json);
       $('#content').append(html);
       // connection form submit
@@ -56,7 +62,6 @@ var App = Spine.Controller.sub({
   connect: function(mongoString) {
     var self = this;
     $.post('/api/connect', $('#connection-form').serialize(), function(data) {
-      $('#content').html('');
       var db_name = data['db_name'];
       self.db_name = db_name;
       self.navigate('/database/' + db_name + '/');
@@ -65,6 +70,8 @@ var App = Spine.Controller.sub({
 
   // retrieve collections for db
   retrieveCollections: function(db_name) {
+    var self = this;
+    self.clear();
     $.get('/api/database/' + db_name, function(data) {
       var json = {
         collections : data,
@@ -74,7 +81,6 @@ var App = Spine.Controller.sub({
         }
       };
       $.get('/partials/collections.html', function(template) {
-        $('#content').html('');
         var html = $.mustache(template, json);
         $('#content').append(html);
       });
@@ -83,6 +89,8 @@ var App = Spine.Controller.sub({
 
   // retrieve single collection
   retrieveCollection: function(db_name, collection) {
+    var self = this;
+    self.clear();
     $.get('/api/database/' + db_name + '/collection/' + collection, function(data) {
       var json = {
         howMany        : data.length,
@@ -90,7 +98,6 @@ var App = Spine.Controller.sub({
         collectionName : collection
       };
       $.get('/partials/collection.html', function(template) {
-        $('#content').html('');
         var html = $.mustache(template, json);
         $('#content').append(html);
       });
