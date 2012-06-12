@@ -1,0 +1,20 @@
+
+<div id="connect" class="center">
+  <div id="header" class="center">
+    <a href="/">
+      <h1>MongoDB Viewer</h1>
+    </a>
+  </div>
+  <div class="span16 center">
+    <div class="column-outer">
+      <div class="column-inner">
+        <form id="connection-form" method="post" action="/">
+          <fieldset>
+            <input type="text" name="connection-string" id="connection-string" placeholder="MongoDB Connection String..." value="<%= MONGO_DB %>" class="long"/>
+            <input type="submit" id="connect-button" name="connect-button" value="Connect" class="btn primary huge" />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
