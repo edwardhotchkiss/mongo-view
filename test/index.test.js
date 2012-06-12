@@ -6,17 +6,17 @@
 var vows = require('vows')
   , assert = require('assert')
   , request = require('request')
-  , mongodb_viewer = require('../app/lib/mongodb-viewer')
-  , httpServer = mongodb_viewer.httpServer;
+  , mongo_view = require('../app/lib/mongo-view')
+  , httpServer = mongo_view.httpServer;
 
 /**
  * @vows
  **/
 
 vows.describe('general module tests').addBatch({
-  'when instantiating mongodb_viewer':{
+  'when instantiating mongo_view':{
     topic:function(){
-      return mongodb_viewer;
+      return mongo_view;
     },
     'mongodb_viewer should be an object':function(topic) {
       assert.isObject(topic);
@@ -25,11 +25,11 @@ vows.describe('general module tests').addBatch({
   'when starting then requesting the application':{
     topic:function(){
       var self = this;
-      mongodb_viewer.app.listen(8000);
+      mongo_view.app.listen(8000);
       request('http://localhost:8000/', self.callback);
     },
     'request should return no errors, a 200 response code, and html within the body':function(error, response, body){
-      mongodb_viewer.app.close();
+      mongo_view.app.close();
       assert.isNull(error);
       assert.equal(response.statusCode, 200);
       assert.equal(/html/m.test(body), true);

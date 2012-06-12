@@ -1,5 +1,5 @@
 {
-  "name":"mongodb-viewer",
+  "name":"mongo-view",
   "author":"Edward Hotchkiss <edwardhotchkiss@me.com",
   "contributors":[
     { "name" : "Edward Hotchkiss", "github" : "http://github.com/edwardhotchkiss/" },
@@ -11,29 +11,28 @@
     "type":"git",
     "url":"git://github.com/edwardhotchkiss/mongodb-viewer.git"
   },
-  "keywords":["mongodb","mongo","viewer","web","based","admin"],
-  "bin": { "mongodbviewer":"./bin/mongodb-viewer.js" },
+  "keywords":["mongodb","mongo","view","web","based","admin"],
+  "bin": { "mongoview":"./bin/mongo-view.js" },
   "preferGlobal":"true",
   "engines":{
     "node":">= 0.6.19 < 0.7.0"
   },
   "dependencies":{
     "mongoose":"2.6.7",
-    "express":"2.5.9",
-    "ejs":"0.7.1"
+    "express":"2.5.9"
   },
   "devDependencies":{
     "vows":"0.6.2",
     "request":"2.9.202",
     "paige":"0.1.7"
   },
-  "homepage": "http://edwardhotchkiss.github.com/mongodb-viewer",
+  "homepage": "http://edwardhotchkiss.github.com/mongo-view",
   "bugs": {
-    "url": "https://github.com/edwardhotchkiss/mongodb-viewer/issues"
+    "url": "https://github.com/edwardhotchkiss/mongo-view/issues"
   },
   "licenses":[{
     "type":"MIT",
-    "url":"http://github.com/edwardhotchkiss/mongodb-viewer/LICENSE"
+    "url":"http://github.com/edwardhotchkiss/mongo-view/LICENSE"
   }],
   "scripts":{
     "test":"vows test/*.test.js --spec"

@@ -1,0 +1,108 @@
+
+/**
+ * mongo-view.js
+ **/
+
+var App = Spine.Controller.sub({
+
+  db_name: null,
+  collection: null,
+  item: null,
+
+  init: function(params) {
+    var self = this;
+    // setup routes
+    this.routes({
+      '/': function() {
+        self.setupConnect()
+      },
+      '/database/:database': function(params) {
+        self.retrieveCollections(params.database)
+      },
+      '/database/:database/': function(params) {
+        self.retrieveCollections(params.database)
+      },
+      '/database/:database/collection/:collection': function(params) {
+        self.retrieveCollection(params.database, params.collection);
+      },
+      '/database/:database/collection/:collection/': function(params) {
+        self.retrieveCollection(params.database, params.collection);
+      },
+    });
+    // setup routes
+    Spine.Route.setup();
+    // preserve html5 history
+    Spine.Route.setup({
+      history: true
+    });
+  },
+
+  // render connect form partial
+  setupConnect: function() {
+    var self = this;
+    var json = { MONGO_DB : 'mongodb://localhost/dash' };
+    $.get('/partials/connect.html', function(template) {
+      $('#content').html('');
+      var html = $.mustache(template, json);
+      $('#content').append(html);
+      // connection form submit
+      $('#connect-btn').click(function(e) {  
+        self.connect($('#connection-string').val());    
+      });
+    });
+  },
+
+  // connect to mongo and initialize session
+  connect: function(mongoString) {
+    var self = this;
+    $.post('/api/connect', $('#connection-form').serialize(), function(data) {
+      $('#content').html('');
+      var db_name = data['db_name'];
+      self.db_name = db_name;
+      self.navigate('/database/' + db_name + '/');
+    });
+  },
+
+  // retrieve collections for db
+  retrieveCollections: function(db_name) {
+    $.get('/api/database/' + db_name, function(data) {
+      var json = {
+        collections : data,
+        howMany     : data.length - 1,
+        linker      : function() { 
+          return '/database/' + db_name + '/collection/' + this.name + '/';
+        }
+      };
+      $.get('/partials/collections.html', function(template) {
+        $('#content').html('');
+        var html = $.mustache(template, json);
+        $('#content').append(html);
+      });
+    });
+  },
+
+  // retrieve single collection
+  retrieveCollection: function(db_name, collection) {
+    $.get('/api/database/' + db_name + '/collection/' + collection, function(data) {
+      var json = {
+        howMany        : data.length,
+        collection     : data,
+        collectionName : collection
+      };
+      $.get('/partials/collection.html', function(template) {
+        $('#content').html('');
+        var html = $.mustache(template, json);
+        $('#content').append(html);
+      });
+    });
+  }
+  
+});
+
+$(document).ready(function() {
+  var app = new App({
+    start : new Date().getTime()
+  });
+});
+
+/* EOF */

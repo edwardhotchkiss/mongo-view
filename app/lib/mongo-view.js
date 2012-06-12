@@ -7,9 +7,10 @@ var fs = require('fs')
   , path = require('path')
   , express = require('express')
   , mongoose = require('mongoose')
+  , exec = require('child_process').exec
   , app = exports.app = express.createServer()
   , SECRET = process.env.SECRET || 'DONT/TAZE/ME/BRO!'
-  , MONGO_DB = process.env.MONGO_DB || 'mongodb://localhost/test';
+  , MONGO_DB = process.env.MONGO_DB || 'mongodb://localhost/dash';
 
 /**
  * @middleware checkConnected
@@ -18,29 +19,35 @@ var fs = require('fs')
 var checkConnected = require(__dirname + '/../middleware/checkConnected');
 
 /**
+ * @lib mongodb
+ **/
+
+var mongodb = require('./mongodb');
+
+/**
  * configure express
  **/
 
 app.configure(function() {
   app.use(express.static(path.normalize(__dirname + '/../../public')));
-  app.set('views', path.normalize(__dirname + '/../views'));
   app.use(express.bodyParser());
   app.use(express.cookieParser());
   app.use(express.session({
     secret:SECRET
   }));
-  app.set('view engine', 'ejs');
-  app.set('view options', { layout: false });
 });
 
-// serve javascript assets
-app.get('/js/app.min.js', function(request, response) {
+// serve javascript
+app.get('/js/app.min.js', function(request, response, next) {
+  if (process.env.NODE_ENV == 'production') {
+    return next();
+  };
   var compiledJavascript = '';
   var __jsdirname = __dirname + '/../../public/js';
   // vendored js
   var vendorDependencies = [
     __jsdirname + '/vendor/jquery-1.7.2.min.js',
-    __jsdirname + '/vendor/handlebars-1.0.0.beta.6.js',
+    __jsdirname + '/vendor/jquery.mustache.js',
     __jsdirname + '/vendor/spine/spine.js',
     __jsdirname + '/vendor/spine/route.js',
     __jsdirname + '/vendor/spine/ajax.js',
@@ -51,7 +58,7 @@ app.get('/js/app.min.js', function(request, response) {
   ];
   // our project's js
   var projectDependencies = [
-    __jsdirname + '/mongodbviewer.js'
+    __jsdirname + '/mongo-view.js'
   ];
   // merge dependencies in order
   var applicationDependencies = vendorDependencies.concat(projectDependencies);
@@ -59,22 +66,34 @@ app.get('/js/app.min.js', function(request, response) {
   applicationDependencies.map(function(_file) {
     compiledJavascript += fs.readFileSync(_file, 'utf8');
   });
-  fs.writeFile(__jsdirname + '/app.compiled.js', compiledJavascript, function(error) {
-    if (error) {
-      throw new Error(error);
-    } else {
-      console.log('> mongodb-viewer serving js ....');
-      response.writeHead({
-        contentType: 'text/javascript'
-      });
-      response.end(compiledJavascript);
-    }
-  });
+  // send
+  response.writeHead({
+    contentType: 'text/javascript'
+  });
+  response.end(compiledJavascript);
 });
 
-// index page
-app.get('/', function(request, response) {
-  response.render('index');
+// serve css
+app.get('/css/app.min.css', function(request, response, next) {
+  if (process.env.NODE_ENV == 'production') {
+    return next();
+  };
+  // lessc
+  var CMD = 'lessc public/less/main.less public/css/app.min.css -compress';
+  exec(CMD, function (error, stdout, stderr) {
+    if (error) {
+      throw new Error(error);
+    } else {
+      var __cssdirname = __dirname + '/../../public/css';
+      var CSS = fs.readFileSync(__cssdirname + '/app.min.css', 'utf8');
+      fs.unlinkSync(__cssdirname + '/app.min.css');
+      // send
+      response.writeHead({
+        contentType: 'text/css'
+      });
+      response.end(CSS);
+    };
+  });
 });
 
 // connect to mongoose
@@ -88,7 +107,9 @@ app.post('/api/connect', function(_request, _response) {
     var db_name = _request.body['connection-string'].split('/');
     db_name = db_name[db_name.length - 1];
     _request.session.db_name = db_name;
-    _response.redirect('/database/' + db_name);
+    _response.send({
+      db_name : db_name
+    });
   });
   // send error on emit
   mongoose.connection.on('error', function(error) {
@@ -102,12 +123,7 @@ app.get('/api/database/:database', checkConnected, function(request, response) {
     if (error) {
       response.send(error, 500);
     } else {
-      response.render('collections', {
-        locals : {
-          collections : collections,
-          db_name     : request.params.database
-        }
-      });
+      response.send(collections);
     };
   });
 });
@@ -118,12 +134,7 @@ app.get('/api/database/:database/collection/:collection', checkConnected, functi
     if (error) {
       response.send(error, 500);
     } else {
-      response.render('collection', {
-        locals : {
-          collectionName : request.params.collection,
-          collection     : collection
-        }
-      });
+      response.send(collection);
     }
   });
 });
@@ -216,11 +227,9 @@ app['delete']('/database/:database/collections/:collection/delete', checkConnect
  * @description Catch-All for HTML5
  **/
 
-// index page
-app.get('*', function(request, response) {
-  response.render('index');
+app.get('/database/*', function(request, response) {
+  var html = path.normalize(__dirname + '/../../public/index.html');
+  response.sendfile(html);
 });
-
-/* EOF */
 
 /* EOF */

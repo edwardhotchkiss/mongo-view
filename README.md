@@ -1,22 +1,22 @@
 
-# MongoDB-Viewer [![Build Status](https://secure.travis-ci.org/edwardhotchkiss/mongodb-viewer.png)](http://travis-ci.org/edwardhotchkiss/mongodb-viewer)
+# mongo view [![Build Status](https://secure.travis-ci.org/edwardhotchkiss/mongo-view.png)](http://travis-ci.org/edwardhotchkiss/mongo-view)
 
 > Node.JS MongoDB web-based Admin/Viewer Tool
 
 ## Screenshots
 
-![Screen 1](https://github.com/edwardhotchkiss/mongodb-viewer/raw/master/public/images/screens/1.png)
+![Screen 1](https://github.com/edwardhotchkiss/mongo-view/raw/master/public/images/screens/1.png)
 
 ## Installation
 
 ```bash
-$ [sudo] npm install mongodb-viewer -g
+$ [sudo] npm install mongo-view -g
 ```
 
 ## From the CLI (http://localhost:8000/)
 
 ```bash
-$ mongodbviewer run --port 8000
+$ mongoview run --port 8000
 ```
 
 ## Pull Requests
@@ -30,7 +30,7 @@ $ mongodbviewer run --port 8000
 ## Run Tests
 
 ``` bash
-$ git clone git@github.com:edwardhotchkiss/mongodb-viewer.git
+$ git clone git@github.com:edwardhotchkiss/mongo-view.git
 $ npm test
 ```
 

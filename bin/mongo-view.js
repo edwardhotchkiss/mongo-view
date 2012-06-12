@@ -6,7 +6,7 @@
 
 require('../app/helpers/colors');
 
-var mongodb_viewer = require('../app/lib/mongodb-viewer')
+var mongo_view = require('../app/lib/mongo-view')
   , args = process.argv
   , port = 8000;
 
@@ -17,12 +17,12 @@ switch(args[2]) {
     if (args[3] && args[3] === '--port' && args[4]) {
       var port = args[4];
     };
-    console.log('> running mongodb-viewer on port %s'.magenta, port);
-    mongodb_viewer.app.listen(port);
+    console.log('> mongo-view running on port %s'.magenta, port);
+    mongo_view.app.listen(port);
     break;
   default:
-    console.log('> running mongodb-viewer on port %s'.magenta, port);
-    mongodb_viewer.app.listen(port);
+    console.log('> mongo-view running on port %s'.magenta, port);
+    mongo_view.app.listen(port);
     break;
 };
 

@@ -1,24 +1,24 @@
 
-<div id="information" class="span12 center">
-  <h2><%= collectionName %> - (<%= id %>)</h2>
+<div id="item" class="main">
+  <h2>{{= collectionName }} - ({{= id }})</h2>
   <div class="column-outer">
     <div id="data" class="column-inner left">
-      <% if (item) { %>
+      {{ if (item) { }}
         <ul>
-          <% item.map(function(props) { %> 
-            <% for (key in props) { %>
+          {{ item.map(function(props) { }} 
+            {{ for (key in props) { }}
               <div class="holder">
                 <div class="key left">
-                  <%= key %>
+                  {{= key }}
                 </div>
                 <div class="prop right">
-                  <%= props[key] %>
+                  {{= props[key] }}
                 </div>
               </div>
-            <% } %>
-          <% }) %>
+            {{ } }}
+          {{ }) }}
         </ul>
-      <% } %>
+      {{ } }}
     </div>
   </div>
 </div>
