@@ -2472,19 +2472,18 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
 
 }).call(this);
 
-/*!
-  app.js
-*/
+/**
+ * mongodbviewer.js
+ **/
 
 var App = Spine.Controller.sub({
   init: function(){
     this.routes({
-      "/users/:id": function(params){
-        console.log("/users/", params.id)
+      '/tests/:id': function(params) {
+        console.log('/tests/', params.id);
       },
-
-      "/users": function(){
-        console.log("users")
+      '/tests': function() {
+        console.log('tests');
       }
     });
     Spine.Route.setup();
