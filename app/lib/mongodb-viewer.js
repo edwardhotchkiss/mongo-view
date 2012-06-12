@@ -40,7 +40,7 @@ app.get('/js/app.min.js', function(request, response) {
   // vendored js
   var vendorDependencies = [
     __jsdirname + '/vendor/jquery-1.7.2.min.js',
-    __jsdirname + '/vendor/jquery.tmpl.js',
+    __jsdirname + '/vendor/handlebars-1.0.0.beta.6.js',
     __jsdirname + '/vendor/spine/spine.js',
     __jsdirname + '/vendor/spine/route.js',
     __jsdirname + '/vendor/spine/ajax.js',
