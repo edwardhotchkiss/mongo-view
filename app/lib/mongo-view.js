@@ -3,10 +3,13 @@
  * @list module dependencies
  **/
 
-var fs = require('fs')
+var db
+  , client
+  , fs = require('fs')
   , path = require('path')
+  , mongodb = require('mongodb')
   , express = require('express')
-  , mongoose = require('mongoose')
+  , querystring = require('querystring')
   , exec = require('child_process').exec
   , app = exports.app = express.createServer()
   , SECRET = process.env.SECRET || 'DONT/TAZE/ME/BRO!'
@@ -22,7 +25,7 @@ var checkConnected = require(__dirname + '/../middleware/checkConnected');
  * @lib mongodb
  **/
 
-var mongodb = require('./mongodb');
+var mongo_util = require('./mongo-util');
 
 /**
  * configure express
@@ -96,41 +99,39 @@ app.get('/css/app.min.css', function(request, response, next) {
   });
 });
 
-// connect to mongoose
-app.post('/api/connect', function(_request, _response) {
-  var MONGO_DB = _request.body['connection-string'];
-  mongoose.connect(MONGO_DB);
-  // wait for connection to open
-  mongoose.connection.on('open', function() {
-    // set session MONGO_DB (we're connected)
-    _request.session.MONGO_DB = MONGO_DB;
-    var db_name = _request.body['connection-string'].split('/');
-    db_name = db_name[db_name.length - 1];
-    _request.session.db_name = db_name;
-    _response.send({
-      db_name : db_name
-    });
-  });
-  // send error on emit
-  mongoose.connection.on('error', function(error) {
-    _response.send(error, 500);
+// connect to mongodb
+app.get('/api/connect', function(_request, _response) {
+  var MONGO_DB = _request.query['connection-string'];
+  var db_name = MONGO_DB.split('/')[3];
+  var _client = mongodb.connect(MONGO_DB, function(_error, _db) {
+    if (_error) {
+      _response.send(_error);
+    } else {
+      db = _db;
+      client = _client;
+      _request.session.connected = true;
+      _request.session.MONGO_DB = MONGO_DB;
+      _response.send({
+        db_name : db_name
+      });
+    };
   });
 });
 
 // get database collections with collection counts
-app.get('/api/database/:database', checkConnected, function(request, response) {
-  mongodb.getCollectionsWithCount(mongoose, function(error, collections) {
-    if (error) {
-      response.send(error, 500);
+app.get('/api/database/:database', checkConnected, function(_request, _response) {
+  mongo_util.getCollectionsWithCount(db, function(_error, _collections) {
+    if (_error) {
+      _response.send(_error, 500);
     } else {
-      response.send(collections);
+      _response.send(_collections);
     };
   });
 });
 
 // display collection item
 app.get('/api/database/:database/collection/:collection', checkConnected, function(request, response) {
-  mongodb.find(mongoose, request.params.collection, {}, function(error, collection) {
+  mongo_util.find(db, request.params.collection, {}, function(error, collection) {
     if (error) {
       response.send(error, 500);
     } else {
@@ -141,10 +142,11 @@ app.get('/api/database/:database/collection/:collection', checkConnected, functi
 
 // display individual collection item
 app.get('/api/database/:database/collection/:collection/:id', checkConnected, function(request, response) {
-  mongodb.findItem(mongoose, request.params.collection, request.params.id, {}, function(error, item) {
+  mongo_util.findItem(db, request.params.collection, request.params.id, {}, function(error, item) {
     if (error) {
       response.send(error, 500);
     } else {
+      console.log(item);
       response.send(item);
     }
   });
@@ -154,19 +156,8 @@ app.get('/api/database/:database/collection/:collection/:id', checkConnected, fu
  * REST
  **/
 
-// PUT
-app.put('/api/database/:database/collections/:collection/create', checkConnected, function(request, response) {
-  mongodb.create(mongoose, request.params['collection'], request.body, function(error, doc) {
-    if (error) {
-      response.send(error, 500);
-    } else {
-      response.send(doc);
-    }
-  });
-});
-
 // GET
-app.get('/api/database/:database/collections/:collection/all', checkConnected, function(request, response) {
+/*app.get('/api/database/:database/collections/:collection/all', checkConnected, function(request, response) {
   mongodb.find(mongoose, request.params.collection, {}, function(error, collection) {
     if (error) {
       response.send(error, 500);
@@ -174,9 +165,20 @@ app.get('/api/database/:database/collections/:collection/all', checkConnected, f
       response.send(collection);
     };
   });
-});
+});*/
 
-app.get('/api/database/:database/collections/:collection/find/:params', function(request, response) {
+// PUT
+/*app.put('/api/database/:database/collections/:collection/create', checkConnected, function(request, response) {
+  mongodb.create(mongoose, request.params['collection'], request.body, function(error, doc) {
+    if (error) {
+      response.send(error, 500);
+    } else {
+      response.send(doc);
+    }
+  });
+});*/
+
+/*app.get('/api/database/:database/collections/:collection/find/:params', function(request, response) {
   var params = querystring.parse(request.params['params']);
   mongodb.find(mongoose, request.params.collection, params, function(error, collection) {
     if (error) {
@@ -185,10 +187,10 @@ app.get('/api/database/:database/collections/:collection/find/:params', function
       response.send(collection);
     };
   });
-});
+});*/
 
 // POST
-app.post('/api/database/:database/collections/:collection/update', checkConnected, function(request, response) {
+/*app.post('/api/database/:database/collections/:collection/update', checkConnected, function(request, response) {
   var params = querystring.parse(request.params['params']);
   if ('_id' in params) {
     params['_id'] = mongoose.mongo.BSONPure.ObjectID.fromString(params['_id']);
@@ -200,10 +202,10 @@ app.post('/api/database/:database/collections/:collection/update', checkConnecte
       response.send(doc);
     }
   });
-});
+});*/
 
 // DELETE
-app['delete']('/database/:database/collections/:collection/delete', checkConnected, function(request, response) {
+/*app['delete']('/database/:database/collections/:collection/delete', checkConnected, function(request, response) {
   var params = querystring.parse(request.params['params']);
   if ('_id' in params) {
     params['_id'] = mongoose.mongo.BSONPure.ObjectID.fromString(params['_id']);
@@ -215,7 +217,7 @@ app['delete']('/database/:database/collections/:collection/delete', checkConnect
       response.send(result);
     }
   });
-});
+});*/
 
 /**
  * @description Catch-All for HTML5

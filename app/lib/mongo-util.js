@@ -4,8 +4,15 @@
  * MongoDB Utility Methods
  **/
 
-var mongoose = require('mongoose')
-  , complete = 0;
+var BSON = require('mongodb').BSONPure;
+
+/**
+ * @method ObjectIdfromString
+ **/
+
+function ObjectIdfromString(id) {
+  return BSON.ObjectID.createFromHexString(id);
+};
 
 /**
  * @method find
@@ -13,8 +20,8 @@ var mongoose = require('mongoose')
  * collection.find
  */
 
-exports.find = function(mongoose, collection, params, callback) {
-  mongoose.connection.db.collection(collection, function(error, collection) {
+exports.find = function(db, collection, params, callback) {
+  db.collection(collection, function(error, collection) {
     collection.find(params).toArray(callback);
   });
 };
@@ -24,9 +31,9 @@ exports.find = function(mongoose, collection, params, callback) {
  * @public
  */
 
-exports.findItem = function(mongoose, collection, id, params, callback) {
-  id = mongoose.mongo.BSONPure.ObjectID.fromString(id);
-  mongoose.connection.db.collection(collection, function(error, collection) {
+exports.findItem = function(db, collection, id, params, callback) {
+  id = ObjectIdfromString(id);
+  db.collection(collection, function(error, collection) {
     collection.find({ _id : id }).toArray(callback);
   });
 };
@@ -37,8 +44,9 @@ exports.findItem = function(mongoose, collection, id, params, callback) {
  * @param {Function} callback
  **/
 
-exports.getCollectionsWithCount = function(mongoose, callback) {
-  mongoose.connection.db.collectionNames(function(error, collections) {
+exports.getCollectionsWithCount = function(db, callback) {
+  var complete = 0;
+  db.collectionNames(function(error, collections) {
     if (error) {
       callback(error, null);
     } else {
@@ -50,7 +58,7 @@ exports.getCollectionsWithCount = function(mongoose, callback) {
         if (item.name === 'indexes') {
           delete collections[i];
         };
-        mongoose.connection.db.collection(item.name, function(error, collection) {
+        db.collection(item.name, function(error, collection) {
           if (error) {
             callback(error, null);
           } else {
@@ -78,7 +86,7 @@ exports.getCollectionsWithCount = function(mongoose, callback) {
  * @param {Function} callback
  */
 
-exports.create = function(mongoose, collectionName, params, callback) {
+/*exports.create = function(mongoose, collectionName, params, callback) {
   mongoose.connection.db.collection(collectionName, function(error, collection) {
     if (error) {
       callback(error);
@@ -86,7 +94,7 @@ exports.create = function(mongoose, collectionName, params, callback) {
       collection.insert(params, callback);
     };
   });
-};
+};*/
 
 /**
  * @method update
@@ -94,7 +102,7 @@ exports.create = function(mongoose, collectionName, params, callback) {
  * @param {Function} callback
  **/
 
-exports.update = function(mongoose, collectionName, params, callback) {
+/*exports.update = function(mongoose, collectionName, params, callback) {
   if ('_id' in params) {
     params['_id'] = mongoose.mongo.BSONPure.ObjectID.fromString(params['_id']);
   };
@@ -105,7 +113,7 @@ exports.update = function(mongoose, collectionName, params, callback) {
       collection.findAndUpdate(params, callback);
     };
   });
-};
+};*/
 
 /**
  * @method remove
@@ -113,7 +121,7 @@ exports.update = function(mongoose, collectionName, params, callback) {
  * @param {Function} callback
  */
 
-exports.remove = function(mongoose, collectionName, params, callback) {
+/*exports.remove = function(mongoose, collectionName, params, callback) {
   if ('_id' in params) {
     params['_id'] = mongoose.mongo.BSONPure.ObjectID.fromString(params['_id']);
   };
@@ -124,6 +132,6 @@ exports.remove = function(mongoose, collectionName, params, callback) {
       collection.remove(params, callback);
     };
   });
-};
+};*/
 
 /* EOF */

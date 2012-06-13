@@ -67,7 +67,7 @@ var App = Spine.Controller.sub({
   // connect to mongo and initialize session
   connect: function(mongoString) {
     var self = this;
-    $.post('/api/connect', $('#connection-form').serialize(), function(data) {
+    $.get('/api/connect/', $('#connection-form').serialize(), function(data) {
       var db_name = data['db_name'];
       self.db_name = db_name;
       self.navigate('/database/' + db_name + '/');
