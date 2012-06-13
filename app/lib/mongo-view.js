@@ -146,7 +146,6 @@ app.get('/api/database/:database/collection/:collection/:id', checkConnected, fu
     if (error) {
       response.send(error, 500);
     } else {
-      console.log(item);
       response.send(item);
     }
   });
