@@ -1,24 +1,8 @@
-
 <div id="item" class="main">
-  <h2>{{= collectionName }} - ({{= id }})</h2>
-  <div class="column-outer">
-    <div id="data" class="column-inner left">
-      {{ if (item) { }}
-        <ul>
-          {{ item.map(function(props) { }} 
-            {{ for (key in props) { }}
-              <div class="holder">
-                <div class="key left">
-                  {{= key }}
-                </div>
-                <div class="prop right">
-                  {{= props[key] }}
-                </div>
-              </div>
-            {{ } }}
-          {{ }) }}
-        </ul>
-      {{ } }}
-    </div>
-  </div>
+  <h2>{{collectionName}} - {{id}}</h2>
+  <ul>
+    {{#item}}
+      {{&generateRow}}
+    {{/item}}
+  </ul>
 </div>

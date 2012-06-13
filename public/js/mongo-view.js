@@ -29,6 +29,12 @@ var App = Spine.Controller.sub({
       '/database/:database/collection/:collection/': function(params) {
         self.retrieveCollection(params.database, params.collection);
       },
+      '/database/:database/collection/:collection/:id': function(params) {
+        self.retrieveItem(params.database, params.collection, params.id);
+      },
+      '/database/:database/collection/:collection/:id/': function(params) {
+        self.retrieveItem(params.database, params.collection, params.id);
+      },
     });
     // setup routes
     Spine.Route.setup();
@@ -98,6 +104,38 @@ var App = Spine.Controller.sub({
         collectionName : collection
       };
       $.get('/partials/collection.html', function(template) {
+        var html = $.mustache(template, json);
+        $('#content').append(html);
+      });
+    });
+  },
+
+  // retrieve single collection
+  retrieveItem: function(db_name, collection, id) {
+    var self = this;
+    self.clear();
+    $.get('/api/database/' + db_name + '/collection/' + collection + '/' + id, function(data) {
+      var json = {
+        id       : id,
+        item     : data,
+        collectionName : collection,
+        generateRow : function() {
+          var html = '';
+          var props = this;
+          for (key in props) {
+            html += '<div class="holder">';
+            html += '<div class="key left">';
+            html += key
+            html += '</div>'
+            html += '<div class="prop right">';
+            html += props[key];
+            html += '</div>';
+            html += '</div>';
+          };
+          return html;
+        }
+      }
+      $.get('/partials/item.html', function(template) {
         var html = $.mustache(template, json);
         $('#content').append(html);
       });
