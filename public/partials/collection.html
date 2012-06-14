@@ -1,0 +1,11 @@
+
+<div id="collection" class="main">
+  <h2>{{ collectionName }} ({{ howMany }})</h2>
+  <ul>
+    {{#collection}}
+      <li>
+        <a href="{{_id}}">{{_id}}</a>
+      </li>
+    {{/collection}}
+  </ul>
+</div>
