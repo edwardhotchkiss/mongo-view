@@ -162,6 +162,7 @@ $(document).ready(function() {
     zIndex: 99,
     opacity: 1.0,
     display: 'none',
+    fontSize: '13px',
     fontFamily: 'Helvetica',
     letterSpacing: '-1px',
     position: 'absolute',
@@ -169,9 +170,9 @@ $(document).ready(function() {
 
   // setup ajax
   $(document).ajaxStart(function() {
-    $('#indicator').fadeIn(500);
+    $('#indicator').fadeIn(750);
   }).ajaxStop(function() {
-    $('#indicator').fadeOut(500);
+    $('#indicator').fadeOut(750);
   }).ajaxError(function(e, jqxhr, settings, message) {
     var suppressErrorAlert = true;
     if (jqxhr.status === 599) {
@@ -179,7 +180,7 @@ $(document).ready(function() {
       return suppressErrorAlert;
     } else {
       window.location = '/';
-      throw new Error('Unknown Error!');
+      return suppressErrorAlert;
     };
   });
 
