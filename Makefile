@@ -13,6 +13,7 @@ js:
 JS_FILES = \
 	${JS_SRC_DIR}vendor/jquery-1.7.2.min.js\
 	${JS_SRC_DIR}vendor/jquery.mustache.js\
+	${JS_SRC_DIR}vendor/notify.jquery.js\
 	${JS_SRC_DIR}vendor/spine/spine.js\
 	${JS_SRC_DIR}vendor/spine/route.js\
 	${JS_SRC_DIR}vendor/spine/ajax.js\

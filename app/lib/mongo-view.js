@@ -56,6 +56,7 @@ app.get('/js/app.min.js', function(request, response, next) {
   var vendorDependencies = [
     __jsdirname + '/vendor/jquery-1.7.2.min.js',
     __jsdirname + '/vendor/jquery.mustache.js',
+    __jsdirname + '/vendor/notify.jquery.js',
     __jsdirname + '/vendor/spine/spine.js',
     __jsdirname + '/vendor/spine/route.js',
     __jsdirname + '/vendor/spine/ajax.js',
