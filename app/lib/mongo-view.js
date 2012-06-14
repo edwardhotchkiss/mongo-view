@@ -11,6 +11,7 @@ var db
   , express = require('express')
   , querystring = require('querystring')
   , exec = require('child_process').exec
+  , RedisStore = require('connect-redis')(express)
   , app = exports.app = express.createServer()
   , SECRET = process.env.SECRET || 'DONT/TAZE/ME/BRO!'
   , MONGO_DB = process.env.MONGO_DB || 'mongodb://localhost/dash';
@@ -38,8 +39,7 @@ app.configure(function() {
   app.use(express.session({
     secret : SECRET,
     maxAge : new Date(Date.now() + 3600000),
-    /*store : new RedisStore({ host : nconf.get('redis:host'), pass : 
-    nconf.get('redis:pass'), port : nconf.get('redis:port') })*/
+    store : new RedisStore({ host : '127.0.0.1', port : 6379 })
   }));
   app.use(express.logger('tiny'));
   app.use(express.static(__dirname + '/../../public'));
