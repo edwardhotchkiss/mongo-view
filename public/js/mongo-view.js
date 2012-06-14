@@ -145,9 +145,44 @@ var App = Spine.Controller.sub({
 });
 
 $(document).ready(function() {
+  
+  // initialize app
   var app = new App({
     start : new Date().getTime()
   });
+
+  // setup ajax indicator text
+  $('body').append($('<div id="indicator"></div>'));
+  $('#indicator').html('<h1>Loading...</h1>');
+  $('#indicator').css({
+    bottom: '150px',
+    left: '20px',
+    width: '200px',
+    height: '50px',
+    zIndex: 99,
+    opacity: 1.0,
+    display: 'none',
+    fontFamily: 'Helvetica',
+    letterSpacing: '-1px',
+    position: 'absolute',
+  });
+
+  // setup ajax
+  $(document).ajaxStart(function() {
+    $('#indicator').fadeIn(500);
+  }).ajaxStop(function() {
+    $('#indicator').fadeOut(500);
+  }).ajaxError(function(e, jqxhr, settings, message) {
+    var suppressErrorAlert = true;
+    if (jqxhr.status === 599) {
+      window.location = '/';
+      return suppressErrorAlert;
+    } else {
+      window.location = '/';
+      throw new Error('Unknown Error!');
+    };
+  });
+
 });
 
 /* EOF */

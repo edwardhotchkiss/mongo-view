@@ -32,12 +32,17 @@ var mongo_util = require('./mongo-util');
  **/
 
 app.configure(function() {
-  app.use(express.static(path.normalize(__dirname + '/../../public')));
   app.use(express.bodyParser());
   app.use(express.cookieParser());
+  app.use(express.methodOverride());
   app.use(express.session({
-    secret:SECRET
+    secret : SECRET,
+    maxAge : new Date(Date.now() + 3600000),
+    /*store : new RedisStore({ host : nconf.get('redis:host'), pass : 
+    nconf.get('redis:pass'), port : nconf.get('redis:port') })*/
   }));
+  app.use(express.logger('tiny'));
+  app.use(express.static(__dirname + '/../../public'));
 });
 
 // serve javascript
