@@ -136,23 +136,23 @@ app.get('/api/database/:database', checkConnected, function(_request, _response)
 });
 
 // display collection item
-app.get('/api/database/:database/collection/:collection', checkConnected, function(request, response) {
-  mongo_util.find(db, request.params.collection, {}, function(error, collection) {
+app.get('/api/database/:database/collection/:collection', checkConnected, function(_request, _response) {
+  mongo_util.find(db, _request.params.collection, {}, function(error, collection) {
     if (error) {
-      response.send(error, 500);
+      _response.send(error, 500);
     } else {
-      response.send(collection);
+      _response.send(collection);
     }
   });
 });
 
 // display individual collection item
-app.get('/api/database/:database/collection/:collection/:id', checkConnected, function(request, response) {
-  mongo_util.findItem(db, request.params.collection, request.params.id, {}, function(error, item) {
+app.get('/api/database/:database/collection/:collection/:id', checkConnected, function(_request, _response) {
+  mongo_util.findItem(db, _request.params.collection, _request.params.id, {}, function(error, item) {
     if (error) {
-      response.send(error, 500);
+      _response.send(error, 500);
     } else {
-      response.send(item);
+      _response.send(item);
     }
   });
 });
@@ -161,76 +161,48 @@ app.get('/api/database/:database/collection/:collection/:id', checkConnected, fu
  * REST
  **/
 
-// GET
-/*app.get('/api/database/:database/collections/:collection/all', checkConnected, function(request, response) {
-  mongodb.find(mongoose, request.params.collection, {}, function(error, collection) {
-    if (error) {
-      response.send(error, 500);
-    } else {
-      response.send(collection);
-    };
-  });
-});*/
-
 // PUT
-/*app.put('/api/database/:database/collections/:collection/create', checkConnected, function(request, response) {
-  mongodb.create(mongoose, request.params['collection'], request.body, function(error, doc) {
+app.put('/api/database/:database/collections/:collection/create', checkConnected, function(_request, _response) {
+  mongo_util.create(db, _request.params['collection'], _request.body, function(error, doc) {
     if (error) {
       response.send(error, 500);
     } else {
       response.send(doc);
     }
   });
-});*/
-
-/*app.get('/api/database/:database/collections/:collection/find/:params', function(request, response) {
-  var params = querystring.parse(request.params['params']);
-  mongodb.find(mongoose, request.params.collection, params, function(error, collection) {
-    if (error) {
-      response.send(error, 500);
-    } else {
-      response.send(collection);
-    };
-  });
-});*/
+});
 
 // POST
-/*app.post('/api/database/:database/collections/:collection/update', checkConnected, function(request, response) {
-  var params = querystring.parse(request.params['params']);
-  if ('_id' in params) {
-    params['_id'] = mongoose.mongo.BSONPure.ObjectID.fromString(params['_id']);
-  };
-  mongodb.update(mongoose, request.params['collection'], params, function(error, doc) {
+app.post('/api/database/:database/collections/:collection/update', checkConnected, function(_request, _response) {
+  var params = querystring.parse(_request.params['params']);
+  mongo_util.update(db, _request.params['collection'], params, function(error, doc) {
     if (error) {
-      response.send(error, 500);
+      _response.send(error, 500);
     } else {
-      response.send(doc);
+      _response.send(doc);
     }
   });
-});*/
+});
 
 // DELETE
-/*app['delete']('/database/:database/collections/:collection/delete', checkConnected, function(request, response) {
-  var params = querystring.parse(request.params['params']);
-  if ('_id' in params) {
-    params['_id'] = mongoose.mongo.BSONPure.ObjectID.fromString(params['_id']);
-  };
-  mongodb.remove(mongoose, request.params['collection'], params, function(error, result) {
+app['delete']('/database/:database/collections/:collection/delete', checkConnected, function(_request, _response) {
+  var params = querystring.parse(_request.params['params']);
+  mongo_util.remove(db, _request.params['collection'], params, function(error, result) {
     if (error) {
-      response.send(error, 500);
+      _response.send(error, 500);
     } else {
-      response.send(result);
+      _response.send(result);
     }
   });
-});*/
+});
 
 /**
  * @description Catch-All for HTML5
  **/
 
-app.get('/database/*', function(request, response) {
+app.get('/database/*', function(_request, _response) {
   var html = path.normalize(__dirname + '/../../public/index.html');
-  response.sendfile(html);
+  _response.sendfile(html);
 });
 
 /* EOF */

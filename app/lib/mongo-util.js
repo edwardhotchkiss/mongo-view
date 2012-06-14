@@ -86,15 +86,15 @@ exports.getCollectionsWithCount = function(db, callback) {
  * @param {Function} callback
  */
 
-/*exports.create = function(mongoose, collectionName, params, callback) {
-  mongoose.connection.db.collection(collectionName, function(error, collection) {
+exports.create = function(db, collectionName, params, callback) {
+  db.collection(collectionName, function(error, collection) {
     if (error) {
       callback(error);
     } else {
       collection.insert(params, callback);
     };
   });
-};*/
+};
 
 /**
  * @method update
@@ -102,18 +102,18 @@ exports.getCollectionsWithCount = function(db, callback) {
  * @param {Function} callback
  **/
 
-/*exports.update = function(mongoose, collectionName, params, callback) {
+exports.update = function(db, collectionName, params, callback) {
   if ('_id' in params) {
-    params['_id'] = mongoose.mongo.BSONPure.ObjectID.fromString(params['_id']);
+    params['_id'] = ObjectIdfromString(params['_id']);
   };
-  mongoose.connection.db.collection(collectionName, function(error, collection) {
+  db.collection(collectionName, function(error, collection) {
     if (error) {
       callback(error);
     } else {
       collection.findAndUpdate(params, callback);
     };
   });
-};*/
+};
 
 /**
  * @method remove
@@ -121,17 +121,17 @@ exports.getCollectionsWithCount = function(db, callback) {
  * @param {Function} callback
  */
 
-/*exports.remove = function(mongoose, collectionName, params, callback) {
+exports.remove = function(db, collectionName, params, callback) {
   if ('_id' in params) {
-    params['_id'] = mongoose.mongo.BSONPure.ObjectID.fromString(params['_id']);
+    params['_id'] = ObjectIdfromString(params['_id']);
   };
-  mongoose.connection.db.collection(collectionName, function(error, collection) {
+  db.collection(collectionName, function(error, collection) {
     if (error) {
       callback(error);
     } else {
       collection.remove(params, callback);
     };
   });
-};*/
+};
 
 /* EOF */
