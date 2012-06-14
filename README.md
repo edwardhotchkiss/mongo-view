@@ -13,13 +13,13 @@
 $ [sudo] npm install mongo-view -g
 ```
 
-## Redis -> Sessions
+## Setup (Redis)
 
 ```
 $ redis-server
 ```
 
-## From the CLI (http://localhost:8000/)
+## Running Mongo-View (http://localhost:8000/)
 
 ```bash
 $ mongoview run --port 8000
