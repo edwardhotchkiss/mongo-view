@@ -9,7 +9,6 @@ CSS_DIR = public/css/
 LESS_DIR = public/less/
 
 # list of js files to merge
-js:
 JS_FILES = \
 	${JS_SRC_DIR}vendor/jquery-1.7.2.min.js\
 	${JS_SRC_DIR}vendor/jquery.mustache.js\
@@ -25,13 +24,17 @@ JS_FILES = \
 	
 # merge js files & minify
 js:
-	cat ${JS_FILES} > ${JS_DIR}main.js
-	uglifyjs -o ${JS_DIR}app.min.js --no-mangle --no-squeeze ${JS_DIR}main.js
-	rm ${JS_DIR}main.js
+	cat ${JS_FILES} > ${JS_SRC_DIR}app.js
+	uglifyjs -o ${JS_SRC_DIR}app.min.js --no-mangle --no-squeeze ${JS_SRC_DIR}app.js
+	rm ${JS_SRC_DIR}app.js
 
 # minify css
 css:
 	lessc ${LESS_DIR}main.less ${CSS_DIR}app.min.css -compress
+
+assets: js css
+
+all: js css test
 
 # vows
 test: vows test/*.test.js --spec
