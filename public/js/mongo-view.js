@@ -17,10 +17,10 @@ var App = Spine.Controller.sub({
       '/': function() {
         self.setupConnect()
       },
-      '/disconnect': function() {
+      '/database/disconnect': function() {
         self.disconnect();
       },
-      '/disconnect/': function() {
+      '/database/disconnect/': function() {
         self.disconnect();
       },
       '/database/:database': function(params) {
@@ -107,8 +107,20 @@ var App = Spine.Controller.sub({
       var json = {
         collections : data,
         howMany     : data.length - 1,
-        linker      : function() { 
-          return '/database/' + db_name + '/collection/' + this.name + '/';
+        linker      : function() {
+          if (this.count === undefined) {
+            return;
+          };
+          var HTML = '';
+          // link
+          var navToLink = '/database/' + db_name + '/collection/' + this.name + '/';
+          // build HTML
+          HTML += '<a href="javascript:void(0)" ';
+          HTML += 'onclick="$(this).navTo(\'' + navToLink + '\')">';
+          HTML += this.name + '</a><span>(' + this.count + ')</span>';
+          console.log(HTML);
+          return HTML; 
+          
         }
       };
       $.get('/partials/collections.html', function(template) {
@@ -154,12 +166,12 @@ var App = Spine.Controller.sub({
           var props = this;
           for (key in props) {
             html += '<div class="holder">';
-            html += '<div class="key left">';
+            html += '<div class="key left"><p>';
             html += key
-            html += '</div>'
-            html += '<div class="prop right">';
+            html += '</p></div>'
+            html += '<div class="prop left"><p>';
             html += props[key];
-            html += '</div>';
+            html += '</p></div>';
             html += '</div>';
           };
           return html;

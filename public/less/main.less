@@ -26,6 +26,12 @@ a:hover {
   border-bottom: 1px solid @linkColor;
 }
 
+h2 {
+  font-weight: 600;
+  font-size: 13px;
+  margin: 10px 0 10px 0;
+}
+
 blockquote {
   font-style: italic;
 }
@@ -36,6 +42,10 @@ code {
   color: #000;
   display: inline;
   padding: 2px 5px;
+}
+
+.holder {
+  .clearfix();  
 }
 
 /* github */
@@ -59,13 +69,43 @@ code {
   padding-top: 40px;
 }
 
-#connect {
+#connection-string {
+  margin-right: 5px;  
+}
+
+.main {
+  @shadow: 0 1px 6px #bbb;
+  .border-radius(0);
+  .box-shadow(@shadow);
   margin: 0 auto 0 auto;
   position: relative;
-  width: 400px;
+  width: 405px;
   margin-top: 120px;
   background-color: @white;
-  padding: 15px 15px 15px 15px;
+  padding: 15px;
+}
+
+#collections, #collection, #item {
+  padding: 15px 15px 25px 15px;
+}
+
+#collections ul li span {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+#item .key, #item prop {
+  margin: 2px 0 2px 0;  
+}
+
+#item .key {
+  font-weight: bold;
+  width: 200px;
+}
+
+#item .prop p {
+  text-align: left;
+  width: 200px;
 }
 
 /* EOF */

@@ -1,13 +1,11 @@
 
 <div id="collections" class="main">
   <h2>Collections: ({{howMany}})</h2>
-    <ul>
+  <ul>
     {{#collections}}
       <li>
-        <a href="javascript:void(0)" onclick="$(this).navTo('{{linker}}')">
-          {{name}}<span>{{count}}</span>
-        </a>
+        {{&linker}}
       </li>
-    </ul>
-  {{/collections}}
+    {{/collections}}
+  </ul>
 </div>
