@@ -5,7 +5,21 @@
 }
 
 body {
-  background: url(../images/bg.png) 0 0 repeat;  
+  background: url(../images/bg.png) 0 0 repeat; 
+  color: #333;
+  font-family: 'Lucida Grande', verdana, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+a {
+  border-bottom: 1px solid #bbb;
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom: 1px solid #000;
 }
 
 /* github */
@@ -20,6 +34,152 @@ body {
 
 #github a {
   border: none;
+}
+
+#container {
+  margin: 0 auto 0 auto;
+  position: relative;
+  width: 900px;
+  padding-top: 40px;
+}
+
+#header {
+  background-color: #fafafa;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+}
+
+#header ul {
+  list-style: none;
+}
+
+#header ul li {
+  color: #000;
+  padding: 5px 0 8px 20px;
+  line-height: 2.0;
+  text-align: left;
+}
+
+#header ul li.title a {
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  margin-right: 15px;
+}
+
+#header ul li {
+  position: relative;
+  width: auto;
+  float: left;
+  margin-right: 3px;
+}
+
+.entrance {
+  width: 900px;
+}
+
+.entrance h1 {
+  font-size: 24px;
+  text-align: left;
+}
+
+.entrance-item {
+  position: relative;
+  width: 700px;
+  margin: 0 auto 0 auto;
+  margin-bottom: 30px;
+}
+
+.entrance-item h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: left;
+}
+
+.header-year {
+  margin: 20px 0 20px 0
+}
+
+.entrance-item ul, .entrance-item p {
+  margin-top: 10px;  
+}
+
+.entrance-item ul li {
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.post {
+  width: 800px;
+}
+
+span.strong, strong {
+  font-weight: bold;
+}
+
+span.italic {
+  font-style: italic;
+}
+
+span.underline {
+  border-bottom: 1px solid #bbb;
+}
+
+.post-meta {
+  clear: both;
+  width: 180px;
+  left: 0;
+  position: absolute;
+}
+
+.post-meta p {
+  font-size: 11px;
+  text-align: right;
+  color: #000;
+  font-weight: bold;
+}
+
+.post-content, .post-tags {
+  margin-left: 200px;
+  width: 600px;
+}
+
+.post-content ol, .post-content ul {
+  margin-bottom: 15px;
+}
+
+.post-content ol li, .post-content ul li {
+  margin: 0 0 10px 15px;
+}
+
+.post-content h4 {
+  padding-bottom: 20px;
+}
+
+.post-tags {
+  border-top: 1px solid #aaa;
+  padding-top: 15px; 
+}
+
+.post-tags a {
+  margin: 0 1px 0 3px;
+}
+
+.post-content h3 {
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 15px;  
+}
+
+blockquote {
+  font-style: italic;
+}
+
+code {
+  background: #fef8c4;
+  border: 1px solid #d8d566;
+  color: #000;
+  display: inline;
+  padding: 2px 5px;
 }
 
 /* EOF */

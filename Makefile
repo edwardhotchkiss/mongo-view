@@ -30,7 +30,7 @@ js:
 
 # minify css
 css:
-	lessc ${LESS_DIR}main.less ${CSS_DIR}app.min.css -compress
+	lessc ${LESS_DIR}index.less ${CSS_DIR}app.min.css -compress
 
 assets: js css
 
