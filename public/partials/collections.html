@@ -4,7 +4,7 @@
     <ul>
     {{#collections}}
       <li>
-        <a href="{{linker}}">
+        <a href="javascript:void(0)" onclick="$(this).navTo('{{linker}}')">
           {{name}}<span>{{count}}</span>
         </a>
       </li>
