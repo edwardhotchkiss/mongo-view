@@ -34,6 +34,11 @@ var mongo_util = require('./mongo-util');
 
 app.configure('development', function() {
   console.log('> mongo-view configuring for DEVELOPMENT'.yellow);
+  // prevent public from being hit
+  /*var cssFile = __dirname + '/../../public/css/app.min.css';
+  var jsFile = __dirname + '/../../public/js/app.min.js';
+  fs.unlinkSync(cssFile);
+  fs.unlinkSync(jsFile);*/
   app.use(express.bodyParser());
   app.use(express.cookieParser());
   app.use(express.methodOverride());
