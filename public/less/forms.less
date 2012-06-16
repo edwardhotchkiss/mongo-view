@@ -1,0 +1,37 @@
+
+input, select, textarea, textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+}
+
+input[type='text'], input[type='password'], textarea, select {
+  .border-radius(4px);
+  .box-shadow(0 1px 2px rgba(0, 0, 0, 0.12) inset);
+  background: #efefef;
+  border: 1px solid #ccc;
+  color: #555;
+  padding: 8px 12px 8px 12px;
+  width: 286px;
+  margin: 6px 0 6px 0;
+  .transition(all 0.3s ease-in-out 0s);
+}
+
+input[type='text']:hover, input[type='password']:hover, textarea:hover, select:hover {
+  background-color: #ddd;
+}
+
+textarea {
+  font-family: @defaultFont;
+  font-size: @defaultFontSize;
+}
+
+label.error {
+  color: #ff0000;
+  font-size: 11px;
+  position: relative;
+  top: -2px;
+}
+
+input.error, select.error, textarea.error, textarea.error {
+}
