@@ -34,11 +34,6 @@ var mongo_util = require('./mongo-util');
 
 app.configure('development', function() {
   console.log('> mongo-view configuring for DEVELOPMENT'.yellow);
-  // prevent public from being hit
-  /*var cssFile = __dirname + '/../../public/css/app.min.css';
-  var jsFile = __dirname + '/../../public/js/app.min.js';
-  fs.unlinkSync(cssFile);
-  fs.unlinkSync(jsFile);*/
   app.use(express.bodyParser());
   app.use(express.cookieParser());
   app.use(express.methodOverride());
@@ -65,7 +60,7 @@ app.configure('production', function() {
 });
 
 // serve javascript
-app.get('/js/app.min.js', function(request, response, next) {
+/*app.get('/js/app.min.js', function(request, response, next) {
   if (process.env.NODE_ENV == 'production') {
     next();
   } else {
@@ -126,7 +121,7 @@ app.get('/css/app.min.css', function(request, response, next) {
       };
     });
   };
-});
+});*/
 
 // connect to mongodb
 app.get('/api/connect', function(_request, _response) {
