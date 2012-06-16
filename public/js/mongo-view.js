@@ -42,6 +42,10 @@ var App = Spine.Controller.sub({
     Spine.Route.setup({
       history: true
     });
+    // navigate via spine
+    $.fn.navTo = function(path) {
+      self.navigate(path);
+    }
   },
 
   // clear content
@@ -67,6 +71,7 @@ var App = Spine.Controller.sub({
   // connect to mongo and initialize session
   connect: function(mongoString) {
     var self = this;
+    $('#indicator h1').text('connecting to database...');
     $.get('/api/connect/', $('#connection-form').serialize(), function(data) {
       var db_name = data['db_name'];
       self.db_name = db_name;
@@ -78,6 +83,7 @@ var App = Spine.Controller.sub({
   retrieveCollections: function(db_name) {
     var self = this;
     self.clear();
+    $('#indicator h1').text('retrieving collections for ' + db_name);
     $.get('/api/database/' + db_name, function(data) {
       var json = {
         collections : data,
@@ -97,11 +103,15 @@ var App = Spine.Controller.sub({
   retrieveCollection: function(db_name, collection) {
     var self = this;
     self.clear();
+    $('#indicator h1').text('retrieving collection: ' + collection);
     $.get('/api/database/' + db_name + '/collection/' + collection, function(data) {
       var json = {
         howMany        : data.length,
         collection     : data,
-        collectionName : collection
+        collectionName : collection,
+        linker      : function() { 
+          return '/database/' + db_name + '/collection/' + collection + '/' + this._id;
+        }
       };
       $.get('/partials/collection.html', function(template) {
         var html = $.mustache(template, json);
@@ -114,6 +124,7 @@ var App = Spine.Controller.sub({
   retrieveItem: function(db_name, collection, id) {
     var self = this;
     self.clear();
+    $('#indicator h1').text('retrieving item: ' + id);
     $.get('/api/database/' + db_name + '/collection/' + collection + '/' + id, function(data) {
       var json = {
         id       : id,
@@ -145,7 +156,7 @@ var App = Spine.Controller.sub({
 });
 
 $(document).ready(function() {
-  
+
   // initialize app
   var app = new App({
     start : new Date().getTime()
@@ -153,20 +164,7 @@ $(document).ready(function() {
 
   // setup ajax indicator text
   $('body').append($('<div id="indicator"></div>'));
-  $('#indicator').html('<h1>Loading...</h1>');
-  $('#indicator').css({
-    bottom: '150px',
-    left: '20px',
-    width: '200px',
-    height: '50px',
-    zIndex: 99,
-    opacity: 1.0,
-    display: 'none',
-    fontSize: '13px',
-    fontFamily: 'Helvetica',
-    letterSpacing: '-1px',
-    position: 'absolute',
-  });
+  $('#indicator').append('<h1></h1>');
 
   // setup ajax
   $(document).ajaxStart(function() {
