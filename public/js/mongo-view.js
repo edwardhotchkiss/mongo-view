@@ -17,6 +17,12 @@ var App = Spine.Controller.sub({
       '/': function() {
         self.setupConnect()
       },
+      '/disconnect': function() {
+        self.disconnect();
+      },
+      '/disconnect/': function() {
+        self.disconnect();
+      },
       '/database/:database': function(params) {
         self.retrieveCollections(params.database)
       },
@@ -51,6 +57,19 @@ var App = Spine.Controller.sub({
   // clear content
   clear: function() {
     $('#content').html('');
+  },
+
+  // disconnect method
+  disconnect: function() {
+    var self = this;
+    self.db_name = null;
+    self.collection = null;
+    self.item = null;
+    $.get('/api/disconnect/', function(data) {
+      if (data.message === 'disconnected') {
+        self.navigate('/');
+      };
+    });
   },
 
   // render connect form partial

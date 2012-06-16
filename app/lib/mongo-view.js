@@ -149,6 +149,19 @@ app.get('/api/connect', function(_request, _response) {
   });
 });
 
+// disconnect from mongodb
+app.get('/api/disconnect', function(_request, _response) {
+  mongo_util.disconnect(db, function(_error) {
+    if (_error) {
+      _response.send(_error, 500);
+    } else {
+      _request.session.destroy(function(){
+        _response.send({ message : 'disconnected '});
+      });
+    }
+  });
+});
+
 // get database collections with collection counts
 app.get('/api/database/:database', checkConnected, function(_request, _response) {
   mongo_util.getCollectionsWithCount(db, function(_error, _collections) {

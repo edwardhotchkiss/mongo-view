@@ -15,6 +15,16 @@ function ObjectIdfromString(id) {
 };
 
 /**
+ * @method disconnect
+ * @description disconnect from mongodb
+ **/
+
+exports.disconnect = function(db, callback) {
+  db.close();
+  callback(null);
+};
+
+/**
  * @method find
  * @public
  * collection.find
