@@ -1,6 +1,14 @@
 <div id="item" class="main">
   <h2>{{collectionName}} - {{id}}</h2>
   <ul>
+    <div id="item-header" class="holder">
+      <div class="key left">
+        <p>Key</p>
+      </div>
+      <div class="prop left">
+        <p>Value</p>
+      </div>
+    </div>
     {{#item}}
       {{&generateRow}}
     {{/item}}

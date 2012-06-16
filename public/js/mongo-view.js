@@ -66,7 +66,7 @@ var App = Spine.Controller.sub({
     self.collection = null;
     self.item = null;
     $.get('/api/disconnect/', function(data) {
-      if (data.message === 'disconnected') {
+      if (data['message'] === 'disconnected') {
         self.navigate('/');
       };
     });
@@ -76,7 +76,7 @@ var App = Spine.Controller.sub({
   setupConnect: function() {
     var self = this;
     self.clear();
-    var json = { MONGO_DB : 'mongodb://localhost/dash' };
+    var json = { MONGO_DB : 'mongodb://localhost/test' };
     $.get('/partials/connect.html', function(template) {
       var html = $.mustache(template, json);
       $('#content').append(html);
@@ -104,9 +104,10 @@ var App = Spine.Controller.sub({
     self.clear();
     $('#indicator h1').text('retrieving collections for ' + db_name);
     $.get('/api/database/' + db_name, function(data) {
+      var howMany = data.length - 1;
       var json = {
         collections : data,
-        howMany     : data.length - 1,
+        howMany     : (howMany > 0) ? howMany : 'none',
         linker      : function() {
           if (this.count === undefined) {
             return;
@@ -118,9 +119,7 @@ var App = Spine.Controller.sub({
           HTML += '<a href="javascript:void(0)" ';
           HTML += 'onclick="$(this).navTo(\'' + navToLink + '\')">';
           HTML += this.name + '</a><span>(' + this.count + ')</span>';
-          console.log(HTML);
-          return HTML; 
-          
+          return HTML;           
         }
       };
       $.get('/partials/collections.html', function(template) {
@@ -137,7 +136,7 @@ var App = Spine.Controller.sub({
     $('#indicator h1').text('retrieving collection: ' + collection);
     $.get('/api/database/' + db_name + '/collection/' + collection, function(data) {
       var json = {
-        howMany        : data.length,
+        howMany        : (data.length > 0) ? data.length : 'none',
         collection     : data,
         collectionName : collection,
         linker      : function() { 
@@ -162,19 +161,34 @@ var App = Spine.Controller.sub({
         item     : data,
         collectionName : collection,
         generateRow : function() {
-          var html = '';
+          var HTML = '';
           var props = this;
+          var orderedProps = {};
+          // push _id to the top
+          orderedProps['_id'] = props['_id'];
           for (key in props) {
-            html += '<div class="holder">';
-            html += '<div class="key left"><p>';
-            html += key
-            html += '</p></div>'
-            html += '<div class="prop left"><p>';
-            html += props[key];
-            html += '</p></div>';
-            html += '</div>';
+            orderedProps[key] = props[key];
           };
-          return html;
+          for (key in orderedProps) {
+            HTML += '<div class="holder">';
+            HTML += '<div class="key left"><p>';
+            HTML += key;
+            HTML += '</p></div>'
+            HTML += '<div class="prop left"><p>';
+            if (typeof(props[key]) === 'number') {
+              HTML += '<span class="identifier-number">' + props[key] + '</span>';
+            } else if (typeof(props[key]) === 'string') {
+              if (key === '_id') {
+                HTML += '<span class="identifier-objectid">$' + props[key] + '</span>';
+              } else {
+                HTML += '<span class="identifier-string">"' + props[key] + '"</span>';
+              };
+            };
+            //html += (props[key] === '_id') ? '$' + props[key] : props[key];
+            HTML += '</p></div>';
+            HTML += '</div>';
+          };
+          return HTML;
         }
       }
       $.get('/partials/item.html', function(template) {

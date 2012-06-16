@@ -17,13 +17,6 @@ var db
   , sessionSecret = 'DONT/TAZE/ME/BRO!';
 
 /**
- * @mongodb connection string.
- * @description use session in code blocks, otherwise test
- **/
-
-var MONGO_DB = 'mongodb://localhost/test';
-
-/**
  * @middleware checkConnected
  **/
 
@@ -156,7 +149,7 @@ app.get('/api/disconnect', function(_request, _response) {
       _response.send(_error, 500);
     } else {
       _request.session.destroy(function(){
-        _response.send({ message : 'disconnected '});
+        _response.send({ message : 'disconnected' });
       });
     }
   });
