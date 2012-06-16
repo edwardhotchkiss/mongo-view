@@ -1,4 +1,37 @@
 
+0.3.0 / 2012-06-16 
+==================
+
+  * [dist] version for initial release
+  * [mongodb] use /test
+  * [major] prep for release
+  * [minor] fixed disconnect bug, designc changes
+  * [mongodb] disconnect method
+  * [style] most new UI implemented
+  * [partials] minor styling changes
+  * [spine] use navTo fn to maintain state
+  * [ui, style] begin implementing new
+  * [NODE_ENV] assets
+  * [Makefile] for asset bundling
+  * [css] placeholder .gitignore
+  * [docs] improved info
+  * [REST] updated for mongodb vs. mongoose
+  * Merge branch 'develop'
+  * [major] final before new skin
+  * [sessions] redis
+  * [connection] bullet proof routing with connection checking
+  * [Makefile] added for production deployments
+  * [debug] dont log items
+  * [mongodb] simply use mongodb-native, vs piggybacking overhead on mongoose
+  * [major] connect, list collections, view collection, view individual item
+  * [spine] .clear
+  * [rewrite] use spine, mustache, and dev asset builder
+  * [templating] remove jq.tmpl, use handlebars
+  * [legacy] remove old controllers
+  * [spine] init
+  * [assets] rm
+  * [assets] package .js
+
 0.2.1 / 2012-06-10 
 ==================
 
