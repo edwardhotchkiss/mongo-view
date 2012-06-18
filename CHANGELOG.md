@@ -1,4 +1,11 @@
 
+0.3.1 / 2012-06-18 
+==================
+
+  * [mongodb] breadcrumbs in header
+  * [controllers] assets
+  * [screens] added 0.3.0 screen
+
 0.3.0 / 2012-06-16 
 ==================
 
