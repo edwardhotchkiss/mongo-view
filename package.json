@@ -6,7 +6,7 @@
     { "name": "Max Presman", "email" : "max@presman.ca" }
   ],
   "description":"Node.JS MongoDB web-based admin/viewer tool",
-  "version":"0.3.1",
+  "version":"0.3.2",
   "repository":{
     "type":"git",
     "url":"git://github.com/edwardhotchkiss/mongodb-viewer.git"
