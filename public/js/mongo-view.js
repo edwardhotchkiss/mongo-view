@@ -5,7 +5,7 @@
 
 var App = Spine.Controller.sub({
 
-  db_name: null,
+  db: null,
   collection: null,
   item: null,
 
@@ -62,7 +62,7 @@ var App = Spine.Controller.sub({
   // disconnect method
   disconnect: function() {
     var self = this;
-    self.db_name = null;
+    self.db = null;
     self.collection = null;
     self.item = null;
     $.get('/api/disconnect/', function(data) {
@@ -92,18 +92,21 @@ var App = Spine.Controller.sub({
     var self = this;
     $('#indicator h1').text('connecting to database...');
     $.get('/api/connect/', $('#connection-form').serialize(), function(data) {
-      var db_name = data['db_name'];
-      self.db_name = db_name;
-      self.navigate('/database/' + db_name + '/');
+      var db = data['db_name'];
+      self.db = db;
+      // mongodb breadcrumbs
+      mongodbBreadcrumbs(self);
+      var nextURL = '/database/' + db + '/';
+      self.navigate(nextURL);
     });
   },
 
   // retrieve collections for db
-  retrieveCollections: function(db_name) {
+  retrieveCollections: function(db) {
     var self = this;
     self.clear();
-    $('#indicator h1').text('retrieving collections for ' + db_name);
-    $.get('/api/database/' + db_name, function(data) {
+    $('#indicator h1').text('retrieving collections for ' + db);
+    $.get('/api/database/' + db, function(data) {
       var howMany = data.length - 1;
       var json = {
         collections : data,
@@ -114,7 +117,7 @@ var App = Spine.Controller.sub({
           };
           var HTML = '';
           // link
-          var navToLink = '/database/' + db_name + '/collection/' + this.name + '/';
+          var navToLink = '/database/' + db + '/collection/' + this.name + '/';
           // build HTML
           HTML += '<a href="javascript:void(0)" ';
           HTML += 'onclick="$(this).navTo(\'' + navToLink + '\')">';
@@ -130,17 +133,20 @@ var App = Spine.Controller.sub({
   },
 
   // retrieve single collection
-  retrieveCollection: function(db_name, collection) {
+  retrieveCollection: function(db, collection) {
     var self = this;
+    self.collection = collection;
     self.clear();
+    // mongodb breadcrumbs
+    mongodbBreadcrumbs(self);
     $('#indicator h1').text('retrieving collection: ' + collection);
-    $.get('/api/database/' + db_name + '/collection/' + collection, function(data) {
+    $.get('/api/database/' + db + '/collection/' + collection, function(data) {
       var json = {
         howMany        : (data.length > 0) ? data.length : 'none',
         collection     : data,
         collectionName : collection,
         linker      : function() { 
-          return '/database/' + db_name + '/collection/' + collection + '/' + this._id;
+          return '/database/' + db + '/collection/' + collection + '/' + this._id;
         }
       };
       $.get('/partials/collection.html', function(template) {
@@ -151,11 +157,14 @@ var App = Spine.Controller.sub({
   },
 
   // retrieve single collection
-  retrieveItem: function(db_name, collection, id) {
+  retrieveItem: function(db, collection, id) {
     var self = this;
+    self.item = id;
+    // mongodb breadcrumbs
+    mongodbBreadcrumbs(self);
     self.clear();
     $('#indicator h1').text('retrieving item: ' + id);
-    $.get('/api/database/' + db_name + '/collection/' + collection + '/' + id, function(data) {
+    $.get('/api/database/' + db + '/collection/' + collection + '/' + id, function(data) {
       var json = {
         id       : id,
         item     : data,
@@ -190,7 +199,7 @@ var App = Spine.Controller.sub({
           };
           return HTML;
         }
-      }
+      };
       $.get('/partials/item.html', function(template) {
         var html = $.mustache(template, json);
         $('#content').append(html);
@@ -199,6 +208,48 @@ var App = Spine.Controller.sub({
   }
   
 });
+
+/**
+ * @method mongodbBreadcrumbs
+ * @param spineInstance
+ * @param db
+ * @param collection
+ * @param item
+ **/
+
+function mongodbBreadcrumbs(self) {
+  console.log('mongodbBreadcrumbs!');
+  // current db
+  if (self.db) {
+    var db = self.db;
+    $('#current-db a').text(db);
+    $('#current-db a').click(function() {
+      $('#current-collection').hide(350);
+      $('#current-item').hide(350);
+      self.navigate('/database/' + db + '/');
+    });
+    $('#current-db').fadeIn(350);
+  };
+  // current collection
+  if (self.collection) {
+    var collection = self.collection;
+    $('#current-collection a').text(collection);
+    $('#current-collection a').click(function() {
+      $('#current-item').hide(350);
+      self.navigate('/database/' + db + '/' + collection + '/');
+    });
+    $('#current-collection').fadeIn(350);
+  };
+  // current item
+  if (self.item) {
+    var item = self.item;
+    $('#current-item a').text('$' + item);
+    $('#current-item a').click(function() {
+      self.navigate('/database/' + db + '/' + collection + '/' + item);
+    });
+    $('#current-item').fadeIn(350);
+  };
+};
 
 $(document).ready(function() {
 
