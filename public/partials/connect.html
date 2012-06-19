@@ -1,9 +1,14 @@
+<h2>Database Connection.</h2>
+<hr>
+<p>{ mongo.view } is a lightweight tool for the administration of mongoDB databases.</p>
+<form id="connection-form">
+	<div class="input">
+	  <label class="label" for"conn">Connection String:</label>
+	  <input type="text" id="connection-string" name="connection-string" value="{{ MONGO_DB }}"/>
+	</div>
 
-<div id="connect" class="main">
-  <form id="connection-form">
-    <p>
-      <input type="text" id="connection-string" name="connection-string" value="{{ MONGO_DB }}" />
-      <input type="button" id="connect-btn" value="Connect" />
-    </p>
-  </form>
-</div>
+	<hr><br>
+	<div class="clearfix">
+	  <input type="button" class="button right" id="connect-btn" value="db.connect &raquo;" />
+	</div>
+</form>

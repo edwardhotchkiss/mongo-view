@@ -1,30 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Mongo View</title>
-    <meta name="title" content="Mongo View">
-    <meta name="description" content="NodeJS MongoDB web-based admin/viewer tool">
+<html lang="en"> 
+  <head> 
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="NodeJS MongoDB web-based admin/viewer tool.">
+    <meta name="keywords" content="mongodb, database, db, admin, software">
+    <meta name="author" content="mongoView">
+    <meta name="Copyright" content="Copyright mongoView 2012. All Rights Reserved">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <title>mongoView</title>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/css/app.min.css">
+    <link rel="stylesheet" href="/css/main.css">
   </head>
   <body>
-    <div id="github">
-      <a href="http://github.com/edwardhotchkiss/mongo-view" title="Project on Github">
-        <img src="/images/github-fork-me.png" alt="Project on Github" />
-      </a>
+    <div class="content clearfix">
+      
+      <div class="leftbar">
+        <a href="/" class="title">{ mongo.view }</a>
+        <ul id="nav">
+          <li class="active"><a href="j#">Database Connection</a></li>
+          <li class="disabled"><a href="j#">Select Database</a></li>
+          <li class="disabled"><a href="j#">CRUD Operations</a></li>
+          <li class="disabled"><a href="j#">Database Tools</a></li>
+        </ul>
+        <a class="disconnect" href="javascript:void(0)" onclick="$(this).navTo('/database/disconnect/')">disconnect</a>
+      </div>
+
+      <div class="rightbar">
+        <div id="indicator"></div>
+        <div id="content"> </div>
+      </div>
+
     </div>
-    <div id="header">
-    <ul>
-      <li class="title"><a href="/">Mongo View</a></li>
-      <li id="current-db"><a href="javascript:void(0);"></a></li>
-      <li id="current-collection"><a href="javascript:void(0);"></a></li>
-      <li id="current-item"><a href="javascript:void(0);"></a></li>
-      <li class="right"><a title="Disconnect" href="javascript:void(0)" onclick="$(this).navTo('/database/disconnect/')">disconnect</a></li>
-      <div style="clear:both" />
-    </ul> 
-  </div>
-    <div id="content">
+
+    <div id="launchunit" class="wrapper">
+      <a href="http://launchunit.com"><img src="/images/launchunit.png"></a>
     </div>
+
+      <ul>
+        <li id="current-db"><a href="javascript:void(0);"></a></li>
+        <li id="current-collection"><a href="javascript:void(0);"></a></li>
+        <li id="current-item"><a href="javascript:void(0);"></a></li>
+      </ul> 
+
     <script type="text/javascript" src="/js/app.min.js"></script>
   </body>
 </html>

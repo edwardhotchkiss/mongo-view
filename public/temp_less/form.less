@@ -1,0 +1,115 @@
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+select {
+  display: inline-block;
+  margin: 0;
+  font-size:15px;
+  border:1px dotted @navBorder;
+  width: @textWidth;
+  height: @textHeight;
+  .border-radius(3px);
+  padding:0 7px;
+  outline: none;
+  color: lighten(@linkColor,10%);
+  font-weight: 200;
+  @color: rgb(240,246,248);
+  .gradient(lighten(@color,5%), @color);  
+}
+
+textarea {
+  padding:7px;
+  height: 2 * @textHeight;
+}
+
+select {
+  width: @textWidth + 14px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  outline: 0;
+  background: #fff;
+  @color: rgb(240,246,248);
+  .gradient(@color,lighten(@color,3%))  
+}
+
+input[type='file'] {
+  color: @placeholderText;
+  margin-bottom:16px;
+}
+
+input[type="checkbox"] {
+  display: inline-block; 
+  margin-right:7px;
+}
+
+input[type="radio"] {
+  border:0;
+  margin-right:7px;
+}
+
+.button {
+  display: inline-block;
+  @color: rgb(240,246,248);
+  border:1px dotted @navBorder;
+  .gradient(lighten(@color,5%), darken(@color,5%));  
+  .border-radius(3px);
+  color: @linkColor;
+  padding:0 24px;
+  text-decoration:none;
+  text-shadow:none;
+  height: @textHeight;
+  font-size: 100%; 
+  margin: 0;
+  *vertical-align:middle;
+}
+a.button {
+  line-height: @textHeight;
+}
+
+.button:hover {
+  color:@linkColorHover;
+  text-decoration:none;
+}
+
+.button:active {
+  position:relative;
+  top:1px;
+}
+
+.input .label {
+  font-size:15px;
+  width: @labelWith;
+  display: inline-block;
+  text-align: left;
+  margin-right:30px;
+  font-weight: 300;
+  color: lighten(@linkColor,10%);
+}
+
+.radio, .radio-extended {
+  width:auto;
+  font-size:16px;
+  cursor: pointer;
+  display: inline-block;
+  width:110px;
+}
+
+.checkbox {
+  font-size:15px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.radio-extended {
+  width:auto;
+}
+
+.input {
+  margin:30px auto;
+  .clearfix;
+}

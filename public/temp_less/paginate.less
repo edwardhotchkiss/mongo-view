@@ -1,0 +1,35 @@
+/* Pagination */
+.paginate ul {
+  padding:0;
+  list-style: none;
+}
+
+.paginate li {
+  .gradient(#fff, #efefef);
+  border:1px solid #dcdcdc;
+  float: left;
+  border-right:none;
+}
+
+.paginate li:first-child {
+  .border-radius(3px 0 0 3px);
+}
+
+.paginate li:last-child {
+  .border-radius(0 3px 3px 0);
+  border-right:1px solid #dcdcdc;
+}
+
+.paginate li a {
+  text-transform: uppercase;
+  text-align: center;
+  color:#999;
+  font-size:16px;
+  line-height: @paginateHeight;
+  padding:0 10px;
+}
+
+.paginate .active {
+  color:@linkColor;
+  background:#fff;
+}

@@ -264,10 +264,6 @@ $(document).ready(function() {
     start : new Date().getTime()
   });
 
-  // setup ajax indicator text
-  $('body').append($('<div id="indicator"></div>'));
-  $('#indicator').append('<h1></h1>');
-
   // setup ajax
   $(document).ajaxStart(function() {
     $('#indicator').fadeIn(750);

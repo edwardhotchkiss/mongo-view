@@ -1,6 +1,7 @@
-
-<div id="collection" class="main">
-  <h2>{{ collectionName }} ({{ howMany }})</h2>
+<h2>{{ collectionName }} ({{ howMany }})</h2>
+<hr>
+<p>{ mongo.view } is a lightweight tool for managing mongoDB databases.</p>
+<div>
   <ul>
     {{#collection}}
       <li>
@@ -8,4 +9,10 @@
       </li>
     {{/collection}}
   </ul>
+
+	<hr><br>
+	<div class="clearfix">
+	  <input type="button" class="button right" id="connect-btn" value="db.do something &raquo;" />
+	</div>
+
 </div>
