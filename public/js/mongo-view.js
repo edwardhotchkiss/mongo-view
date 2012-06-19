@@ -93,7 +93,7 @@ var App = Spine.Controller.sub({
     $('#indicator h1').text('connecting to database...');
     $.get('/api/connect/', $('#connection-form').serialize(), function(data) {
       var db = data['db_name'];
-      self.db = db;
+      self.db = db || self.db;
       // mongodb breadcrumbs
       mongodbBreadcrumbs(self);
       var nextURL = '/database/' + db + '/';
@@ -104,6 +104,9 @@ var App = Spine.Controller.sub({
   // retrieve collections for db
   retrieveCollections: function(db) {
     var self = this;
+    self.db = db;
+    // mongodb breadcrumbs
+    mongodbBreadcrumbs(self);
     self.clear();
     $('#indicator h1').text('retrieving collections for ' + db);
     $.get('/api/database/' + db, function(data) {
