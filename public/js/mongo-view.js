@@ -226,6 +226,8 @@ function mongodbBreadcrumbs(self) {
     $('#current-db a').click(function() {
       $('#current-collection').hide(350);
       $('#current-item').hide(350);
+      self.collection = null;
+      self.item = null;
       self.navigate('/database/' + db + '/');
     });
     $('#current-db').fadeIn(350);
@@ -236,6 +238,7 @@ function mongodbBreadcrumbs(self) {
     $('#current-collection a').text(collection);
     $('#current-collection a').click(function() {
       $('#current-item').hide(350);
+      self.item = null;
       self.navigate('/database/' + db + '/' + collection + '/');
     });
     $('#current-collection').fadeIn(350);
