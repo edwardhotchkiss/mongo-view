@@ -1,4 +1,10 @@
 
+0.3.3 / 2012-06-18 
+==================
+
+  * [minor] fix breadcrumb js build
+  * [minor] fix for breadcrumb track backs
+
 0.3.2 / 2012-06-18 
 ==================
 
