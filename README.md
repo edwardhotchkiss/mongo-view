@@ -13,7 +13,7 @@
 $ [sudo] npm install mongo-view -g
 ```
 
-## Setup (Redis)
+## Setup for Production $NODE_ENV - (Redis)
 
 ```
 $ redis-server
