@@ -10,46 +10,41 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
-    <title>{mongo.view}</title>
+    <title>{mongo.view} is a lightweight tool for managing MongoDB databases</title>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/app.min.css">
   </head>
   <body>
-
-    <a id="github" href="http://github.com/edwardhotchkiss/mongo-view" title="Project on Github">
-      <img src="/images/github-fork-me.png" alt="Project on Github" />
-    </a>
-
+    <div id="github">
+      <a href="http://github.com/edwardhotchkiss/mongo-view/" title="Project on Github">
+        <img src="/images/github-fork-me.png" alt="Project on Github" />
+      </a>
+    </div>
     <div class="content clearfix">
-      
       <div class="leftbar">
         <a href="/" class="title">{ mongo.view }</a>
         <ul id="nav">
           <li class="active"><a href="j#">Database Connection</a></li>
-          <li class="disabled"><a href="j#">Select Database</a></li>
-          <li class="disabled"><a href="j#">CRUD Operations</a></li>
           <li class="disabled"><a href="j#">Database Tools</a></li>
         </ul>
         <a class="disconnect" href="javascript:void(0)" onclick="$(this).navTo('/database/disconnect/')">disconnect</a>
       </div>
-
       <div class="rightbar">
+        <div id="mongodb-breadcrumbs">
+          <ul>
+            <li id="current-db"><a href="javascript:void(0);"></a></li>
+            <li id="current-collection"><a href="javascript:void(0);"></a></li>
+            <li id="current-item"><a href="javascript:void(0);"></a></li>
+          </ul>
+        </div> 
         <div id="indicator"></div>
-        <div id="content"> </div>
+        <div id="content">
+        </div>
       </div>
-
     </div>
-
-    <div id="launchunit" class="wrapper">
+    <!--<div id="launchunit" class="wrapper">
       <a href="http://launchunit.com"><img src="/images/launchunit.png"></a>
-    </div>
-
-      <ul>
-        <li id="current-db"><a href="javascript:void(0);"></a></li>
-        <li id="current-collection"><a href="javascript:void(0);"></a></li>
-        <li id="current-item"><a href="javascript:void(0);"></a></li>
-      </ul> 
-
+    </div>--> 
     <script type="text/javascript" src="/js/app.min.js"></script>
   </body>
 </html>
