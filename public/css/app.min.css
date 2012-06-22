@@ -171,6 +171,11 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:normal;
 #nav li.active a{color:#c95750;}
 .disconnect{position:absolute;bottom:10px;left:22px;}
 .rightbar{float:right;width:659px;padding:30px;border-left:1px solid #ccc;background:#fff;-webkit-border-radius:0 4px 4px 0;-moz-border-radius:0 4px 4px 0;border-radius:0 4px 4px 0;-webkit-border-radius:0 4px 4px 0;-moz-border-radius:0 4px 4px 0;border-radius:0 4px 4px 0;position:relative;min-height:260px;}
+#mongodb-breadcrumbs ul{*zoom:1;*zoom:1;}#mongodb-breadcrumbs ul:before,#mongodb-breadcrumbs ul:after{display:table;content:"";}
+#mongodb-breadcrumbs ul:after{clear:both;}
+#mongodb-breadcrumbs ul:before,#mongodb-breadcrumbs ul:after{display:table;content:"";}
+#mongodb-breadcrumbs ul:after{clear:both;}
+#mongodb-breadcrumbs ul li{width:auto;position:relative;float:left;margin-right:10px;}
 #indicator{position:absolute;bottom:20px;}
 #indicator h1:before{content:"\203A ";}
 #indicator h1{color:#c95750;font-weight:100;font-family:Monaco, Courier, MonoSpace;font-size:14px;}
