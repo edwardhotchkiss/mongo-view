@@ -12,7 +12,6 @@ LESS_DIR = public/less/
 JS_FILES = \
 	${JS_SRC_DIR}vendor/jquery-1.7.2.min.js\
 	${JS_SRC_DIR}vendor/jquery.mustache.js\
-	${JS_SRC_DIR}vendor/notify.jquery.js\
 	${JS_SRC_DIR}vendor/spine/spine.js\
 	${JS_SRC_DIR}vendor/spine/route.js\
 	${JS_SRC_DIR}vendor/spine/ajax.js\
@@ -20,7 +19,8 @@ JS_FILES = \
 	${JS_SRC_DIR}vendor/spine/manager.js\
 	${JS_SRC_DIR}vendor/spine/local.js\
 	${JS_SRC_DIR}vendor/spine/relation.js\
-	${JS_SRC_DIR}mongo-view.js
+	${JS_SRC_DIR}launchunit/notify.js\
+	${JS_SRC_DIR}launchunit/mongo-view.js
 	
 # merge js files & minify
 js:
