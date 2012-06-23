@@ -27,16 +27,18 @@
           <li class="active"><a href="javascript:void(0)">Database Connection</a></li>
           <li class="disabled"><a href="javascript:void(0)">Database Tools</a></li>
         </ul>
-        <a class="disconnect" href="javascript:void(0)" onclick="$(this).navTo('/database/disconnect/')">disconnect</a>
       </div>
       <div class="rightbar">
         <div id="mongodb-breadcrumbs">
-          <ul>
+          <ul class="left">
             <li id="current-db"><a href="javascript:void(0);"></a></li>
             <li id="current-db-collections"><a href="javascript:void(0);"></a></li>
             <li id="current-collection"><a href="javascript:void(0);"></a></li>
             <li id="current-collection-items"><a href="javascript:void(0);"></a></li>
             <li id="current-item"><a href="javascript:void(0);"></a></li>
+          </ul>
+          <ul id="disconnect" class="right disabled">
+            <a href="javascript:void(0)" onclick="$(this).navTo('/database/disconnect/')">disconnect</a>
           </ul>
         </div> 
         <div id="indicator"></div>

@@ -78,6 +78,8 @@ var App = Spine.Controller.sub({
   setupConnect: function() {
     var self = this;
     self.clear();
+    // mongodb breadcrumbs
+    mongodbBreadcrumbs(self);
     var json = { MONGO_DB : 'mongodb://localhost/test' };
     $.get('/partials/connect.html', function(template) {
       var html = $.mustache(template, json);
@@ -173,11 +175,12 @@ var App = Spine.Controller.sub({
   retrieveItem: function(db, collection, id) {
     var self = this;
     self.item = id;
-    // mongodb breadcrumbs
-    mongodbBreadcrumbs(self);
     self.clear();
     $('#indicator h1').text('retrieving item: ' + id);
     $.get('/api/database/' + db + '/collection/' + collection + '/' + id, function(data) {
+      // mongodb breadcrumbs
+      mongodbBreadcrumbs(self);
+      // setup JSON for mustache
       var json = {
         id       : id,
         item     : data,

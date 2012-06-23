@@ -1,115 +1,34 @@
-input[type="text"],
-input[type="password"],
-input[type="email"],
-textarea,
-select {
-  display: inline-block;
+
+input, select, textarea, textarea {
+  font-size: 100%;
   margin: 0;
-  font-size:15px;
-  border:1px dotted @navBorder;
-  width: @textWidth;
-  height: @textHeight;
-  .border-radius(3px);
-  padding:0 7px;
-  outline: none;
-  color: lighten(@linkColor,10%);
-  font-weight: 200;
-  @color: rgb(240,246,248);
-  .gradient(lighten(@color,5%), @color);  
+  vertical-align: baseline;
+}
+
+input[type='text'], input[type='password'], textarea, select {
+  .border-radius(4px);
+  .box-shadow(0 1px 2px rgba(0, 0, 0, 0.12) inset);
+  background: #efefef;
+  border: 1px solid #ccc;
+  color: #555;
+  padding: 5px 12px;
+  width: 450px;
+  .transition(all 0.3s ease-in-out 0s);
+}
+
+input[type='text']:hover, input[type='password']:hover, textarea:hover, select:hover {
+  background-color: #ddd;
 }
 
 textarea {
-  padding:7px;
-  height: 2 * @textHeight;
 }
 
-select {
-  width: @textWidth + 14px;
+label.error {
+  color: #ff0000;
+  font-size: 11px;
+  position: relative;
+  top: -2px;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus,
-textarea:focus {
-  outline: 0;
-  background: #fff;
-  @color: rgb(240,246,248);
-  .gradient(@color,lighten(@color,3%))  
-}
-
-input[type='file'] {
-  color: @placeholderText;
-  margin-bottom:16px;
-}
-
-input[type="checkbox"] {
-  display: inline-block; 
-  margin-right:7px;
-}
-
-input[type="radio"] {
-  border:0;
-  margin-right:7px;
-}
-
-.button {
-  display: inline-block;
-  @color: rgb(240,246,248);
-  border:1px dotted @navBorder;
-  .gradient(lighten(@color,5%), darken(@color,5%));  
-  .border-radius(3px);
-  color: @linkColor;
-  padding:0 24px;
-  text-decoration:none;
-  text-shadow:none;
-  height: @textHeight;
-  font-size: 100%; 
-  margin: 0;
-  *vertical-align:middle;
-}
-a.button {
-  line-height: @textHeight;
-}
-
-.button:hover {
-  color:@linkColorHover;
-  text-decoration:none;
-}
-
-.button:active {
-  position:relative;
-  top:1px;
-}
-
-.input .label {
-  font-size:15px;
-  width: @labelWith;
-  display: inline-block;
-  text-align: left;
-  margin-right:30px;
-  font-weight: 300;
-  color: lighten(@linkColor,10%);
-}
-
-.radio, .radio-extended {
-  width:auto;
-  font-size:16px;
-  cursor: pointer;
-  display: inline-block;
-  width:110px;
-}
-
-.checkbox {
-  font-size:15px;
-  font-weight: 300;
-  cursor: pointer;
-}
-
-.radio-extended {
-  width:auto;
-}
-
-.input {
-  margin:30px auto;
-  .clearfix;
+input.error, select.error, textarea.error, textarea.error {
 }

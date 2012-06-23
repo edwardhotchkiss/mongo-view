@@ -17,11 +17,15 @@ body {
   text-shadow: 0 1px rgba(255, 255, 255, 1);
 }
 
+p {
+  color: @pColor;
+}
+
 #github {
   position: absolute;
-  right:0;
-  top:0;
-  .opacity(50);
+  right: 0;
+  top: 0;
+  .opacity(20);
   z-index: 9999
 }
 
@@ -57,7 +61,7 @@ body {
 }
 
 .title {
-  .gradient(lighten(@lightBlue,5%), darken(@lightBlue, 10%));
+  .gradient(lighten(@lightPurple,5%), darken(@lightPurple, 10%));
   padding:0 0 0 20px;
   line-height:50px;
   margin:0;
@@ -81,7 +85,7 @@ body {
 #nav li a {
   display: block;
   padding-left:22px;
-  line-height: 42px;
+  line-height: 50px;
 }
 
 #nav li:last-child {
@@ -159,10 +163,12 @@ body {
   margin-bottom: 12px;
   padding-bottom: 12px;
   border-bottom: 1px solid @hrColor;
+  .clearfix();
 }
 
 #mongodb-breadcrumbs ul {
   .clearfix();
+  position: relative;
 }
 
 #mongodb-breadcrumbs ul li {
@@ -171,6 +177,28 @@ body {
   float: left;
   margin-right: 10px;
   font-weight: bold;
+}
+
+#disconnect {
+  
+}
+
+#connection-items-holder {
+  width: 100%;
+  .clearfix();
+  margin-bottom: 15px;
+}
+
+#connection-items-holder label {
+  position: relative;
+  float: left;
+  width: 150px;
+  padding: 4px 0 0 0;
+}
+
+#connection-items-holder input {
+  position: relative;
+  float: right;
 }
 
 /** 
@@ -185,13 +213,6 @@ a {
 a:hover {
   color: @linkColorHover;
   text-decoration: underline;
-}
-
-p {
-  color: @pColor;
-  line-height: 18px;
-  font-size: 16px;
-  font-weight: 200;
 }
 
 h1, h2, h3, h4 {
