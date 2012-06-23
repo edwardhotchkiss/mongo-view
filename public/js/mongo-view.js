@@ -161,8 +161,6 @@ var App = Spine.Controller.sub({
           return '/database/' + db + '/collection/' + collection + '/' + this._id;
         }
       };
-      // setup for breadcrumbs
-      self.itemCount = howMany;
       // setup JSON for view render
       $.get('/partials/collection.html', function(template) {
         var html = $.mustache(template, json);
@@ -208,7 +206,6 @@ var App = Spine.Controller.sub({
                 HTML += '<span class="identifier-string">"' + props[key] + '"</span>';
               };
             };
-            //html += (props[key] === '_id') ? '$' + props[key] : props[key];
             HTML += '</p></div>';
             HTML += '</div>';
           };
@@ -281,9 +278,9 @@ $(document).ready(function() {
 
   // setup ajax
   $(document).ajaxStart(function() {
-    $('#indicator').fadeIn(750);
+    $('#indicator').fadeIn(1000);
   }).ajaxStop(function() {
-    $('#indicator').fadeOut(750);
+    $('#indicator').fadeOut(1000);
   }).ajaxError(function(e, jqxhr, settings, message) {
     var suppressErrorAlert = true;
     if (jqxhr.status === 599) {

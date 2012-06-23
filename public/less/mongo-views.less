@@ -12,7 +12,11 @@
 }
 
 #collections, #collection, #item {
-  padding: 15px 15px 25px 15px;
+  padding: 0 15px 25px 0px;
+}
+
+#collections ul li {
+  margin-bottom: 3px;
 }
 
 #collections ul li span {
@@ -26,28 +30,33 @@
   padding: 0 0 5px 0;
 }
 
-#item .key, #item prop {
-  margin: 2px 0 2px 0;  
+.key, .prop {
+  margin: 5px 0 5px 0;  
 }
 
-#item .key {
+.key {
   width: 200px;
 }
 
-#item .prop p {
+.key p, .prop p {
   text-align: left;
   width: 200px;
+  margin: 0;
+  line-height: 18px;
+  font-size: 14px;
 }
 
 .identifier-number {
-  color: #8679cc;
+  color: @linkColor;
 }
 
 .identifier-string {
-  color: #362a72; 
+  color: @linkColor
 }
 
 .identifier-objectid {
   font-weight: bold;
-  color: #000;
+  color: @black;
 }
+
+/* EOF */

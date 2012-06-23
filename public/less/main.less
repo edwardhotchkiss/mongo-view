@@ -1,9 +1,4 @@
 
-@import "reset.less";
-@import "variables.less"; 
-@import "form.less"; 
-@import "paginate.less";
-
 /**
  * Layout 
  */ 
@@ -44,7 +39,7 @@ body {
 
 .content {
   .wrapper;
-  margin:20px auto;
+  margin: 20px auto;
   background: @leftbarColor;
   .border-radius(4px);
   .box-shadow(0 1px 1px rgba(111, 111, 111, 0.4));
@@ -178,22 +173,6 @@ body {
   font-weight: bold;
 }
 
-#indicator {
-  position: absolute;
-  bottom:20px;
-}
-
-#indicator h1:before {
-  content: "\203A  ";
-}
-
-#indicator h1 {
-  color: @linkColorHover;
-  font-weight: 100;
-  font-family: Monaco, Courier, MonoSpace;
-  font-size:14px;
-}
-
 /** 
  * Standard Styles
  **/
@@ -210,7 +189,7 @@ a:hover {
 
 p {
   color: @pColor;
-  line-height: 36px;
+  line-height: 18px;
   font-size: 16px;
   font-weight: 200;
 }
@@ -220,7 +199,7 @@ h1, h2, h3, h4 {
   font-size:26px;
   margin:0;
   font-weight:200;
-  text-rendering: optimizelegibility; // Fix the character spacing for headings
+  text-rendering: optimizelegibility;
 }
 
 h2 {
@@ -235,7 +214,6 @@ h4 {
   font-size:16px;
 }
 
-
 hr {
   border: 0;
   border-top: 1px solid @hrColor;
@@ -244,37 +222,6 @@ hr {
 
 strong {
   font-weight: bold;
-}
-
-.clearfix {
-  *zoom: 1;
-  &:before,
-  &:after {
-    display: table;
-    content: "";
-  }
-  &:after {
-    clear: both;
-  }
-}
-
-.left {
-  float:left;
-}
-
-.right {
-  float:right;  
-}
-
-.center {
-  text-align:center;
-  display: block;
-}
-
-.hide {
-  //position: absolute;
-  //left: -9999px;
-  display: none;
 }
 
 ul {
@@ -307,3 +254,5 @@ ul {
 .info {
   background-color: @orange;
 }
+
+/* EOF */
