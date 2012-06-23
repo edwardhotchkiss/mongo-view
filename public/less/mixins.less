@@ -139,25 +139,6 @@ hr {
   }
 }
 
-.border-radius(@radius: 5px) {
-  -webkit-border-radius: @radius;
-     -moz-border-radius: @radius;
-          border-radius: @radius;
-}
-
-.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
-  -webkit-box-shadow: @shadow;
-     -moz-box-shadow: @shadow;
-          box-shadow: @shadow;
-}
-
-
-.opacity(@opacity: 100) {
-  opacity: @opacity / 100;
-  -moz-opacity: @opacity / 100;
-  filter: ~"alpha(opacity=@{opacity})";
-}
-
 .arrow-up {
   width: 0;
   height: 0;
@@ -194,14 +175,6 @@ hr {
   border-right:10px solid blue;
 }
 
-
-.transition(@transition) {
-  -webkit-transition: @transition;
-     -moz-transition: @transition;
-      -ms-transition: @transition;
-       -o-transition: @transition;
-          transition: @transition;
-}
 
 .gradient(@startColor: #555, @endColor: #333) {
     background-color: mix(@startColor, @endColor, 60%);

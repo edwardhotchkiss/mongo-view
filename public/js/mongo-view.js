@@ -6,7 +6,9 @@
 var App = Spine.Controller.sub({
 
   db: null,
+  collectionCount: null,
   collection: null,
+  itemCount: null,
   item: null,
 
   // initialize app
@@ -105,12 +107,15 @@ var App = Spine.Controller.sub({
   retrieveCollections: function(db) {
     var self = this;
     self.db = db;
-    // mongodb breadcrumbs
-    mongodbBreadcrumbs(self);
     self.clear();
     $('#indicator h1').text('retrieving collections for ' + db);
     $.get('/api/database/' + db, function(data) {
       var howMany = data.length - 1;
+      // setup for breadcrumbs
+      self.collectionCount = howMany;
+      // mongodb breadcrumbs
+      mongodbBreadcrumbs(self);
+      // setup JSON for view render
       var json = {
         collections : data,
         howMany     : (howMany > 0) ? howMany : 'none',
@@ -140,18 +145,25 @@ var App = Spine.Controller.sub({
     var self = this;
     self.collection = collection;
     self.clear();
-    // mongodb breadcrumbs
-    mongodbBreadcrumbs(self);
     $('#indicator h1').text('retrieving collection: ' + collection);
     $.get('/api/database/' + db + '/collection/' + collection, function(data) {
+      // item count
+      var howMany = (data.length > 0) ? data.length : 'none';
+      self.itemCount = howMany;
+      // mongodb breadcrumbs
+      mongodbBreadcrumbs(self);
+      // setup for view render
       var json = {
-        howMany        : (data.length > 0) ? data.length : 'none',
+        howMany        : howMany,
         collection     : data,
         collectionName : collection,
         linker      : function() { 
           return '/database/' + db + '/collection/' + collection + '/' + this._id;
         }
       };
+      // setup for breadcrumbs
+      self.itemCount = howMany;
+      // setup JSON for view render
       $.get('/partials/collection.html', function(template) {
         var html = $.mustache(template, json);
         $('#content').append(html);
@@ -221,11 +233,12 @@ var App = Spine.Controller.sub({
  **/
 
 function mongodbBreadcrumbs(self) {
-  console.log('mongodbBreadcrumbs!');
   // current db
   if (self.db) {
     var db = self.db;
-    $('#current-db a').text(db);
+    var count = self.collectionCount;
+    var textWithCount = db + ' (' + count + ')';
+    $('#current-db a').text(textWithCount);
     $('#current-db a').click(function() {
       $('#current-collection').hide(350);
       $('#current-item').hide(350);
@@ -238,7 +251,9 @@ function mongodbBreadcrumbs(self) {
   // current collection
   if (self.collection) {
     var collection = self.collection;
-    $('#current-collection a').text(collection);
+    var count = self.itemCount;
+    var textWithCount = collection + ' (' + count + ')';
+    $('#current-collection a').text(textWithCount);
     $('#current-collection a').click(function() {
       $('#current-item').hide(350);
       self.item = null;
