@@ -1,4 +1,18 @@
 
+0.4.0 / 2012-06-23 
+==================
+
+  * [design] stylized nicely
+  * [design/integration] wrapped up @kevbook's new UI
+  * [breadcrumbs] display counts
+  * [breadcrumbs] refresh
+  * [merge] @kevbook thanks
+  * [node] dont be a dictator, just require 0.4.0
+  * added github fork me
+  * new UI + Index.html cleanup (less in new dir)
+  * [docs] info for production and redis session store
+  * [fix] self.db = db || self.db :P
+
 0.3.3 / 2012-06-18 
 ==================
 
