@@ -65,10 +65,14 @@ var App = Spine.Controller.sub({
   disconnect: function() {
     var self = this;
     self.db = null;
+    self.collectionCount = null;
     self.collection = null;
+    self.itemCount = null;
     self.item = null;
     $.get('/api/disconnect/', function(data) {
       if (data['message'] === 'disconnected') {
+        // mongodb breadcrumbs
+        mongodbBreadcrumbs(self);
         self.navigate('/');
       };
     });
@@ -247,6 +251,8 @@ function mongodbBreadcrumbs(self) {
       self.navigate('/database/' + db + '/');
     });
     $('#current-db').fadeIn(350);
+  } else {
+    $('#current-db a').text('');
   };
   // current collection
   if (self.collection) {
@@ -260,6 +266,8 @@ function mongodbBreadcrumbs(self) {
       self.navigate('/database/' + db + '/' + collection + '/');
     });
     $('#current-collection').fadeIn(350);
+  } else {
+    $('#current-collection a').text('');
   };
   // current item
   if (self.item) {
@@ -269,6 +277,8 @@ function mongodbBreadcrumbs(self) {
       self.navigate('/database/' + db + '/' + collection + '/' + item);
     });
     $('#current-item').fadeIn(350);
+  } else {
+    $('#current-item a').text('');
   };
 };
 

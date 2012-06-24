@@ -78,7 +78,7 @@ a.btn:not(.primary){border:1px solid #ccc!important;}
 #indicator h1:before{content:"\203A ";}
 #indicator h1{color:#8e7be6;font-weight:100;font-family:Monaco, Courier, MonoSpace;font-size:14px;}
 html{height:100%;}
-body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:normal;font-size:14px;line-height:18px;color:#999999;background-color:#e0e0e0;text-shadow:0 1px #ffffff;}
+body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:normal;font-size:14px;line-height:18px;color:#999999;background-color:#e0e0e0;text-shadow:0 1px #ffffff;margin:50px 0 50px 0;}
 p{color:#999999;}
 #github{position:absolute;right:0;top:0;opacity:0.2;filter:alpha(opacity=20);z-index:9999;}
 #launchunit p{margin-bottom:15px;text-align:right;}
