@@ -1,4 +1,13 @@
 
+0.4.3 / 2012-06-24 
+==================
+
+  * [helpers] added pushIdToTop (of obj) method
+  * [cleanup] comments and indents/dedents
+  * [structure] handlebars helpers within a register method now
+  * [templating] use handlebars
+  * [api] setup as individual controller
+
 0.4.2 / 2012-06-24 
 ==================
 
