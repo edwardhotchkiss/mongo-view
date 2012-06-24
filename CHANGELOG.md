@@ -1,4 +1,11 @@
 
+0.4.2 / 2012-06-24 
+==================
+
+  * [docs] updated app screenshot in markdown
+  * [design, cache]
+  * [cleanup]
+
 0.4.1 / 2012-06-23 
 ==================
 

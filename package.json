@@ -6,7 +6,7 @@
     { "name": "Max Presman", "email" : "max@presman.ca" }
   ],
   "description":"{mongo.view} a lightweight node.js tool for managing mongodb databases",
-  "version":"0.4.1",
+  "version":"0.4.2",
   "repository":{
     "type":"git",
     "url":"git://github.com/edwardhotchkiss/mongodb-viewer.git"
