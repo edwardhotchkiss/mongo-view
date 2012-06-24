@@ -32,7 +32,7 @@ vows.describe('general module tests').addBatch({
       mongo_view.app.close();
       assert.isNull(error);
       assert.equal(response.statusCode, 200);
-      assert.equal(/html/m.test(body), true);
+      assert.equal(/html/.test(body), true);
     }
   }
 }).export(module);
