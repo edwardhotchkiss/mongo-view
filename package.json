@@ -3,7 +3,8 @@
   "author":"Edward Hotchkiss <edwardhotchkiss@me.com",
   "contributors":[
     { "name" : "Edward Hotchkiss", "github" : "http://github.com/edwardhotchkiss/" },
-    { "name": "Max Presman", "email" : "max@presman.ca" }
+    { "name": "Max Presman", "github" : "https://github.com/MaxPresman/" },
+    { "name": "Kevin Sakhuja", "github" : "https://github.com/kevbook/" }
   ],
   "description":"{mongo.view} a lightweight node.js tool for managing mongodb databases",
   "version":"0.4.3",
