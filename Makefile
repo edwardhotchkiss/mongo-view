@@ -20,6 +20,7 @@ JS_FILES = \
 	${JS_SRC_DIR}vendor/spine/local.js\
 	${JS_SRC_DIR}vendor/spine/relation.js\
 	${JS_SRC_DIR}launchunit/notify.js\
+	${JS_SRC_DIR}launchunit/handlebarsHelpers.js\
 	${JS_SRC_DIR}launchunit/mongo-view.js
 	
 # merge js files & minify
