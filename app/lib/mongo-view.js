@@ -3,7 +3,8 @@
  * @list module dependencies
  **/
 
-var express = require('express')
+var path = require('path')
+  , express = require('express')
   , MemoryStore = express.session.MemoryStore
   , app = exports.app = express.createServer()
   , sessionSecret = 'DONT/TAZE/ME/BRO!';
@@ -12,8 +13,8 @@ var express = require('express')
  * configure express
  **/
 
-app.configure('development', function() {
-  console.log('> mongo-view configuring for DEVELOPMENT'.yellow);
+app.configure(function() {
+  console.log('> mongo-view [configuring...]'.yellow);
   app.use(express.bodyParser());
   app.use(express.cookieParser());
   app.use(express.methodOverride());
@@ -30,7 +31,7 @@ app.configure('development', function() {
  * @controller api
  **/
 
-require('../controllers/api');
+require('../controllers/api')(app);
 
 /**
  * @description Catch-All for HTML5

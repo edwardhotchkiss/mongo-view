@@ -54,6 +54,42 @@ var App = Spine.Controller.sub({
     $.fn.navTo = function(path) {
       self.navigate(path);
     }
+    // setup Handlebars helpers
+    Handlebars.registerHelper('getDB', function() {
+      return self.db;
+    });
+    Handlebars.registerHelper('getCollection', function() {
+      return self.collection;
+    });
+    Handlebars.registerHelper('generateRow', function(item) {
+      var HTML = '';
+      var props = item[0];
+      var orderedProps = {};
+      // push _id to the top
+      orderedProps['_id'] = props['_id'];
+      for (key in props) {
+        orderedProps[key] = props[key];
+      };
+      for (key in orderedProps) {
+        HTML += '<div class="holder">';
+        HTML += '<div class="key left"><p>';
+        HTML += key;
+        HTML += '</p></div>'
+        HTML += '<div class="prop left"><p>';
+        if (typeof(props[key]) === 'number') {
+          HTML += '<span class="identifier-number">' + props[key] + '</span>';
+        } else if (typeof(props[key]) === 'string') {
+          if (key === '_id') {
+            HTML += '<span class="identifier-objectid">$' + props[key] + '</span>';
+          } else {
+            HTML += '<span class="identifier-string">"' + props[key] + '"</span>';
+          };
+        };
+        HTML += '</p></div>';
+        HTML += '</div>';
+      };
+      return new Handlebars.SafeString(HTML);
+    });
   },
 
   // clear content
@@ -85,9 +121,10 @@ var App = Spine.Controller.sub({
     // mongodb breadcrumbs
     mongodbBreadcrumbs(self);
     var json = { MONGO_DB : 'mongodb://localhost/test' };
-    $.get('/partials/connect.html', function(template) {
-      var html = $.mustache(template, json);
-      $('#content').append(html);
+    $.get('/partials/connect.html', function(source) {
+      // render view with handlebars
+      var template = Handlebars.compile(source);
+      $('#content').html(template(json));
       // connection form submit
       $('#connect-btn').click(function(e) {  
         self.connect($('#connection-string').val());    
@@ -116,32 +153,22 @@ var App = Spine.Controller.sub({
     self.clear();
     $('#indicator h1').text('retrieving collections for ' + db);
     $.get('/api/database/' + db, function(data) {
-      var howMany = data.length - 1;
+      var count = data.length - 1;
+      var howMany = (count > 0) ? count: 'none';
       // setup for breadcrumbs
       self.collectionCount = howMany;
       // mongodb breadcrumbs
       mongodbBreadcrumbs(self);
       // setup JSON for view render
       var json = {
+        db          : db,
         collections : data,
-        howMany     : (howMany > 0) ? howMany : 'none',
-        linker      : function() {
-          if (this.count === undefined) {
-            return;
-          };
-          var HTML = '';
-          // link
-          var navToLink = '/database/' + db + '/collection/' + this.name + '/';
-          // build HTML
-          HTML += '<a href="javascript:void(0)" ';
-          HTML += 'onclick="$(this).navTo(\'' + navToLink + '\')">';
-          HTML += this.name + '</a><span>(' + this.count + ')</span>';
-          return HTML;           
-        }
+        howMany     : howMany
       };
-      $.get('/partials/collections.html', function(template) {
-        var html = $.mustache(template, json);
-        $('#content').append(html);
+      $.get('/partials/collections.html', function(source) {
+        // render view with handlebars
+        var template = Handlebars.compile(source);
+        $('#content').html(template(json));
       });
     });
   },
@@ -153,24 +180,22 @@ var App = Spine.Controller.sub({
     self.clear();
     $('#indicator h1').text('retrieving collection: ' + collection);
     $.get('/api/database/' + db + '/collection/' + collection, function(data) {
-      // item count
-      var howMany = (data.length > 0) ? data.length : 'none';
+      var howMany = data.length;
       self.itemCount = howMany;
       // mongodb breadcrumbs
       mongodbBreadcrumbs(self);
       // setup for view render
       var json = {
+        db             : db,
         howMany        : howMany,
         collection     : data,
-        collectionName : collection,
-        linker      : function() { 
-          return '/database/' + db + '/collection/' + collection + '/' + this._id;
-        }
+        collectionName : collection
       };
       // setup JSON for view render
-      $.get('/partials/collection.html', function(template) {
-        var html = $.mustache(template, json);
-        $('#content').append(html);
+      $.get('/partials/collection.html', function(source) {
+        // render view with handlebars
+        var template = Handlebars.compile(source);
+        $('#content').html(template(json));
       });
     });
   },
@@ -185,43 +210,15 @@ var App = Spine.Controller.sub({
       // mongodb breadcrumbs
       mongodbBreadcrumbs(self);
       // setup JSON for mustache
-      var json = {
+      var json = {   
         id       : id,
         item     : data,
-        collectionName : collection,
-        generateRow : function() {
-          var HTML = '';
-          var props = this;
-          var orderedProps = {};
-          // push _id to the top
-          orderedProps['_id'] = props['_id'];
-          for (key in props) {
-            orderedProps[key] = props[key];
-          };
-          for (key in orderedProps) {
-            HTML += '<div class="holder">';
-            HTML += '<div class="key left"><p>';
-            HTML += key;
-            HTML += '</p></div>'
-            HTML += '<div class="prop left"><p>';
-            if (typeof(props[key]) === 'number') {
-              HTML += '<span class="identifier-number">' + props[key] + '</span>';
-            } else if (typeof(props[key]) === 'string') {
-              if (key === '_id') {
-                HTML += '<span class="identifier-objectid">$' + props[key] + '</span>';
-              } else {
-                HTML += '<span class="identifier-string">"' + props[key] + '"</span>';
-              };
-            };
-            HTML += '</p></div>';
-            HTML += '</div>';
-          };
-          return HTML;
-        }
+        collectionName : collection
       };
-      $.get('/partials/item.html', function(template) {
-        var html = $.mustache(template, json);
-        $('#content').append(html);
+      $.get('/partials/item.html', function(source) {
+        // render view with handlebars
+        var template = Handlebars.compile(source);
+        $('#content').html(template(json));
       });
     });
   }

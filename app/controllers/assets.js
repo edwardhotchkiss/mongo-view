@@ -13,7 +13,7 @@ module.exports = function(app) {
     // vendored js
     var vendorDependencies = [
       __jsdirname + '/vendor/jquery-1.7.2.min.js',
-      __jsdirname + '/vendor/jquery.mustache.js',
+      __jsdirname + '/vendor/handlebars-1.0.0.beta.6.js',
       __jsdirname + '/vendor/notify.jquery.js',
       __jsdirname + '/vendor/spine/spine.js',
       __jsdirname + '/vendor/spine/route.js',

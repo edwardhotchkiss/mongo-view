@@ -1,18 +1,14 @@
 
 <div id="item">
-  <ul>
-    <div id="item-header" class="holder">
-      <div class="key left">
-        <p>Key</p>
-      </div>
-      <div class="prop left">
-        <p>Value</p>
-      </div>
+  <div id="item-header" class="holder">
+    <div class="key left">
+      <p>Key</p>
     </div>
-    {{#item}}
-      {{&generateRow}}
-    {{/item}}
-  </ul>
+    <div class="prop left">
+      <p>Value</p>
+    </div>
+  </div>
+  {{generateRow item}}
   <!--
   <hr><br>
   <div class="clearfix">

@@ -1,11 +1,15 @@
 
 <div id="collections">
   <ul>
-    {{#collections}}
-      <li>
-        {{&linker}}
-      </li>
-    {{/collections}}
+    {{#each collections}}
+      {{#if this}}
+        <li>
+          <a href="javascript:void(0)" onclick="$(this).navTo('/database/{{getDB}}/collection/{{this.name}}/')">
+            {{this.name}} <span>({{this.count}})</span>
+          </a>
+        </li>
+      {{/if}}
+    {{/each}}
   </ul>
   <!--
 	<hr><br>
