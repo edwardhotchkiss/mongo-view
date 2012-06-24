@@ -16,7 +16,13 @@ $ [sudo] npm install mongo-view -g
 ## Running Mongo-View (http://localhost:8000/)
 
 ```bash
-$ mongoview run --port 8000
+$ mongoview
+```
+
+## Running Mongo-View (http://localhost:9000/)
+
+```bash
+$ mongoview run --port 9000
 ```
 
 ## Pull Requests
