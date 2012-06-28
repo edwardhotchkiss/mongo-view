@@ -25,6 +25,12 @@ var App = Spine.Controller.sub({
       '/database/disconnect/': function() {
         self.disconnect();
       },
+      '/database/export': function() {
+        self.renderExport();
+      },
+      '/database/export/': function() {
+        self.renderExport();
+      },
       '/database/:database': function(params) {
         self.retrieveCollections(params.database)
       },
@@ -78,6 +84,33 @@ var App = Spine.Controller.sub({
         self.navigate('/');
       };
     });
+  },
+
+  // render database tools
+  renderExport: function() {
+    var self = this;
+    self.clear();
+    // mongodb breadcrumbs
+    mongodbBreadcrumbs(self);
+    var json = { MONGO_DB : 'mongodb://localhost/test' };
+    $.get('/partials/export.html', function(source) {
+      // render view with handlebars
+      var template = Handlebars.compile(source);
+      $('#content').html(template(json));
+      // connection form submit
+      $('#connect-btn').click(function(e) {  
+        self.export($('#connection-string').val());    
+      }); 
+    });
+  },
+
+  // hit export endpoint
+  export: function(mongoString) {
+    var self = this;
+    self.clear();
+    // mongodb breadcrumbs
+    mongodbBreadcrumbs(self);
+    console.log('exporting...');
   },
 
   // render connect form partial

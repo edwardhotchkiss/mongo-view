@@ -20,7 +20,7 @@
   },
   "dependencies":{
     "mongodb":"1.0.2",
-    "express":"2.5.9"
+    "express":"2.5.10"
   },
   "devDependencies":{
     "vows":"0.6.2",
