@@ -7,7 +7,7 @@
     { "name": "Kevin Sakhuja", "github" : "https://github.com/kevbook/" }
   ],
   "description":"{mongo.view} a lightweight node.js tool for managing mongodb databases",
-  "version":"0.4.3",
+  "version":"0.5.0",
   "repository":{
     "type":"git",
     "url":"git://github.com/edwardhotchkiss/mongodb-viewer.git"
