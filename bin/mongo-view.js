@@ -8,7 +8,7 @@ require('../app/helpers/colors');
 
 var mongo_view = require('../app/lib/mongo-view')
   , args = process.argv
-  , port = 8000;
+  , port = 9000;
 
 switch(args[2]) {
   case 'run':

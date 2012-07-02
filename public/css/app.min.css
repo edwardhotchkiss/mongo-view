@@ -103,10 +103,10 @@ p{color:#999999;}
 #mongodb-breadcrumbs ul{*zoom:1;position:relative;}#mongodb-breadcrumbs ul:before,#mongodb-breadcrumbs ul:after{display:table;content:"";}
 #mongodb-breadcrumbs ul:after{clear:both;}
 #mongodb-breadcrumbs ul li{width:auto;position:relative;float:left;margin-right:10px;font-weight:bold;}
-.connection-form div{width:100%;*zoom:1;margin-bottom:15px;}.connection-form div:before,.connection-form div:after{display:table;content:"";}
-.connection-form div:after{clear:both;}
-.connection-form div label{position:relative;float:left;width:150px;padding:4px 0 0 0;}
-.connection-form div input{position:relative;float:right;}
+#connection-form div,#export-form div{width:100%;*zoom:1;margin-bottom:15px;}#connection-form div:before,#export-form div:before,#connection-form div:after,#export-form div:after{display:table;content:"";}
+#connection-form div:after,#export-form div:after{clear:both;}
+#connection-form div label,#export-form div label{position:relative;float:left;width:150px;padding:4px 0 0 0;}
+#connection-form div input,#export-form div input{position:relative;float:right;}
 a{color:#5139c1;text-decoration:none;}
 a:hover{color:#8e7be6;text-decoration:underline;}
 h1,h2,h3,h4{color:#725ecf;font-size:26px;margin:0;font-weight:200;text-rendering:optimizelegibility;}

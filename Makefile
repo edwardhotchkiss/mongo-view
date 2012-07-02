@@ -19,8 +19,7 @@ JS_FILES = \
 	${JS_SRC_DIR}vendor/spine/manager.js\
 	${JS_SRC_DIR}vendor/spine/local.js\
 	${JS_SRC_DIR}vendor/spine/relation.js\
-	${JS_SRC_DIR}launchunit/notify.js\
-	${JS_SRC_DIR}launchunit/handlebarsHelpers.js\
+	${JS_SRC_DIR}launchunit/jquery.notify.js\
 	${JS_SRC_DIR}launchunit/mongo-view.js
 	
 # merge js files & minify
@@ -35,9 +34,13 @@ css:
 
 assets: js css
 
-all: js css test
+all: js css
 
 # vows
 test: vows test/*.test.js --spec
-	
-.PHONY: js css test
+
+# run
+run:
+	node ./bin/mongo-view.js
+
+.PHONY: js css assets test run

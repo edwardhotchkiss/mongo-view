@@ -59,8 +59,8 @@ var App = Spine.Controller.sub({
     // navigate via spine
     $.fn.navTo = function(path) {
       self.navigate(path);
-    }
-    // register handlebars helpers
+    };
+    // handlebars helpers, register with instance
     registerHandlebarsHelpers(self);
   },
 
@@ -278,6 +278,67 @@ function mongodbBreadcrumbs(self) {
   };
 };
 
+/**
+ * @method registerHandlebarsHelpers
+ **/
+
+function registerHandlebarsHelpers(self) {
+
+  /**
+   * @method pushIdToTop
+   **/
+
+  function pushIdToTop(obj) {
+    var ordered = {};
+    ordered['_id'] = obj['_id'];
+    for (key in obj) {
+      ordered[key] = obj[key];
+    };
+    return ordered;
+  };
+
+  /**
+   * @handlebars helpers
+   **/
+
+  // get database name
+  Handlebars.registerHelper('getDB', function() {
+    return self.db;
+  });
+  
+  // get collection name
+  Handlebars.registerHelper('getCollection', function() {
+    return self.collection;
+  });
+  
+  // prettify a mongodb item
+  Handlebars.registerHelper('generateRow', function(item) {
+    var HTML = '';
+    var orderedItem = pushIdToTop(item[0]);
+    // sort through and classify
+    for (key in orderedItem) {
+      HTML += '<div class="holder">';
+      HTML += '<div class="key left"><p>';
+      HTML += key;
+      HTML += '</p></div>'
+      HTML += '<div class="prop left"><p>';
+      if (typeof(orderedItem[key]) === 'number') {
+        HTML += '<span class="identifier-number">' + orderedItem[key] + '</span>';
+      } else if (typeof(orderedItem[key]) === 'string') {
+        if (key === '_id') {
+          HTML += '<span class="identifier-objectid">$' + orderedItem[key] + '</span>';
+        } else {
+          HTML += '<span class="identifier-string">"' + orderedItem[key] + '"</span>';
+        };
+      };
+      HTML += '</p></div>';
+      HTML += '</div>';
+    };
+    return new Handlebars.SafeString(HTML);
+  });
+
+};
+
 $(document).ready(function() {
 
   // initialize app
@@ -293,14 +354,19 @@ $(document).ready(function() {
   }).ajaxError(function(e, jqxhr, settings, message) {
     var suppressErrorAlert = true;
     if (jqxhr.status === 599) {
-      window.location = '/';
-      return suppressErrorAlert;
+      $.Notify('No Active MongoDB Connection!', function() {
+        window.location = '/';
+        return suppressErrorAlert;
+      });
     } else {
-      window.location = '/';
-      return suppressErrorAlert;
+      $.Notify('Unknown Error!', function() {
+        window.location = '/';
+        return suppressErrorAlert;
+      });
     };
   });
 
 });
+
 
 /* EOF */
