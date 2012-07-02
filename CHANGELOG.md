@@ -1,4 +1,13 @@
 
+0.5.0 / 2012-07-02 
+==================
+
+  * [major] bugfixes, enhancements, runs on port 9000 now by default
+  * [export] view
+  * [docs] added mongoview bin along with options/flags
+  * [tests] added db connection test (first api spec)
+  * [contributors] added @kevbook
+
 0.4.3 / 2012-06-24 
 ==================
 
