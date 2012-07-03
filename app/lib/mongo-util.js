@@ -7,10 +7,10 @@
 var BSON = require('mongodb').BSONPure;
 
 /**
- * @method ObjectIdfromString
+ * @method idFromString
  **/
 
-function ObjectIdfromString(id) {
+function idFromString(id) {
   return BSON.ObjectID.createFromHexString(id);
 };
 
@@ -42,7 +42,7 @@ exports.find = function(db, collection, params, callback) {
  */
 
 exports.findItem = function(db, collection, id, params, callback) {
-  id = ObjectIdfromString(id);
+  id = idFromString(id);
   db.collection(collection, function(error, collection) {
     collection.find({ _id : id }).toArray(callback);
   });
@@ -114,7 +114,7 @@ exports.create = function(db, collectionName, params, callback) {
 
 exports.update = function(db, collectionName, params, callback) {
   if ('_id' in params) {
-    params['_id'] = ObjectIdfromString(params['_id']);
+    params['_id'] = idFromString(params['_id']);
   };
   db.collection(collectionName, function(error, collection) {
     if (error) {
@@ -133,7 +133,7 @@ exports.update = function(db, collectionName, params, callback) {
 
 exports.remove = function(db, collectionName, params, callback) {
   if ('_id' in params) {
-    params['_id'] = ObjectIdfromString(params['_id']);
+    params['_id'] = idFromString(params['_id']);
   };
   db.collection(collectionName, function(error, collection) {
     if (error) {

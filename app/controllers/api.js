@@ -35,7 +35,7 @@ module.exports = function(app) {
     isMongoViewLive = /mongoview\.com/i.test(_request.headers.host);
     isMongoDBLocalhost = /localhost/i.test(MONGO_DB);
     if (isMongoViewLive && isMongoDBLocalhost) {
-      _response.send(new Error('No Access to localhost!', 403));
+      _response.send(new Error('no_access', 511));
     } else {
       // get database name from conection string
       var db_name = MONGO_DB.split('/')[3];

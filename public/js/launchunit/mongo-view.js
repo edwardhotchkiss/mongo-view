@@ -346,23 +346,34 @@ $(document).ready(function() {
     start : new Date().getTime()
   });
 
+  /**
+   * @method notifyThenRedirect
+   * @description $.Notify, then redirect user
+   * @param message Notification message
+   * @param location Path for redirect
+   **/
+
+  function notifyThenRedirect(message, location) {
+    location = location || '/';
+    $.Notify(message, function() {
+      window.location = location;
+      return suppressErrorAlert;
+    });
+  };
+
   // setup ajax
   $(document).ajaxStart(function() {
     $('#indicator').fadeIn(1000);
   }).ajaxStop(function() {
     $('#indicator').fadeOut(1000);
-  }).ajaxError(function(e, jqxhr, settings, message) {
+  }).ajaxError(function(e, xhr, settings, exception) {
     var suppressErrorAlert = true;
-    if (jqxhr.status === 599) {
-      $.Notify('No Active MongoDB Connection!', function() {
-        window.location = '/';
-        return suppressErrorAlert;
-      });
+    if (xhr.status === 599) {
+      notifyThenRedirect('No Active MongoDB Connection!');
+    } else if (xhr.status === 511) {
+      notifyThenRedirect('Access Forbidden to localhost on this Domain!');
     } else {
-      $.Notify('Unknown Error!', function() {
-        window.location = '/';
-        return suppressErrorAlert;
-      });
+      notifyThenRedirect('Unknown Error! Redirecting...');
     };
   });
 
