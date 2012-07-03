@@ -19,6 +19,7 @@ JS_FILES = \
 	${JS_SRC_DIR}vendor/spine/manager.js\
 	${JS_SRC_DIR}vendor/spine/local.js\
 	${JS_SRC_DIR}vendor/spine/relation.js\
+	${JS_SRC_DIR}vendor/gaug.es.js\
 	${JS_SRC_DIR}launchunit/jquery.notify.js\
 	${JS_SRC_DIR}launchunit/mongo-view.js
 	
