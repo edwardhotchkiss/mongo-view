@@ -27,7 +27,7 @@ $ mongoview run --port 9001
 
 ## Documentation
 
-[http://documentup.com/edwardhotchkiss/mongo-view](http://documentup.com/edwardhotchkiss/mongo-view)
+[http://documentup.com/edwardhotchkiss/mongo-view/](http://documentup.com/edwardhotchkiss/mongo-view/)
 
 ## Pull Requests
 
