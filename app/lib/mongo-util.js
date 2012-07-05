@@ -4,7 +4,8 @@
  * MongoDB Utility Methods
  **/
 
-var BSON = require('mongodb').BSONPure;
+var mongodb = require('mongodb')
+  , BSON = require('mongodb').BSONPure;
 
 /**
  * @method idFromString
@@ -22,6 +23,46 @@ function idFromString(id) {
 exports.disconnect = function(db, callback) {
   db.close();
   callback(null);
+};
+
+/**
+ * @method connect
+ **/
+
+var connect = exports.connect = function(MONGO_DB, hostname, callback) {
+  // test for attempts to access localhost on mongoview.com
+  isMongoViewLive = /mongoview\.com/i.test(hostname);
+  isMongoDBLocalhost = /localhost/i.test(MONGO_DB);
+  if (isMongoViewLive && isMongoDBLocalhost) {
+    callback(new Error('no_access', 511), null, null);
+  } else {
+    // get database name from conection string
+    var db_name = MONGO_DB.split('/')[3];
+    // create the mongodb client
+    var _client;
+    _client = mongodb.connect(MONGO_DB, function(_error, _db) {
+      if (_error) {
+        callback(_error, null, null);
+      } else {
+        callback(null, db_name, _db, _client);
+      };
+    });
+  };
+};
+
+/**
+ * @method exportDB
+ **/
+
+var exportDB = exports.exportDB = function(MONGO_DB, hostname, callback) {
+  connect(MONGO_DB, hostname, function(_error, _db_name, _db, _client) {
+    if (_error) {
+      callback(_error, null);
+    } else {
+      console.log('setup export...');
+      callback(null, null);
+    }
+  });
 };
 
 /**

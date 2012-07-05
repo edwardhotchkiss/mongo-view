@@ -8,7 +8,7 @@ CSS_DIR = public/css/
 # LESS Directory
 LESS_DIR = public/less/
 
-# list of js files to merge
+# ordered list of js files to add
 JS_FILES = \
 	${JS_SRC_DIR}vendor/jquery-1.7.2.min.js\
 	${JS_SRC_DIR}vendor/handlebars-1.0.0.beta.6.js\

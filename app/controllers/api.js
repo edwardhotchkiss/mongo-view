@@ -31,29 +31,20 @@ module.exports = function(app) {
   // connect to mongodb
   app.get('/api/connect', function(_request, _response) {
     var MONGO_DB = _request.query['connection-string'];
-    // test for attempts to access localhost on mongoview.com
-    isMongoViewLive = /mongoview\.com/i.test(_request.headers.host);
-    isMongoDBLocalhost = /localhost/i.test(MONGO_DB);
-    if (isMongoViewLive && isMongoDBLocalhost) {
-      _response.send(new Error('no_access', 511));
-    } else {
-      // get database name from conection string
-      var db_name = MONGO_DB.split('/')[3];
-      // create the mongodb client
-      var _client = mongodb.connect(MONGO_DB, function(_error, _db) {
-        if (_error) {
-          _response.send(_error);
-        } else {
-          db = _db;
-          client = _client;
-          _request.session.connected = true;
-          _request.session.MONGO_DB = MONGO_DB;
-          _response.send({
-            db_name : db_name
-          });
-        };
-      });
-    };
+    // connect
+    mongo_util.connect(MONGO_DB, _request.headers.host, function(_error, _db_name, _db, _client) {
+      if (_error) {
+        _response.send(_error);
+      } else {
+        db = _db;
+        client = _client;
+        _request.session.connected = true;
+        _request.session.MONGO_DB = MONGO_DB;
+        _response.send({
+          db_name : _db_name
+        });
+      }
+    })
   });
 
   // disconnect from mongodb
@@ -66,6 +57,22 @@ module.exports = function(app) {
           _response.send({ message : 'disconnected' });
         });
       }
+    });
+  });
+
+  // export database
+  app.post('/api/database/export', function(_request, _response) {
+    var MONGO_DB = _request.body['MONGO_DB'];
+    var hostname = _request.headers.host;
+    // connect
+    mongo_util.exportDB(MONGO_DB, hostname, function(_error, _exportFile) {
+      if (_error) {
+        _response.send(_error, 500);
+      } else {
+        console.log(_exportFile);
+        //var file = path.normalize(__dirname + '/../../public/index.html');
+        //_response.sendfile(html);
+      };
     });
   });
 

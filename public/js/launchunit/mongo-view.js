@@ -98,7 +98,7 @@ var App = Spine.Controller.sub({
       var template = Handlebars.compile(source);
       $('#content').html(template(json));
       // connection form submit
-      $('#connect-btn').click(function(e) {  
+      $('#connect-btn').click(function(e) { 
         self.export($('#connection-string').val());    
       }); 
     });
@@ -108,9 +108,17 @@ var App = Spine.Controller.sub({
   export: function(mongoString) {
     var self = this;
     self.clear();
-    // mongodb breadcrumbs
-    mongodbBreadcrumbs(self);
-    console.log('exporting...');
+    // export api call
+    $('#indicator h1').text('connecting to database...');
+    var payload = {
+      MONGO_DB : mongoString
+    };
+    $.post('/api/database/export/', payload, function(data) {
+      var db = data['db_name'];
+      self.db = db || self.db;
+      // mongodb breadcrumbs
+      mongodbBreadcrumbs(self);
+    });
   },
 
   // render connect form partial
