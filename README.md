@@ -1,5 +1,5 @@
 
-# {mongo.view} [![Build Status](https://secure.travis-ci.org/edwardhotchkiss/mongo-view.png)](http://travis-ci.org/edwardhotchkiss/mongo-view)
+# {mongo.view} [![Build Status](https://secure.travis-ci.org/edwardhotchkiss/mongo-view.png)](http://travis-ci.org/edwardhotchkiss/mongo-view) [![Git Tip](http://img.shields.io/gittip/edwardhotchkiss.svg)](https://www.gittip.com/edwardhotchkiss/) 
 
 > a lightweight node.js tool for managing mongodb databases
 
